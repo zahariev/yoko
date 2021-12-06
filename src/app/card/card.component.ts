@@ -79,6 +79,8 @@ export class CardComponent implements OnInit {
   }
 
   entered(event: CdkDragEnter) {
+    console.log("move");
+
     moveItemInArray(this.cards, event.item.data, event.container.data);
   }
 
@@ -110,10 +112,17 @@ export class CardComponent implements OnInit {
   }
 
   getIconColor(card: number): string {
-    if ([6, 19, 20, 24, 33, 34, 36, 41, 42, 44, 46, 50].includes(card))
-      return "white";
+    if (
+      [
+        27, 37, 17, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 73,
+        75, 77, 79, 81, 83, 85, 87, 89, 91, 93, 95, 97, 99, 101, 74, 76, 78, 80,
+        82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108, 110, 112,
+        114, 116, 118, 120, 122, 124, 126, 128, 130, 132,
+      ].includes(card)
+    )
+      return "black";
     else if (card === 4) return "red";
-    else return "black";
+    else return "white";
   }
   resetDeck() {
     this.cards = [];

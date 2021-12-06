@@ -66,10 +66,10 @@
       [cdkDragData]="i"
       (cdkDragEntered)="entered($event)"
       class="card"
-      (mousedown)="mouseDown($event)"
       [style.background-image]="'url(./assets/cards/YOKO-BG_' + card + '.jpg)'"
     >
       <mat-icon
+        [style.color]="getIconColor(card)"
         class="flip left"
         (click)="flipCard(i); $event.stopPropagation()"
         >360</mat-icon
