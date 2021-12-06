@@ -54,7 +54,6 @@
   <div
     class="tp-box"
     *ngFor="let card of cards; let i = index"
-    cdkDrag
     (click)="flipCard(i)"
     (cdkDragStarted)="dragMove($event)"
     cdkDragBoundary="body"

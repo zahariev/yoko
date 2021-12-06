@@ -104,6 +104,8 @@ export class CardComponent implements OnInit {
   }
   resetDeck() {
     this.cards = [];
+    this.deck = [];
+
     this.saveState();
   }
 
