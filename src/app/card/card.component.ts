@@ -83,6 +83,8 @@ export class CardComponent implements OnInit {
   }
 
   entered(event: CdkDragEnter) {
+    this.magnifiedCard = -1;
+
     moveItemInArray(this.cards, event.item.data, event.container.data);
     this.saveState();
   }
@@ -106,13 +108,6 @@ export class CardComponent implements OnInit {
   getDeckState(deckId: number) {
     if (this.deck[deckId]) return "_front";
     else return "_back";
-  }
-
-  dragMove($event: any) {
-    const elStyle = $event.source.element.nativeElement.style;
-    this.lastZindex += 10;
-    // elStyle.position = "fixed";
-    elStyle.zIndex = this.lastZindex;
   }
 
   deal($event: any) {
