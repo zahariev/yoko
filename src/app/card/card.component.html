@@ -12,6 +12,7 @@
   cdkDragBoundary="body"
 >
   <div
+    [style.color]="getDeckState(1) === '_front' ? 'white' : 'black'"
     class="deck"
     (click)="takeCard(1)"
     [style.background]="'url(./assets/red' + getDeckState(1) + '.jpg)'"
@@ -23,6 +24,7 @@
     <span> </span>
   </div>
   <div
+    [style.color]="getDeckState(2) === '_front' ? 'black' : 'white'"
     class="deck"
     (click)="takeCard(2)"
     [style.background]="'url(./assets/blue' + getDeckState(2) + '.jpg)'"
@@ -44,6 +46,7 @@
     <span> </span>
   </div>
   <div
+    [style.color]="getDeckState(4) === '_front' ? 'black' : 'white'"
     class="deck"
     (click)="takeCard(4)"
     [style.background]="'url(./assets/green' + getDeckState(4) + '.jpg)'"

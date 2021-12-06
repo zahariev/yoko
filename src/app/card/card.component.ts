@@ -121,7 +121,6 @@ export class CardComponent implements OnInit {
       ].includes(card)
     )
       return "black";
-    else if (card === 4) return "red";
     else return "white";
   }
   resetDeck() {
