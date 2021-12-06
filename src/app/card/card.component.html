@@ -1,0 +1,74 @@
+<!-- <div
+  class="deck"
+  [style.background-image]="'url(./assets/0.png)'"
+  (mousedown)="takeCard()"
+>
+  <!-- <mat-icon class="delete" (click)="toggleSize()">resize</mat-icon>
+  <span> </span>
+</div> -->
+<div class="card-container tp-wrapper">
+  <div
+    class="deck"
+    (click)="takeCard(1)"
+    [style.background]="'url(./assets/red' + getDeckState(1) + '.jpg)'"
+  >
+    <button mat-icon-button class="flip">
+      <mat-icon (click)="flipDeck(1); $event.stopPropagation()">360</mat-icon>
+    </button>
+    <!-- <mat-icon class="delete" (click)="toggleSize()">resize</mat-icon> -->
+    <span> </span>
+  </div>
+  <div
+    class="deck"
+    (click)="takeCard(2)"
+    [style.background]="'url(./assets/blue' + getDeckState(2) + '.jpg)'"
+  >
+    <!-- <mat-icon class="delete" (click)="toggleSize()">resize</mat-icon> -->
+    <button mat-icon-button class="flip">
+      <mat-icon (click)="flipDeck(2); $event.stopPropagation()">360</mat-icon>
+    </button>
+  </div>
+  <div
+    class="deck"
+    (click)="takeCard(3)"
+    [style.background]="'url(./assets/yellow' + getDeckState(3) + '.jpg)'"
+  >
+    <button mat-icon-button class="flip">
+      <mat-icon (click)="flipDeck(3); $event.stopPropagation()">360</mat-icon>
+    </button>
+    <!-- <mat-icon class="delete" (click)="toggleSize()">resize</mat-icon> -->
+    <span> </span>
+  </div>
+  <div
+    class="deck"
+    (click)="takeCard(4)"
+    [style.background]="'url(./assets/green' + getDeckState(4) + '.jpg)'"
+  >
+    <button mat-icon-button class="flip">
+      <mat-icon (click)="flipDeck(4); $event.stopPropagation()">360</mat-icon>
+    </button>
+    <!-- <mat-icon class="delete" (click)="toggleSize()">resize</mat-icon> -->
+    <span> </span>
+  </div>
+  <div class="clear"></div>
+  <div
+    class="tp-box"
+    *ngFor="let card of cards"
+    cdkDrag
+    (cdkDragStarted)="dragMove($event)"
+    cdkDragBoundary="body"
+  >
+    <div
+      class="card"
+      (mousedown)="mouseDown($event)"
+      [style.background-image]="'url(./assets/cards/YOKO-BG_' + card + '.jpg)'"
+    >
+      <mat-icon
+        class="delete"
+        (click)="removeCard(card)"
+        [style.color]="getIconColor(card)"
+        >delete</mat-icon
+      >
+    </div>
+  </div>
+</div>

@@ -1,0 +1,113 @@
+.tp-box {
+  width: 180px;
+  height: 258px;
+  margin: 10px;
+  position: static;
+}
+
+.firstCard {
+  height: 255px;
+  width: 176px;
+  visibility: hidden;
+  position: absolute;
+
+  z-index: 0;
+}
+
+.card {
+  background-size: contain !important;
+  height: 255px;
+  width: 176px;
+  background-color: #465658;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  position: absolute;
+  border-radius: 12px;
+  color: #fff;
+  text-align: center;
+
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  z-index: 1;
+}
+
+.card-container {
+  //   top: 0px;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card-container .card:not(:last-child) {
+  margin-right: 0;
+}
+
+.clear {
+  width: 100%;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.deck {
+  all: unset;
+  border-radius: 12px;
+  position: relative;
+  //   background-color: #465658;
+  //   background-size: cover;
+  background-size: contain !important;
+  background-repeat: no-repeat;
+
+  height: 225px;
+  width: 148px;
+  margin: 10px 8px 16px;
+  padding: 16px;
+  display: flex;
+  cursor: pointer;
+  z-index: 999;
+}
+
+.delete {
+  color: black;
+  display: none;
+  position: absolute;
+  top: 0px;
+  right: 5px;
+  cursor: pointer;
+}
+.card:hover .delete {
+  display: block;
+}
+
+.flip {
+  position: relative;
+  z-index: 999999;
+  top: 0px;
+}
+
+@media screen and (max-width: 700px), screen and (max-height: 500px) {
+  .deck {
+    // left: 37px;
+
+    left: 8%;
+    height: 115px;
+    width: 72px;
+  }
+
+  .tp-box {
+    height: 148px;
+    width: 103px;
+  }
+
+  .card {
+    height: 145px;
+    width: 100px;
+  }
+
+  .card-container {
+    top: -10px;
+  }
+}

@@ -1,0 +1,45 @@
+<!-- Toolbar -->
+
+<div id="content" #board role="main" [style.margin-top]="marginTop">
+  <button
+    id="menu"
+    mat-icon-button
+    [matMenuTriggerFor]="menu"
+    aria-label="Example icon-button with a menu"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="reload()">
+      <mat-icon class="resetIcon">restart_alt</mat-icon>
+      <span>Position reset</span>
+    </button>
+
+    <button mat-menu-item (click)="showAllCards()">
+      <mat-icon class="resetIcon">apps</mat-icon>
+
+      <span>Show all</span>
+    </button>
+
+    <button mat-menu-item (click)="resetGame()">
+      <mat-icon class="resetIcon">clear</mat-icon>
+
+      <span>Clear board</span>
+    </button>
+  </mat-menu>
+
+  <!-- Resources -->
+  <h2></h2>
+  <p></p>
+  <app-card
+    [flipDeckEvent]="flipSubject.asObservable()"
+    [clearEvent]="resetSubject.asObservable()"
+    [showAllEvent]="showAllSubject.asObservable()"
+  ></app-card>
+
+  <!-- Footer -->
+  <!-- <footer>
+    <div class="spacer"></div>
+    <p>Cards demo</p>
+  </footer> -->
+</div>

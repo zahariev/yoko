@@ -1,0 +1,9 @@
+{
+  "files.exclude": {
+    ".vscode": true,
+    ".angular": true,
+    "karma.conf.js": true,
+    "package-lock.json": true,
+    ".DS_Store": true
+  }
+}
