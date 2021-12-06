@@ -2,17 +2,17 @@
   width: 180px;
   height: 258px;
   margin: 10px;
-  position: static;
+  //   position: static;
 }
 
-.firstCard {
-  height: 255px;
-  width: 176px;
-  visibility: hidden;
-  position: absolute;
+// .firstCard {
+//   height: 255px;
+//   width: 176px;
+//   visibility: hidden;
+//   position: absolute;
 
-  z-index: 0;
-}
+//   z-index: 0;
+// }
 
 .card {
   background-size: contain !important;
@@ -20,7 +20,7 @@
   width: 185px;
   background-color: #465658;
   border: 1px solid rgba(255, 255, 255, 0.6);
-  position: absolute;
+  //   position: absolute;
   border-radius: 12px;
   color: #fff;
   text-align: center;
@@ -35,7 +35,7 @@
 
 .card-container {
   //   top: 0px;
-  position: relative;
+  //   position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -78,14 +78,25 @@
   right: 5px;
   cursor: pointer;
 }
-.card:hover .delete {
-  display: block;
-}
 
 .flip {
   position: relative;
   z-index: 999999;
   top: 0px;
+}
+
+.left {
+  color: black;
+  display: none;
+  position: absolute;
+  top: 0px;
+  left: 5px;
+  cursor: pointer;
+}
+
+.card:hover .delete,
+.card:hover .flip {
+  display: block;
 }
 
 @media screen and (max-width: 700px), screen and (max-height: 500px) {

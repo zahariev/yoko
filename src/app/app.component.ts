@@ -28,7 +28,7 @@ export class AppComponent implements AfterViewInit {
       this.scaleIndex = Number(zoom);
     }
 
-    this.board.nativeElement.style.zoom = this.scalings[this.scaleIndex];
+    // this.board.nativeElement.style.zoom = this.scalings[this.scaleIndex];
   }
 
   resetGame() {

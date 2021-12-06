@@ -54,15 +54,25 @@
   <div
     class="tp-box"
     *ngFor="let card of cards; let i = index"
-    (click)="flipCard(i)"
+    cdkDrag
+    cdkDropList
     (cdkDragStarted)="dragMove($event)"
+    (cdkDropListDropped)="dropCard($event)"
+    cdkDropListOrientation="horizontal"
     cdkDragBoundary="body"
   >
     <div
       class="card"
       (mousedown)="mouseDown($event)"
       [style.background-image]="'url(./assets/cards/YOKO-BG_' + card + '.jpg)'"
+      cdkDropList
     >
+      <mat-icon
+        class="flip left"
+        (click)="flipCard(i); $event.stopPropagation()"
+        >360</mat-icon
+      >
+
       <mat-icon
         class="delete"
         (click)="removeCard(card)"

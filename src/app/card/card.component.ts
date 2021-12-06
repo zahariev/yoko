@@ -1,3 +1,4 @@
+import { CdkDragDrop, moveItemInArray } from "@angular/cdk/drag-drop";
 import { Component, Input, OnInit } from "@angular/core";
 
 import { Observable, Subject, takeUntil } from "rxjs";
@@ -68,10 +69,13 @@ export class CardComponent implements OnInit {
       rand = this.randomIntFromInterval(0, 14);
       card = 30 * deck - 17 + rand * 2 + (this.deck[deck] ? 1 : 0);
     } while (this.cards.includes(card));
-    console.log(card);
 
     this.cards.push(card);
     this.saveState();
+  }
+
+  dropCard(event: CdkDragDrop<number[]>) {
+    moveItemInArray(this.cards, event.previousIndex, event.currentIndex);
   }
 
   showAllCards() {
