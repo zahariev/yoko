@@ -54,6 +54,12 @@ export class CardComponent implements OnInit {
     this.saveState();
   }
 
+  flipCard(cardIdx: number) {
+    const card = this.cards[cardIdx];
+    if (card % 2 == 0) this.cards[cardIdx]--;
+    else this.cards[cardIdx]++;
+  }
+
   takeCard(deck: number = 0): void {
     if (this.cards.length > 14) return;
     let card;
