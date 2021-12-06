@@ -1,4 +1,8 @@
-import { CdkDragDrop, moveItemInArray } from "@angular/cdk/drag-drop";
+import {
+  CdkDragDrop,
+  CdkDragEnter,
+  moveItemInArray,
+} from "@angular/cdk/drag-drop";
 import { Component, Input, OnInit } from "@angular/core";
 
 import { Observable, Subject, takeUntil } from "rxjs";
@@ -74,9 +78,14 @@ export class CardComponent implements OnInit {
     this.saveState();
   }
 
-  dropCard(event: CdkDragDrop<number[]>) {
-    moveItemInArray(this.cards, event.previousIndex, event.currentIndex);
+  entered(event: CdkDragEnter) {
+    moveItemInArray(this.cards, event.item.data, event.container.data);
   }
+
+  //   dropCard(event: any) {
+  //     moveItemInArray(this.cards, event.previousIndex, event.currentIndex);
+  //     this.saveState();
+  //   }
 
   showAllCards() {
     // do {

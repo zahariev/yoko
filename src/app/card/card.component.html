@@ -6,7 +6,11 @@
   <!-- <mat-icon class="delete" (click)="toggleSize()">resize</mat-icon>
   <span> </span>
 </div> -->
-<div class="card-container tp-wrapper">
+<mat-grid-list
+  class="card-container tp-wrapper"
+  cdkDropListGroup
+  cdkDragBoundary="body"
+>
   <div
     class="deck"
     (click)="takeCard(1)"
@@ -51,21 +55,19 @@
     <span> </span>
   </div>
   <div class="clear"></div>
-  <div
-    class="tp-box"
-    *ngFor="let card of cards; let i = index"
-    cdkDrag
+  <mat-grid-tile
     cdkDropList
-    (cdkDragStarted)="dragMove($event)"
-    (cdkDropListDropped)="dropCard($event)"
-    cdkDropListOrientation="horizontal"
-    cdkDragBoundary="body"
+    class="tp-box"
+    [cdkDropListData]="i"
+    *ngFor="let card of cards; let i = index"
   >
     <div
+      cdkDrag
+      [cdkDragData]="i"
+      (cdkDragEntered)="entered($event)"
       class="card"
       (mousedown)="mouseDown($event)"
       [style.background-image]="'url(./assets/cards/YOKO-BG_' + card + '.jpg)'"
-      cdkDropList
     >
       <mat-icon
         class="flip left"
@@ -80,5 +82,5 @@
         >delete</mat-icon
       >
     </div>
-  </div>
-</div>
+  </mat-grid-tile>
+</mat-grid-list>
