@@ -99,9 +99,6 @@ export class CardComponent implements OnInit {
   }
 
   magnify(card: number) {
-    console.log(card);
-    console.log(this.magnifiedCard);
-
     if (this.magnifiedCard === card) this.magnifiedCard = -1;
     else this.magnifiedCard = card;
   }
