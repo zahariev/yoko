@@ -69,9 +69,9 @@ export class CardComponent implements OnInit {
   }
 
   showAllCards() {
-    do {
-      this.takeCard();
-    } while (this.cards.length < 55);
+    // do {
+    //   this.takeCard(1);
+    // } while (this.cards.length < 14);
   }
 
   getDeckState(deckId: number) {
