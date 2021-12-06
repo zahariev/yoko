@@ -63,9 +63,11 @@
     class="tp-box"
     [cdkDropListData]="i"
     *ngFor="let card of cards; let i = index"
+    [ngClass]="magnifiedCard === i ? 'magnify' : ''"
   >
     <div
       cdkDrag
+      [cdkDragDisabled]="magnifiedCard === i"
       [cdkDragData]="i"
       (cdkDragEntered)="entered($event)"
       class="card"
@@ -77,13 +79,23 @@
         (click)="flipCard(i); $event.stopPropagation()"
         >360</mat-icon
       >
-
+      <mat-icon
+        [hidden]="magnifiedCard === -1"
+        class="middle"
+        [style.color]="getIconColor(card)"
+        (click)="magnify(i); $event.stopPropagation()"
+      >
+        image_search
+      </mat-icon>
       <mat-icon
         class="delete"
         (click)="removeCard(card)"
         [style.color]="getIconColor(card)"
         >delete</mat-icon
       >
+      <!-- <button mat-icon-button > -->
+
+      <!-- </button> -->
     </div>
   </mat-grid-tile>
 </mat-grid-list>

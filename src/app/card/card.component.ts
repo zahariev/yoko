@@ -3,7 +3,7 @@ import {
   CdkDragEnter,
   moveItemInArray,
 } from "@angular/cdk/drag-drop";
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, HostListener, Input, OnInit } from "@angular/core";
 
 import { Observable, Subject, takeUntil } from "rxjs";
 
@@ -28,9 +28,13 @@ export class CardComponent implements OnInit {
   cards: number[] = [];
   openCards: string[] = Array(56).fill("inactive");
   mousePosition = { x: 0, y: 0 };
+  magnifiedCard = -1;
 
   private componentDestroyed$: Subject<any> = new Subject<void>();
-
+  @HostListener("window:resize", ["$event"])
+  onResize(event: Event): void {
+    this.magnifiedCard = -1;
+  }
   constructor() {}
 
   ngOnInit() {
@@ -79,9 +83,8 @@ export class CardComponent implements OnInit {
   }
 
   entered(event: CdkDragEnter) {
-    console.log("move");
-
     moveItemInArray(this.cards, event.item.data, event.container.data);
+    this.saveState();
   }
 
   //   dropCard(event: any) {
@@ -93,6 +96,14 @@ export class CardComponent implements OnInit {
     // do {
     //   this.takeCard(1);
     // } while (this.cards.length < 14);
+  }
+
+  magnify(card: number) {
+    console.log(card);
+    console.log(this.magnifiedCard);
+
+    if (this.magnifiedCard === card) this.magnifiedCard = -1;
+    else this.magnifiedCard = card;
   }
 
   getDeckState(deckId: number) {

@@ -117,15 +117,27 @@
   cursor: pointer;
 }
 
+.middle {
+  color: black;
+  display: none;
+  position: absolute;
+  z-index: 999999;
+  top: 5px;
+  left: 40%;
+  cursor: pointer;
+}
+
 .card:hover .delete,
 .card:hover .flip {
   display: block;
 }
 
 @media screen and (max-width: 700px), screen and (max-height: 500px) {
-  .deck {
-    // left: 37px;
+  .card:hover .middle {
+    display: block;
+  }
 
+  .deck {
     left: 8%;
     height: 115px;
     width: 72px;
@@ -137,8 +149,13 @@
   }
 
   .card {
-    height: 145px;
+    height: 140px;
     width: 100px;
+    border-radius: 8px;
+  }
+
+  .magnify {
+    zoom: 2;
   }
 
   .card-container {
