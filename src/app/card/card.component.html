@@ -12,7 +12,7 @@
   cdkDragBoundary="body"
 >
   <div
-    [style.color]="getDeckState(1) === '_front' ? 'white' : 'black'"
+    [style.color]="'white'"
     class="deck"
     (click)="takeCard(1)"
     [style.background]="'url(./assets/red' + getDeckState(1) + '.jpg)'"
