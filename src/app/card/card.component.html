@@ -18,7 +18,11 @@
     [style.background]="'url(./assets/cards/YOKO_' + deckCards[1] + '.jpg)'"
   >
     <button mat-icon-button class="flip">
-      <mat-icon (click)="flipDeck(1); $event.stopPropagation()">360</mat-icon>
+      <mat-icon
+        [style.color]="getIconColor(deckCards[1])"
+        (click)="flipDeck(1); $event.stopPropagation()"
+        >360</mat-icon
+      >
     </button>
     <!-- <mat-icon class="delete" (click)="toggleSize()">resize</mat-icon> -->
     <span> </span>
@@ -31,7 +35,11 @@
   >
     <!-- <mat-icon class="delete" (click)="toggleSize()">resize</mat-icon> -->
     <button mat-icon-button class="flip">
-      <mat-icon (click)="flipDeck(2); $event.stopPropagation()">360</mat-icon>
+      <mat-icon
+        [style.color]="getIconColor(deckCards[2])"
+        (click)="flipDeck(2); $event.stopPropagation()"
+        >360</mat-icon
+      >
     </button>
   </div>
   <div
@@ -40,7 +48,11 @@
     [style.background]="'url(./assets/cards/YOKO_' + deckCards[3] + '.jpg)'"
   >
     <button mat-icon-button class="flip">
-      <mat-icon (click)="flipDeck(3); $event.stopPropagation()">360</mat-icon>
+      <mat-icon
+        [style.color]="getIconColor(deckCards[3])"
+        (click)="flipDeck(3); $event.stopPropagation()"
+        >360</mat-icon
+      >
     </button>
     <!-- <mat-icon class="delete" (click)="toggleSize()">resize</mat-icon> -->
     <span> </span>
@@ -52,7 +64,11 @@
     [style.background]="'url(./assets/cards/YOKO_' + deckCards[4] + '.jpg)'"
   >
     <button mat-icon-button class="flip">
-      <mat-icon (click)="flipDeck(4); $event.stopPropagation()">360</mat-icon>
+      <mat-icon
+        [style.color]="getIconColor(deckCards[4])"
+        (click)="flipDeck(4); $event.stopPropagation()"
+        >360</mat-icon
+      >
     </button>
     <!-- <mat-icon class="delete" (click)="toggleSize()">resize</mat-icon> -->
     <span> </span>
