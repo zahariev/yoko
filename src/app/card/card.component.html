@@ -15,7 +15,7 @@
     [style.color]="'white'"
     class="deck"
     (click)="takeCard(1)"
-    [style.background]="'url(./assets/red' + getDeckState(1) + '.jpg)'"
+    [style.background]="'url(./assets/cards/YOKO_' + deckCards[1] + '.jpg)'"
   >
     <button mat-icon-button class="flip">
       <mat-icon (click)="flipDeck(1); $event.stopPropagation()">360</mat-icon>
@@ -27,7 +27,7 @@
     [style.color]="getDeckState(2) === '_front' ? 'black' : 'white'"
     class="deck"
     (click)="takeCard(2)"
-    [style.background]="'url(./assets/blue' + getDeckState(2) + '.jpg)'"
+    [style.background]="'url(./assets/cards/YOKO_' + deckCards[2] + '.jpg)'"
   >
     <!-- <mat-icon class="delete" (click)="toggleSize()">resize</mat-icon> -->
     <button mat-icon-button class="flip">
@@ -37,7 +37,7 @@
   <div
     class="deck"
     (click)="takeCard(3)"
-    [style.background]="'url(./assets/yellow' + getDeckState(3) + '.jpg)'"
+    [style.background]="'url(./assets/cards/YOKO_' + deckCards[3] + '.jpg)'"
   >
     <button mat-icon-button class="flip">
       <mat-icon (click)="flipDeck(3); $event.stopPropagation()">360</mat-icon>
@@ -49,7 +49,7 @@
     [style.color]="getDeckState(4) === '_front' ? 'black' : 'white'"
     class="deck"
     (click)="takeCard(4)"
-    [style.background]="'url(./assets/green' + getDeckState(4) + '.jpg)'"
+    [style.background]="'url(./assets/cards/YOKO_' + deckCards[4] + '.jpg)'"
   >
     <button mat-icon-button class="flip">
       <mat-icon (click)="flipDeck(4); $event.stopPropagation()">360</mat-icon>
@@ -71,7 +71,7 @@
       [cdkDragData]="i"
       (cdkDragEntered)="entered($event)"
       class="card"
-      [style.background-image]="'url(./assets/cards/YOKO-BG_' + card + '.jpg)'"
+      [style.background-image]="'url(./assets/cards/YOKO_' + card + '.jpg)'"
     >
       <mat-icon
         [style.color]="getIconColor(card)"

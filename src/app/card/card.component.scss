@@ -128,14 +128,19 @@
 }
 
 .card:hover .delete,
+.card:hover .middle,
 .card:hover .flip {
   display: block;
 }
 
+.magnify {
+  zoom: 2;
+}
+
 @media screen and (max-width: 831px), screen and (max-height: 500px) {
-  .card:hover .middle {
-    display: block;
-  }
+  //   .card:hover .middle {
+  //     display: block;
+  //   }
 
   .deck {
     left: 8%;

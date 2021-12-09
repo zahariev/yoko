@@ -26,6 +26,7 @@ export class CardComponent implements OnInit {
   height!: number;
   deck: number[] = Array(5).fill(0);
   cards: number[] = [];
+  deckCards: number[] = [];
   openCards: string[] = Array(56).fill("inactive");
   mousePosition = { x: 0, y: 0 };
   magnifiedCard = -1;
@@ -55,11 +56,29 @@ export class CardComponent implements OnInit {
 
     const deck = localStorage.getItem("deck");
     if (deck) this.deck = JSON.parse(deck);
+
+    // const deckCards = localStorage.getItem("deckCards");
+    // if (deckCards) this.deckCards = JSON.parse(deckCards);
+    // else
+    this.initDeck();
+  }
+
+  initDeck() {
+    this.getCard(1);
+    this.getCard(2);
+    this.getCard(3);
+    this.getCard(4);
   }
 
   flipDeck(id: number) {
-    if (this.deck[id]) this.deck[id] = 0;
-    else this.deck[id] = 1;
+    if (this.deck[id]) {
+      this.deck[id] = 0;
+      this.deckCards[id]--;
+    } else {
+      this.deck[id] = 1;
+      this.deckCards[id]++;
+    }
+
     this.saveState();
   }
 
@@ -69,7 +88,13 @@ export class CardComponent implements OnInit {
     else this.cards[cardIdx]++;
   }
 
-  takeCard(deck: number = 0): void {
+  takeCard(deck: number = 0) {
+    this.cards.push(this.deckCards[deck]);
+    this.getCard(deck);
+    this.saveState();
+  }
+
+  getCard(deck: number = 0): void {
     if (this.cards.length > 14) return;
     let card;
     let rand;
@@ -78,7 +103,7 @@ export class CardComponent implements OnInit {
       card = 30 * deck - 17 + rand * 2 + (this.deck[deck] ? 1 : 0);
     } while (this.cards.includes(card));
 
-    this.cards.push(card);
+    this.deckCards[deck] = card;
     this.saveState();
   }
 
@@ -153,6 +178,7 @@ export class CardComponent implements OnInit {
 
   saveState() {
     localStorage.setItem("openCards", JSON.stringify(this.cards));
+    localStorage.setItem("deckCards", JSON.stringify(this.deckCards));
     localStorage.setItem("deck", JSON.stringify(this.deck));
   }
 
