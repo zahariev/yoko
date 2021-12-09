@@ -36,7 +36,9 @@ export class CardComponent implements OnInit {
   onResize(event: Event): void {
     this.magnifiedCard = -1;
   }
-  constructor() {}
+  constructor() {
+    this.initDeck();
+  }
 
   ngOnInit() {
     this.clearEvent
@@ -57,10 +59,11 @@ export class CardComponent implements OnInit {
     const deck = localStorage.getItem("deck");
     if (deck) this.deck = JSON.parse(deck);
 
+    this.saveState();
+
     // const deckCards = localStorage.getItem("deckCards");
     // if (deckCards) this.deckCards = JSON.parse(deckCards);
     // else
-    this.initDeck();
   }
 
   initDeck() {
@@ -91,7 +94,6 @@ export class CardComponent implements OnInit {
 
   takeCard(deck: number = 0) {
     this.cards.push(this.deckCards[deck]);
-    // this.cards.unshift(this.deckCards[deck]);
 
     this.getCard(deck);
     this.saveState();
@@ -107,7 +109,6 @@ export class CardComponent implements OnInit {
     } while (this.cards.includes(card));
 
     this.deckCards[deck] = card;
-    this.saveState();
   }
 
   entered(event: CdkDragEnter) {
@@ -145,14 +146,14 @@ export class CardComponent implements OnInit {
   getIconColor(card: number): string {
     if (
       [
-        24, 27, 37, 17, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70,
-        72, 73, 75, 77, 79, 81, 83, 85, 87, 89, 91, 93, 95, 97, 99, 101, 74, 76,
-        78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108,
-        110, 112, 114, 116, 118, 120, 122, 124, 126, 128, 130, 132,
+        13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 25, 26, 28, 29, 30, 31, 32,
+        33, 34, 35, 36, 38, 39, 40, 41, 42, 43, 45, 47, 49, 51, 53, 57, 59, 61,
+        63, 65, 67, 69, 71, 97, 103, 105, 107, 109, 111, 113, 115, 117, 119,
+        121, 123, 125, 127, 129, 131,
       ].includes(card)
     )
-      return "black";
-    else return "white";
+      return "white";
+    else return "black";
   }
   resetDeck() {
     this.cards = [];
