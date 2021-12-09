@@ -86,6 +86,7 @@ export class CardComponent implements OnInit {
     const card = this.cards[cardIdx];
     if (card % 2 == 0) this.cards[cardIdx]--;
     else this.cards[cardIdx]++;
+    this.saveState();
   }
 
   takeCard(deck: number = 0) {
@@ -145,9 +146,9 @@ export class CardComponent implements OnInit {
     if (
       [
         24, 27, 37, 17, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70,
-        73, 75, 77, 79, 81, 83, 85, 87, 89, 91, 93, 95, 97, 99, 101, 74, 76, 78,
-        80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108, 110,
-        112, 114, 116, 118, 120, 122, 124, 126, 128, 130, 132,
+        72, 73, 75, 77, 79, 81, 83, 85, 87, 89, 91, 93, 95, 97, 99, 101, 74, 76,
+        78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108,
+        110, 112, 114, 116, 118, 120, 122, 124, 126, 128, 130, 132,
       ].includes(card)
     )
       return "black";
