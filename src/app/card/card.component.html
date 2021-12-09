@@ -118,16 +118,31 @@
     </div>
     <div
       class="tp-box"
-      *ngFor="let card of cards"
+      *ngFor="let card of cards; let i = index"
       cdkDrag
       (cdkDragStarted)="dragMove($event)"
       cdkDragBoundary="body"
+      [ngClass]="magnifiedCard === i ? 'magnify' : ''"
     >
       <div
         class="card"
         (mousedown)="mouseDown($event)"
         [style.background-image]="'url(./assets/cards/YOKO_' + card + '.jpg)'"
       >
+        <mat-icon
+          [style.color]="getIconColor(card)"
+          class="flip left"
+          (click)="flipCard(i); $event.stopPropagation()"
+          >360</mat-icon
+        >
+        <mat-icon
+          [hidden]="magnifiedCard === -1"
+          class="middle"
+          [style.color]="getIconColor(card)"
+          (click)="magnify(i); $event.stopPropagation()"
+        >
+          image_search
+        </mat-icon>
         <mat-icon
           class="delete"
           (click)="removeCard(card)"

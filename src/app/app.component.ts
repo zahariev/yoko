@@ -62,8 +62,8 @@ export class AppComponent implements AfterViewInit {
   }
 
   zoomReset() {
-    if (this.scaleIndex === 0) return;
-    this.scaleIndex = 0;
+    if (this.scaleIndex === 1) return;
+    this.scaleIndex = 1;
     this.marginTop = 0;
     this.setScale(this.scaleIndex, this.marginTop, this.marginTop);
   }
