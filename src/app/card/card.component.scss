@@ -34,8 +34,6 @@
 }
 
 .card-container {
-  //   top: 0px;
-  //   position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -67,9 +65,9 @@
 //   transition: transform 0ms cubic-bezier(0, 0, 0.2, 1);
 // }
 
-.card:last-child {
-  border: none;
-}
+// .card:last-child {
+//   border: none;
+// }
 
 // .card.cdk-drop-list-dragging .card:not(.cdk-drag-placeholder) {
 //   transition: transform 0ms cubic-bezier(0, 0, 0.2, 1);

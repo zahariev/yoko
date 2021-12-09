@@ -74,7 +74,7 @@
     <span> </span>
   </div>
   <div class="clear"></div>
-  <mat-grid-tile
+  <!-- <mat-grid-tile
     cdkDropList
     class="tp-box"
     [cdkDropListData]="i"
@@ -109,9 +109,32 @@
         [style.color]="getIconColor(card)"
         >delete</mat-icon
       >
-      <!-- <button mat-icon-button > -->
-
-      <!-- </button> -->
     </div>
-  </mat-grid-tile>
+  </mat-grid-tile> -->
+
+  <div class="card-container tp-wrapper">
+    <div class="tp-box">
+      <div class="firstCard"></div>
+    </div>
+    <div
+      class="tp-box"
+      *ngFor="let card of cards"
+      cdkDrag
+      (cdkDragStarted)="dragMove($event)"
+      cdkDragBoundary="body"
+    >
+      <div
+        class="card"
+        (mousedown)="mouseDown($event)"
+        [style.background-image]="'url(./assets/cards/YOKO_' + card + '.jpg)'"
+      >
+        <mat-icon
+          class="delete"
+          (click)="removeCard(card)"
+          [style.color]="getIconColor(card)"
+          >delete</mat-icon
+        >
+      </div>
+    </div>
+  </div>
 </mat-grid-list>

@@ -90,6 +90,8 @@ export class CardComponent implements OnInit {
 
   takeCard(deck: number = 0) {
     this.cards.push(this.deckCards[deck]);
+    // this.cards.unshift(this.deckCards[deck]);
+
     this.getCard(deck);
     this.saveState();
   }
@@ -174,6 +176,13 @@ export class CardComponent implements OnInit {
 
       this.saveState();
     }
+  }
+
+  dragMove($event: any) {
+    const elStyle = $event.source.element.nativeElement.style;
+    this.lastZindex += 10;
+    // elStyle.position = "fixed";
+    elStyle.zIndex = this.lastZindex;
   }
 
   saveState() {
