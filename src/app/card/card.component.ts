@@ -12,6 +12,29 @@ const DragConfig = {
   pointerDirectionChangeThreshold: 5,
   zIndex: 10000,
 };
+
+const FullDeck = [
+  [],
+  [
+    13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31,
+    32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42,
+  ],
+  [
+    43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61,
+    62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72,
+  ],
+  [
+    73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91,
+    92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102,
+  ],
+  [
+    103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114,
+
+    115, 116, 117, 118, 119,
+
+    120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132,
+  ],
+];
 @Component({
   selector: "app-card",
   templateUrl: "./card.component.html",
@@ -24,7 +47,7 @@ export class CardComponent implements OnInit {
   lastZindex = 0;
   width!: number;
   height!: number;
-  deck: number[] = Array(5).fill(0);
+  deckState: number[] = Array(5).fill(0);
   cards: number[] = [];
   deckCards: number[] = [];
   openCards: string[] = Array(56).fill("inactive");
@@ -56,8 +79,8 @@ export class CardComponent implements OnInit {
     const openCards = localStorage.getItem("openCards");
     if (openCards) this.cards = JSON.parse(openCards);
 
-    const deck = localStorage.getItem("deck");
-    if (deck) this.deck = JSON.parse(deck);
+    const deckState = localStorage.getItem("deckState");
+    if (deckState) this.deckState = JSON.parse(deckState);
 
     this.saveState();
 
@@ -67,18 +90,18 @@ export class CardComponent implements OnInit {
   }
 
   initDeck() {
-    this.getCard(1);
-    this.getCard(2);
-    this.getCard(3);
-    this.getCard(4);
+    for (var i = 1; i < 5; i++) {
+      if (this.checkEmptyDeck(i)) this.setDefaultBG(i);
+      else this.getCard(i);
+    }
   }
 
   flipDeck(id: number) {
-    if (this.deck[id]) {
-      this.deck[id] = 0;
+    if (this.deckState[id]) {
+      this.deckState[id] = 0;
       this.deckCards[id]--;
     } else {
-      this.deck[id] = 1;
+      this.deckState[id] = 1;
       this.deckCards[id]++;
     }
 
@@ -92,23 +115,45 @@ export class CardComponent implements OnInit {
     this.saveState();
   }
 
+  setDefaultBG(deck: number) {
+    let state = deck;
+    if (this.deckState[deck]) state++;
+    this.deckCards[deck] = state;
+  }
+
   takeCard(deck: number = 0) {
     this.cards.push(this.deckCards[deck]);
-
+    // console.log(this.cards.sort());
+    if (this.checkEmptyDeck(deck)) {
+      this.setDefaultBG(deck);
+      return;
+    }
     this.getCard(deck);
     this.saveState();
   }
 
   getCard(deck: number = 0): void {
-    if (this.cards.length > 14) return;
+    if (this.checkEmptyDeck(deck)) return;
+    //   this.deckCards[deck] = deck + (this.deck[deck] ? 1 : 0);
+    // if (this.cards.length > 14) return;
+    //   this.deckCards[deck] = deck + (this.deck[deck] ? 1 : 0);
     let card;
     let rand;
+    let i = 0;
     do {
-      rand = this.randomIntFromInterval(0, 14);
-      card = 30 * deck - 17 + rand * 2 + (this.deck[deck] ? 1 : 0);
-    } while (this.cards.includes(card));
+      i++;
+      rand = this.randomIntFromInterval(1, 15);
+      card = 12 + 30 * (deck - 1) + rand * 2 + (this.deckState[deck] ? 0 : -1);
+      console.log(card);
+    } while (this.cards.includes(card)); //(i < 30); //
 
     this.deckCards[deck] = card;
+  }
+
+  checkEmptyDeck(deck: number): boolean {
+    return (
+      FullDeck[deck].filter((val: any) => this.cards.includes(val)).length > 14
+    );
   }
 
   entered(event: CdkDragEnter) {
@@ -135,7 +180,7 @@ export class CardComponent implements OnInit {
   }
 
   getDeckState(deckId: number) {
-    if (this.deck[deckId]) return "_front";
+    if (this.deckState[deckId]) return "_front";
     else return "_back";
   }
 
@@ -146,10 +191,10 @@ export class CardComponent implements OnInit {
   getIconColor(card: number): string {
     if (
       [
-        13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 25, 26, 28, 29, 30, 31, 32,
+        1, 13, 14, 15, 16, 18, 19, 20, 21, 22, 23, 25, 26, 28, 29, 30, 31, 32,
         33, 34, 35, 36, 38, 39, 40, 41, 42, 43, 45, 47, 49, 51, 53, 57, 59, 61,
-        63, 65, 67, 69, 71, 97, 103, 105, 107, 109, 111, 113, 115, 117, 119,
-        121, 123, 125, 127, 129, 131,
+        63, 65, 67, 69, 71, 103, 105, 107, 109, 111, 113, 115, 117, 119, 121,
+        123, 125, 127, 129, 131,
       ].includes(card)
     )
       return "white";
@@ -157,7 +202,7 @@ export class CardComponent implements OnInit {
   }
   resetDeck() {
     this.cards = [];
-    this.deck = [];
+    this.deckState = [];
 
     this.saveState();
   }
@@ -190,7 +235,7 @@ export class CardComponent implements OnInit {
   saveState() {
     localStorage.setItem("openCards", JSON.stringify(this.cards));
     localStorage.setItem("deckCards", JSON.stringify(this.deckCards));
-    localStorage.setItem("deck", JSON.stringify(this.deck));
+    localStorage.setItem("deck", JSON.stringify(this.deckState));
   }
 
   mouseDown($event: any) {
