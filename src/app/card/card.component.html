@@ -118,11 +118,11 @@
       *ngFor="let card of cards; let i = index"
       cdkDrag
       (cdkDragStarted)="dragMove($event, i)"
-      (cdkDragEnded)="dragEnd($event)"
+      (cdkDragEnded)="dragEnd($event, i)"
       cdkDragBoundary="body"
     >
       <div
-        [ngClass]="magnifiedCard === i ? 'magnify' : ''"
+        [ngClass]="magnifiedCard[i] ? 'magnify' : ''"
         class="card"
         (mousedown)="mouseDown($event)"
         [style.background-image]="'url(./assets/cards/YOKO_' + card + '.jpg)'"
@@ -134,7 +134,7 @@
           >360</mat-icon
         >
         <mat-icon
-          [hidden]="magnifiedCard === -1"
+          [hidden]="magnifiedCard[i]"
           class="middle"
           [style.color]="getIconColor(card)"
           (click)="magnify(i); $event.stopPropagation()"
