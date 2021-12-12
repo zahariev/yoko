@@ -228,7 +228,7 @@ export class CardComponent implements OnInit {
   dragMove($event: any) {
     const elStyle = $event.source.element.nativeElement.style;
     this.lastZindex += 10;
-    // elStyle.position = "fixed";
+    elStyle.position = "fixed";
     elStyle.zIndex = this.lastZindex;
   }
 

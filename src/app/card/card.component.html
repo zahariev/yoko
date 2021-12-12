@@ -119,9 +119,9 @@
       cdkDrag
       (cdkDragStarted)="dragMove($event)"
       cdkDragBoundary="body"
-      [ngClass]="magnifiedCard === i ? 'magnify' : ''"
     >
       <div
+        [ngClass]="magnifiedCard === i ? 'magnify' : ''"
         class="card"
         (mousedown)="mouseDown($event)"
         [style.background-image]="'url(./assets/cards/YOKO_' + card + '.jpg)'"

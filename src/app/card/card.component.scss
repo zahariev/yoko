@@ -132,7 +132,12 @@
 }
 
 .magnify {
-  zoom: 1.2;
+  //   zoom: 1.2;
+  //   width: 180px;
+  //   height: 258px;
+
+  height: 327px;
+  width: 238px;
 }
 
 @media screen and (max-width: 831px), screen and (max-height: 500px) {
