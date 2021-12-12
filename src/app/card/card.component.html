@@ -117,7 +117,8 @@
       class="tp-box"
       *ngFor="let card of cards; let i = index"
       cdkDrag
-      (cdkDragStarted)="dragMove($event)"
+      (cdkDragStarted)="dragMove($event, i)"
+      (cdkDragEnded)="dragEnd($event)"
       cdkDragBoundary="body"
     >
       <div

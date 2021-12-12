@@ -225,11 +225,21 @@ export class CardComponent implements OnInit {
     }
   }
 
-  dragMove($event: any) {
-    const elStyle = $event.source.element.nativeElement.style;
+  dragMove(event: any, i: number) {
+    const elStyle = event.source.element.nativeElement.style;
     this.lastZindex += 10;
-    elStyle.position = "fixed";
+    console.log(event);
+    // console.log(event.currentIndex);
+
+    // moveItemInArray(this.cards, i, this.cards.length - 1);
+    // elStyle.position = "absolute";
     elStyle.zIndex = this.lastZindex;
+  }
+
+  dragEnd($event: any) {
+    const elStyle = $event.source.element.nativeElement.style;
+
+    elStyle.position = "fixed";
   }
 
   saveState() {
