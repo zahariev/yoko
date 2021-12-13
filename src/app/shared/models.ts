@@ -16,5 +16,5 @@ export class Card {
   position?: { x: number; y: number };
   magnified!: boolean;
 
-  constructor(public id: number, public side: string, public deckId?: number) {}
+  constructor(public id: number, public side: string, public deckId: number) {}
 }

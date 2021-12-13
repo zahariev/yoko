@@ -15,6 +15,7 @@
         >360</mat-icon
       >
     </button>
+    <span class="emptyDeckSign" *ngIf="deck.empty">X</span>
   </div>
 
   <div class="clear"></div>
@@ -43,14 +44,14 @@
       >
         <mat-icon
           [style.color]="getIconColor(card)"
-          class="flip left"
+          class="flipCard left"
           (click)="flipCard(card); $event.stopPropagation()"
           >360</mat-icon
         >
         <mat-icon
           class="middle"
           [style.color]="getIconColor(card)"
-          (click)="magnify(card); $event.stopPropagation()"
+          (click)="magnify($event, card); $event.stopPropagation()"
         >
           image_search
         </mat-icon>

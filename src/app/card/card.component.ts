@@ -57,7 +57,7 @@ export class CardComponent implements OnInit {
   openCards: string[] = Array(60).fill("inactive");
   mousePosition = { x: 0, y: 0 };
   magnifiedCard = Array(60).fill(false);
-  draggedCard = Array(60).fill({});
+  dragged = Array(60).fill({});
 
   private componentDestroyed$: Subject<any> = new Subject<void>();
   @HostListener("window:resize", ["$event"])
@@ -68,8 +68,8 @@ export class CardComponent implements OnInit {
     const openCards = localStorage.getItem("openCards");
     if (openCards) this.cards = JSON.parse(openCards);
 
-    const deckState = localStorage.getItem("deckState");
-    if (deckState) this.deckState = JSON.parse(deckState);
+    const draggedCard = localStorage.getItem("draggedCard");
+    if (draggedCard) this.dragged = JSON.parse(draggedCard);
 
     const decks = localStorage.getItem("deckCards");
     if (decks) this.decks = JSON.parse(decks);
@@ -90,14 +90,14 @@ export class CardComponent implements OnInit {
   }
 
   getDeckBG(deck: Deck) {
-    if (deck.empty) return "";
-    else
-      return (
-        "url(./assets/cards/deck_" +
-        deck.id +
-        (deck.backSide ? "b" : "") +
-        ".jpg)"
-      );
+    // if (deck.empty) return "";
+    // else
+    return (
+      "url(./assets/cards/deck_" +
+      deck.id +
+      (deck.backSide ? "b" : "") +
+      ".jpg)"
+    );
   }
 
   flipDeck(deck: Deck) {
@@ -118,12 +118,11 @@ export class CardComponent implements OnInit {
 
   takeCard(deck: Deck) {
     this.getCard(deck);
-
+    this.saveState();
     if (this.isEmptyDeck(deck.id)) {
       deck.empty = true;
       return;
     }
-    this.saveState();
   }
 
   getCard(deck: Deck): void {
@@ -135,17 +134,21 @@ export class CardComponent implements OnInit {
 
     do {
       i++;
-      rand = this.randomIntFromInterval(0, 14);
-      newCardId = deck.id * rand;
-      console.log(newCardId);
-    } while (this.cards.map((card) => card.id).includes(newCardId)); //(i < 30); //
+      newCardId = this.randomIntFromInterval(0, 14);
+    } while (
+      this.cards
+        .filter((card) => card.deckId === deck.id)
+        .map((card) => card.id)
+        .includes(newCardId)
+    );
 
     this.cards.push(new Card(newCardId, deck.backSide ? "b" : "", deck.id));
-    console.log(this.cards.map((card) => card.id));
   }
 
   isEmptyDeck(deckId: number): boolean {
-    return this.cards.map((card) => card.deckId).length > 14;
+    console.log(this.cards.filter((card) => card.deckId === deckId).length);
+
+    return this.cards.filter((card) => card.deckId === deckId).length > 14;
   }
 
   showAllCards() {
@@ -171,12 +174,6 @@ export class CardComponent implements OnInit {
       return "white";
     else return "black";
   }
-  resetDeck() {
-    this.cards = [];
-    this.deckState = [];
-    this.openCards = [];
-    this.saveState();
-  }
 
   randomIntFromInterval(min: number, max: number): number {
     // min and max included
@@ -188,23 +185,34 @@ export class CardComponent implements OnInit {
   }
 
   removeCard(card: Card) {
-    const index = this.cards.indexOf(card);
+    const cardIndex = this.cards.findIndex((c) => c.id === card.id);
     const deckId = card.id;
-    if (index !== -1) {
-      this.magnifiedCard[card.id] = false;
-      this.cards.splice(index, 1);
-      if (this.isEmptyDeck(deckId)) this.saveState();
+    if (cardIndex != -1) {
+      //   card.magnified = false;
+      this.cards.splice(cardIndex, 1);
+
+      if (!this.isEmptyDeck(deckId)) this.decks[card.deckId - 1].empty = false;
+      else this.decks[card.deckId - 1].empty = true;
+      this.saveState();
     }
   }
 
-  magnify(card: Card) {
+  magnify(event: any, card: Card) {
+    console.log(event);
+
+    const elStyle = event.target.nativeElement.style;
+    this.lastZindex += 10;
+    elStyle.zIndex = this.lastZindex;
     card.magnified = !card.magnified;
   }
 
   dragMove(event: any, card: Card) {
     const elStyle = event.source.element.nativeElement.style;
-    this.lastZindex += 10;
     console.log(event);
+    console.log(elStyle);
+
+    this.lastZindex += 10;
+    // console.log(event);
 
     // moveItemInArray(this.cards, i, this.cards.length - 1);
     // elStyle.position = "relative";
@@ -218,7 +226,7 @@ export class CardComponent implements OnInit {
     console.log($event.source.getFreeDragPosition());
     // if (elStyle.position === "relative") elStyle.position = "fixed";
     // else
-    this.draggedCard[card.id] = $event.dropPoint;
+    this.dragged[card.id] = $event.dropPoint;
     if (!elStyle.position) elStyle.position = "fixed";
     console.log(elStyle.position);
   }
@@ -226,8 +234,15 @@ export class CardComponent implements OnInit {
   saveState() {
     localStorage.setItem("openCards", JSON.stringify(this.cards));
     localStorage.setItem("deckCards", JSON.stringify(this.decks));
-    localStorage.setItem("draggedCard", JSON.stringify(this.draggedCard));
-    localStorage.setItem("deck", JSON.stringify(this.deckState));
+    localStorage.setItem("draggedCard", JSON.stringify(this.dragged));
+  }
+
+  resetDeck() {
+    this.cards = [];
+    this.decks = Decks;
+    this.dragged = [];
+
+    this.saveState();
   }
 
   mouseDown($event: any) {
