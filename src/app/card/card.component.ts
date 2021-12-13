@@ -199,7 +199,7 @@ export class CardComponent implements OnInit {
   resetDeck() {
     this.cards = [];
     this.deckState = [];
-
+    this.openCards = [];
     this.saveState();
   }
 
@@ -252,6 +252,7 @@ export class CardComponent implements OnInit {
   saveState() {
     localStorage.setItem("openCards", JSON.stringify(this.cards));
     localStorage.setItem("deckCards", JSON.stringify(this.deckCards));
+    localStorage.setItem("draggedCard", JSON.stringify(this.draggedCard));
     localStorage.setItem("deck", JSON.stringify(this.deckState));
   }
 

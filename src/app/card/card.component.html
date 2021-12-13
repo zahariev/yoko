@@ -83,6 +83,8 @@
         (mousedown)="mouseDown($event)"
         [style.background-image]="'url(./assets/cards/YOKO_' + card + '.jpg)'"
       >
+        <!-- [style.top]="draggedCard[card]?.x + 'px'"
+      [style.left]="draggedCard[card]?.y + 'px'" -->
         <mat-icon
           [style.color]="getIconColor(card)"
           class="flip left"
