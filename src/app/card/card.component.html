@@ -6,11 +6,7 @@
   <!-- <mat-icon class="delete" (click)="toggleSize()">resize</mat-icon>
   <span> </span>
 </div> -->
-<mat-grid-list
-  class="card-container tp-wrapper"
-  cdkDropListGroup
-  cdkDragBoundary="body"
->
+<div class="card-container tp-wrapper">
   <div
     [style.color]="'white'"
     class="deck"
@@ -33,7 +29,6 @@
     (click)="takeCard(2)"
     [style.background]="'url(./assets/cards/YOKO_' + deckCards[2] + '.jpg)'"
   >
-    <!-- <mat-icon class="delete" (click)="toggleSize()">resize</mat-icon> -->
     <button mat-icon-button class="flip">
       <mat-icon
         [style.color]="getIconColor(deckCards[2])"
@@ -54,7 +49,6 @@
         >360</mat-icon
       >
     </button>
-    <!-- <mat-icon class="delete" (click)="toggleSize()">resize</mat-icon> -->
     <span> </span>
   </div>
   <div
@@ -70,55 +64,17 @@
         >360</mat-icon
       >
     </button>
-    <!-- <mat-icon class="delete" (click)="toggleSize()">resize</mat-icon> -->
     <span> </span>
   </div>
   <div class="clear"></div>
-  <!-- <mat-grid-tile
-    cdkDropList
-    class="tp-box"
-    [cdkDropListData]="i"
-    *ngFor="let card of cards; let i = index"
-    [ngClass]="magnifiedCard === i ? 'magnify' : ''"
-  >
-    <div
-      cdkDrag
-      [cdkDragDisabled]="magnifiedCard === i"
-      [cdkDragData]="i"
-      (cdkDragEntered)="entered($event)"
-      class="card"
-      [style.background-image]="'url(./assets/cards/YOKO_' + card + '.jpg)'"
-    >
-      <mat-icon
-        [style.color]="getIconColor(card)"
-        class="flip left"
-        (click)="flipCard(i); $event.stopPropagation()"
-        >360</mat-icon
-      >
-      <mat-icon
-        [hidden]="magnifiedCard === -1"
-        class="middle"
-        [style.color]="getIconColor(card)"
-        (click)="magnify(i); $event.stopPropagation()"
-      >
-        image_search
-      </mat-icon>
-      <mat-icon
-        class="delete"
-        (click)="removeCard(card)"
-        [style.color]="getIconColor(card)"
-        >delete</mat-icon
-      >
-    </div>
-  </mat-grid-tile> -->
 
   <div class="card-container tp-wrapper">
     <div
       class="tp-box"
       *ngFor="let card of cards; let i = index"
       cdkDrag
-      (cdkDragStarted)="dragMove($event, i)"
-      (cdkDragEnded)="dragEnd($event, i)"
+      (cdkDragStarted)="dragMove($event, card)"
+      (cdkDragEnded)="dragEnd($event, card)"
       cdkDragBoundary="body"
     >
       <div
@@ -137,7 +93,7 @@
           [hidden]="magnifiedCard[i]"
           class="middle"
           [style.color]="getIconColor(card)"
-          (click)="magnify(i); $event.stopPropagation()"
+          (click)="magnify(card); $event.stopPropagation()"
         >
           image_search
         </mat-icon>
@@ -150,4 +106,4 @@
       </div>
     </div>
   </div>
-</mat-grid-list>
+</div>

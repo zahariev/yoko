@@ -53,6 +53,7 @@ export class CardComponent implements OnInit {
   openCards: string[] = Array(56).fill("inactive");
   mousePosition = { x: 0, y: 0 };
   magnifiedCard = Array(56).fill(false);
+  draggedCard = Array(56).fill({});
 
   private componentDestroyed$: Subject<any> = new Subject<void>();
   @HostListener("window:resize", ["$event"])
@@ -174,9 +175,10 @@ export class CardComponent implements OnInit {
     // } while (this.cards.length < 14);
   }
 
-  magnify(idx: number) {
-    if (this.magnifiedCard[idx]) this.magnifiedCard[idx] = false;
-    else this.magnifiedCard[idx] = true;
+  magnify(card: number) {
+    var index = this.cards.indexOf(card);
+    if (this.magnifiedCard[card]) this.magnifiedCard[card] = false;
+    else this.magnifiedCard[card] = true;
   }
 
   getDeckState(deckId: number) {
@@ -219,27 +221,33 @@ export class CardComponent implements OnInit {
   removeCard(item: number) {
     var index = this.cards.indexOf(item);
     if (index !== -1) {
+      this.magnifiedCard[index] = false;
       this.cards.splice(index, 1);
 
       this.saveState();
     }
   }
 
-  dragMove(event: any, i: number) {
+  dragMove(event: any, card: number) {
     const elStyle = event.source.element.nativeElement.style;
     this.lastZindex += 10;
     console.log(event);
 
     // moveItemInArray(this.cards, i, this.cards.length - 1);
-    // elStyle.position = "absolute";
+    // elStyle.position = "relative";
     elStyle.zIndex = this.lastZindex;
   }
 
-  dragEnd($event: any, i: number) {
+  dragEnd($event: any, card: number) {
     const elStyle = $event.source.element.nativeElement.style;
+    console.log(elStyle.position);
     console.log($event.dropPoint);
     console.log($event.source.getFreeDragPosition());
-    elStyle.position = "relative";
+    // if (elStyle.position === "relative") elStyle.position = "fixed";
+    // else
+    this.draggedCard[card] = $event.dropPoint;
+    if (!elStyle.position) elStyle.position = "fixed";
+    console.log(elStyle.position);
   }
 
   saveState() {
