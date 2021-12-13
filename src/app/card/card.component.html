@@ -4,13 +4,8 @@
       deck.backSide ? getIconColor(deck.id + 'b') : getIconColor(deck.id)
     "
     class="deck"
-    (click)="takeCard(deck.id)"
-    [style.background]="
-      'url(./assets/cards/deck_' +
-      deck.id +
-      (deck.backSide ? 'b' : '') +
-      '.jpg)'
-    "
+    (click)="takeCard(deck)"
+    [style.background]="getDeckBG(deck)"
     *ngFor="let deck of decks"
   >
     <button mat-icon-button class="flip">
@@ -25,23 +20,27 @@
   <div class="clear"></div>
 
   <div class="card-container tp-wrapper">
-    <!-- <div
+    <div
       class="tp-box"
-      *ngFor="let card of cards; let i = index"
+      *ngFor="let card of cards"
       cdkDrag
       (cdkDragStarted)="dragMove($event, card)"
       (cdkDragEnded)="dragEnd($event, card)"
       cdkDragBoundary="body"
     >
       <div
-        [ngClass]="magnifiedCard[card.id] ? 'magnify' : ''"
+        [ngClass]="card.magnified ? 'magnify' : ''"
         class="card"
         (mousedown)="mouseDown($event)"
         [style.background-image]="
-          'url(./assets/cards/YOKO_' + card.id + card.side + '.jpg)'
+          'url(./assets/cards/YOKO_' +
+          card.deckId +
+          '_' +
+          card.id +
+          (card.side || '') +
+          '.jpg)'
         "
       >
-       
         <mat-icon
           [style.color]="getIconColor(card)"
           class="flip left"
@@ -49,10 +48,9 @@
           >360</mat-icon
         >
         <mat-icon
-          [hidden]="magnifiedCard[i]"
           class="middle"
           [style.color]="getIconColor(card)"
-          (click)="magnify(card.id); $event.stopPropagation()"
+          (click)="magnify(card); $event.stopPropagation()"
         >
           image_search
         </mat-icon>
@@ -63,6 +61,6 @@
           >delete</mat-icon
         >
       </div>
-    </div> -->
+    </div>
   </div>
 </div>

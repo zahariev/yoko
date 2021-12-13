@@ -5,8 +5,8 @@ import {
 } from "@angular/cdk/drag-drop";
 import { Component, HostListener, Input, OnInit } from "@angular/core";
 
-import { Observable, Subject, takeUntil } from "rxjs";
-import { Deck } from "../shared/models";
+import { empty, Observable, Subject, takeUntil } from "rxjs";
+import { Card, Deck } from "../shared/models";
 
 const Decks: Deck[] = [
   {
@@ -14,31 +14,30 @@ const Decks: Deck[] = [
     title: "",
     color: "red",
     backSide: false,
+    empty: false,
   },
   {
     id: 2,
     title: "",
     color: "blue",
     backSide: false,
+    empty: false,
   },
   {
     id: 3,
     title: "",
     color: "yellow",
     backSide: false,
+    empty: false,
   },
   {
     id: 4,
     title: "",
     color: "green",
     backSide: false,
+    empty: false,
   },
 ];
-
-interface Card {
-  id: number;
-  side: string;
-}
 
 @Component({
   selector: "app-card",
@@ -66,7 +65,14 @@ export class CardComponent implements OnInit {
     // this.magnifiedCard = -1;
   }
   constructor() {
-    this.initDeck();
+    const openCards = localStorage.getItem("openCards");
+    if (openCards) this.cards = JSON.parse(openCards);
+
+    const deckState = localStorage.getItem("deckState");
+    if (deckState) this.deckState = JSON.parse(deckState);
+
+    const decks = localStorage.getItem("deckCards");
+    if (decks) this.decks = JSON.parse(decks);
   }
 
   ngOnInit() {
@@ -74,37 +80,28 @@ export class CardComponent implements OnInit {
       .pipe(takeUntil(this.componentDestroyed$))
       .subscribe(() => this.resetDeck());
 
-    this.showAllEvent
-      .pipe(takeUntil(this.componentDestroyed$))
-      .subscribe(() => this.showAllCards());
+    // this.showAllEvent
+    //   .pipe(takeUntil(this.componentDestroyed$))
+    //   .subscribe(() => this.showAllCards());
 
     // this.flipDeckEvent
     //   .pipe(takeUntil(this.componentDestroyed$))
     //   .subscribe((ev) => this.flipDeck(ev));
-
-    const openCards = localStorage.getItem("openCards");
-    if (openCards) this.cards = JSON.parse(openCards);
-
-    const deckState = localStorage.getItem("deckState");
-    if (deckState) this.deckState = JSON.parse(deckState);
-
-    this.saveState();
-
-    // const deckCards = localStorage.getItem("deckCards");
-    // if (deckCards) this.deckCards = JSON.parse(deckCards);
-    // else
   }
 
-  initDeck() {
-    // for (var i = 1; i < 5; i++) {
-    //   if (this.checkEmptyDeck(i)) this.setDefaultBG(i);
-    //   else this.getCard(i);
-    // }
+  getDeckBG(deck: Deck) {
+    if (deck.empty) return "";
+    else
+      return (
+        "url(./assets/cards/deck_" +
+        deck.id +
+        (deck.backSide ? "b" : "") +
+        ".jpg)"
+      );
   }
 
   flipDeck(deck: Deck) {
     deck.backSide = !deck.backSide;
-
     this.saveState();
   }
 
@@ -114,43 +111,41 @@ export class CardComponent implements OnInit {
     this.saveState();
   }
 
-  //   setDefaultBG(deckId: number) {
-  //     let state = deck;
-  //     if (this.deckState[deckId]) state++;
-  //     this.deckCards[deck] = state;
-  //   }
+  // setDefaultBG(deckId: number) {
 
-  takeCard(deckId: number = 0) {
-    // this.cards.push({ id: this.deckCards[deck], side: this.deckState[deck] });
-    // // console.log(this.cards.sort());
-    // if (this.checkEmptyDeck(deckId)) {
-    //   this.setDefaultBG(deckId);
-    //   return;
-    // }
-    this.getCard(deckId);
+  //   this.decks[deckId]. = state;
+  // }
+
+  takeCard(deck: Deck) {
+    this.getCard(deck);
+
+    if (this.isEmptyDeck(deck.id)) {
+      deck.empty = true;
+      return;
+    }
     this.saveState();
   }
 
-  getCard(deckId: number = 0): void {
-    if (this.checkEmptyDeck(deckId)) return;
+  getCard(deck: Deck): void {
+    if (this.isEmptyDeck(deck.id)) return;
 
     let newCardId;
     let rand;
     let i = 0;
+
     do {
       i++;
       rand = this.randomIntFromInterval(0, 14);
-      newCardId = deckId * rand;
+      newCardId = deck.id * rand;
       console.log(newCardId);
     } while (this.cards.map((card) => card.id).includes(newCardId)); //(i < 30); //
+
+    this.cards.push(new Card(newCardId, deck.backSide ? "b" : "", deck.id));
+    console.log(this.cards.map((card) => card.id));
   }
 
-  checkEmptyDeck(deck: number): boolean {
-    return (
-      Array.from(Array(15))
-        .map((e, i) => (deck - 1) * 15 + i + 1)
-        .filter((val: any) => this.cards.includes(val)).length > 14
-    );
+  isEmptyDeck(deckId: number): boolean {
+    return this.cards.map((card) => card.deckId).length > 14;
   }
 
   showAllCards() {
@@ -162,10 +157,6 @@ export class CardComponent implements OnInit {
   getDeckState(deckId: number) {
     if (this.deckState[deckId]) return "_front";
     else return "_back";
-  }
-
-  deal($event: any) {
-    this.takeCard();
   }
 
   getIconColor(cardId: any): string {
@@ -196,19 +187,18 @@ export class CardComponent implements OnInit {
     return this.openCards[card] === "active";
   }
 
-  removeCard(item: Card) {
-    var index = this.cards.indexOf(item);
+  removeCard(card: Card) {
+    const index = this.cards.indexOf(card);
+    const deckId = card.id;
     if (index !== -1) {
-      this.magnifiedCard[item.id] = false;
+      this.magnifiedCard[card.id] = false;
       this.cards.splice(index, 1);
-
-      this.saveState();
+      if (this.isEmptyDeck(deckId)) this.saveState();
     }
   }
 
-  magnify(card: number) {
-    if (this.magnifiedCard[card]) this.magnifiedCard[card] = false;
-    else this.magnifiedCard[card] = true;
+  magnify(card: Card) {
+    card.magnified = !card.magnified;
   }
 
   dragMove(event: any, card: Card) {
