@@ -175,12 +175,6 @@ export class CardComponent implements OnInit {
     // } while (this.cards.length < 14);
   }
 
-  magnify(card: number) {
-    var index = this.cards.indexOf(card);
-    if (this.magnifiedCard[card]) this.magnifiedCard[card] = false;
-    else this.magnifiedCard[card] = true;
-  }
-
   getDeckState(deckId: number) {
     if (this.deckState[deckId]) return "_front";
     else return "_back";
@@ -221,11 +215,16 @@ export class CardComponent implements OnInit {
   removeCard(item: number) {
     var index = this.cards.indexOf(item);
     if (index !== -1) {
-      this.magnifiedCard[index] = false;
+      this.magnifiedCard[item] = false;
       this.cards.splice(index, 1);
 
       this.saveState();
     }
+  }
+
+  magnify(card: number) {
+    if (this.magnifiedCard[card]) this.magnifiedCard[card] = false;
+    else this.magnifiedCard[card] = true;
   }
 
   dragMove(event: any, card: number) {

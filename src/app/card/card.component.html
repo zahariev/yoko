@@ -78,7 +78,7 @@
       cdkDragBoundary="body"
     >
       <div
-        [ngClass]="magnifiedCard[i] ? 'magnify' : ''"
+        [ngClass]="magnifiedCard[card] ? 'magnify' : ''"
         class="card"
         (mousedown)="mouseDown($event)"
         [style.background-image]="'url(./assets/cards/YOKO_' + card + '.jpg)'"
