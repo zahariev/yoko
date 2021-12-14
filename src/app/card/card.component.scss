@@ -187,6 +187,9 @@
 
   .magnify {
     zoom: 2;
+    mat-icon {
+      zoom: 0.7;
+    }
   }
 
   .card-container {
