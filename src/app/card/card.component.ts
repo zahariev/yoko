@@ -15,6 +15,9 @@ const Decks: Deck[] = [
     color: "red",
     backSide: false,
     empty: false,
+    accentIcons: ["f", "b", 0, 1, 3, 4, 5, 6, 8, 9, 10, 11, 13, 14],
+    accentColor: "white",
+    iconColor: "black",
   },
   {
     id: 2,
@@ -22,6 +25,9 @@ const Decks: Deck[] = [
     color: "blue",
     backSide: false,
     empty: false,
+    accentIcons: [],
+    accentColor: "white",
+    iconColor: "black",
   },
   {
     id: 3,
@@ -29,6 +35,9 @@ const Decks: Deck[] = [
     color: "yellow",
     backSide: false,
     empty: false,
+    accentIcons: [],
+    accentColor: "white",
+    iconColor: "black",
   },
   {
     id: 4,
@@ -36,6 +45,9 @@ const Decks: Deck[] = [
     color: "green",
     backSide: false,
     empty: false,
+    accentIcons: [],
+    accentColor: "white",
+    iconColor: "black",
   },
 ];
 
@@ -162,17 +174,25 @@ export class CardComponent implements OnInit {
     else return "_back";
   }
 
-  getIconColor(cardId: any): string {
+  getIconColor(card: any): string {
+    console.log(card);
+
+    const deck = this.decks.filter((d) => d.id === card.deckId)[0];
+    console.log(deck);
+
+    if (deck.accentIcons?.includes(card.id)) return deck.accentColor;
+    else return deck.iconColor;
+  }
+
+  getDeckColor(deck: Deck): string {
+    console.log(deck.accentIcons.includes("f"));
+
     if (
-      [
-        1, 13, 14, 15, 16, 18, 19, 20, 21, 22, 23, 25, 26, 28, 29, 30, 31, 32,
-        33, 34, 35, 36, 38, 39, 40, 41, 42, 43, 45, 47, 49, 51, 53, 57, 59, 61,
-        63, 65, 67, 69, 71, 103, 105, 107, 109, 111, 113, 115, 117, 119, 121,
-        123, 125, 127, 129, 131,
-      ].includes(cardId)
+      (deck.backSide && deck.accentIcons.includes("b")) ||
+      deck.accentIcons.includes("f")
     )
-      return "white";
-    else return "black";
+      return deck.accentColor;
+    else return deck.iconColor;
   }
 
   randomIntFromInterval(min: number, max: number): number {

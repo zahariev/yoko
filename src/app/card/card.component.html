@@ -1,8 +1,6 @@
 <div class="card-container tp-wrapper">
   <div
-    [style.color]="
-      deck.backSide ? getIconColor(deck.id + 'b') : getIconColor(deck.id)
-    "
+    [style.color]="getDeckColor(deck)"
     class="deck"
     (click)="takeCard(deck)"
     [style.background]="getDeckBG(deck)"
@@ -10,7 +8,7 @@
   >
     <button mat-icon-button class="flip">
       <mat-icon
-        [style.color]="getIconColor(deck.id)"
+        [style.color]="getDeckColor(deck)"
         (click)="flipDeck(deck); $event.stopPropagation()"
         >360</mat-icon
       >
@@ -63,6 +61,7 @@
           [style.color]="getIconColor(card)"
           >delete</mat-icon
         >
+        <span class="emptyDeckSign">{{ card.id }}</span>
       </div>
     </div>
   </div>

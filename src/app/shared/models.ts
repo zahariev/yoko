@@ -4,13 +4,10 @@ export interface Deck {
   color: string;
   backSide: boolean;
   empty: boolean;
+  accentIcons: any[];
+  accentColor: string;
+  iconColor: string;
 }
-
-// export interface Card {
-//   id: number;
-//   side: string;
-//   position?: { x: number; y: number };
-// }
 
 export class Card {
   position?: { x: number; y: number };
