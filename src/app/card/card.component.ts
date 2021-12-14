@@ -224,10 +224,11 @@ export class CardComponent implements OnInit {
     // if (elStyle.position === "relative") elStyle.position = "fixed";
     // else
     this.dragged[card.id] = $event.dropPoint;
-    if (!elStyle.position) {
-      card.position = $event.source.getFreeDragPosition();
-      elStyle.position = "fixed";
-    }
+
+    card.position = $event.source.getFreeDragPosition();
+    elStyle.position = "fixed";
+    this.saveState();
+
     console.log(elStyle.position);
   }
 

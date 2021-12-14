@@ -25,9 +25,11 @@
       class="tp-box"
       *ngFor="let card of cards"
       cdkDrag
+      [cdkDragFreeDragPosition]="card.position ? card.position : { x: 0, y: 0 }"
       (cdkDragStarted)="dragMove($event, card)"
       (cdkDragEnded)="dragEnd($event, card)"
       cdkDragBoundary="body"
+      [style.position]="card.position ? 'fixed' : ''"
     >
       <div
         [ngClass]="card.magnified ? 'magnify' : ''"
