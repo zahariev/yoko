@@ -202,6 +202,7 @@ export class CardComponent implements OnInit {
     const elStyle = event.path[2].style;
     this.lastZindex += 10;
     elStyle.zIndex = this.lastZindex;
+    this.saveState();
   }
 
   dragMove(event: any, card: Card) {
@@ -223,7 +224,10 @@ export class CardComponent implements OnInit {
     // if (elStyle.position === "relative") elStyle.position = "fixed";
     // else
     this.dragged[card.id] = $event.dropPoint;
-    if (!elStyle.position) elStyle.position = "fixed";
+    if (!elStyle.position) {
+      card.position = $event.source.getFreeDragPosition();
+      elStyle.position = "fixed";
+    }
     console.log(elStyle.position);
   }
 
