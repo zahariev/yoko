@@ -198,18 +198,14 @@ export class CardComponent implements OnInit {
   }
 
   magnify(event: any, card: Card) {
-    console.log(event);
-
-    const elStyle = event.target.nativeElement.style;
+    card.magnified = !card.magnified;
+    const elStyle = event.path[2].style;
     this.lastZindex += 10;
     elStyle.zIndex = this.lastZindex;
-    card.magnified = !card.magnified;
   }
 
   dragMove(event: any, card: Card) {
     const elStyle = event.source.element.nativeElement.style;
-    console.log(event);
-    console.log(elStyle);
 
     this.lastZindex += 10;
     // console.log(event);
