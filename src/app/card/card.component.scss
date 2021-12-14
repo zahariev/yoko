@@ -43,7 +43,7 @@
   flex-wrap: wrap;
   justify-content: center;
   min-height: 250px;
-  min-width: 250px;
+  min-width: 1000px;
 }
 
 .card-container .card:not(:last-child) {
@@ -102,24 +102,32 @@
   color: black;
   display: none;
   position: absolute;
-  top: 0px;
+  top: 10px;
   right: 5px;
   cursor: pointer;
-}
-
-.flip {
-  position: relative;
-  z-index: 999999;
-  top: 0px;
 }
 
 .left {
   color: black;
   display: none;
   position: absolute;
-  top: 0px;
+  top: 10px;
   left: 5px;
   cursor: pointer;
+}
+
+.flipCard {
+  position: relative;
+  z-index: 999999;
+  top: 10px;
+  left: 10px;
+}
+
+.flip {
+  position: relative;
+  z-index: 999999;
+  top: -10px;
+  left: -10px;
 }
 
 .middle {
@@ -127,14 +135,15 @@
   display: none;
   position: absolute;
   z-index: 999999;
-  top: 5px;
+  top: 10px;
   left: 40%;
   cursor: pointer;
 }
 
 .card:hover .delete,
 .card:hover .middle,
-.card:hover .flip {
+.card:hover .flip,
+.card:hover .flipCard {
   display: block;
 }
 
@@ -145,6 +154,13 @@
 
   height: 327px;
   width: 238px;
+}
+
+.emptyDeckSign {
+  position: absolute;
+  font-size: 120px;
+  margin-top: 20%;
+  margin-left: 20%;
 }
 
 @media screen and (max-width: 831px), screen and (max-height: 500px) {
@@ -171,9 +187,26 @@
 
   .magnify {
     zoom: 2;
+    mat-icon {
+      zoom: 0.7;
+    }
   }
 
   .card-container {
     top: -10px;
+  }
+
+  .emptyDeckSign {
+    position: absolute;
+    font-size: 90px;
+    margin-top: 10%;
+    margin-left: 5%;
+  }
+
+  .flip {
+    position: relative;
+    z-index: 999999;
+    top: -15px;
+    left: -15px;
   }
 }
