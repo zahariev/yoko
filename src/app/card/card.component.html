@@ -26,7 +26,6 @@
       [cdkDragFreeDragPosition]="card.position ? card.position : { x: 0, y: 0 }"
       (cdkDragStarted)="dragMove($event, card)"
       (cdkDragEnded)="dragEnd($event, card)"
-      cdkDragBoundary="body"
       [style.position]="card.position ? 'absolute' : ''"
     >
       <div

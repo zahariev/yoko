@@ -15,8 +15,8 @@ const Decks: Deck[] = [
     color: "red",
     backSide: false,
     empty: false,
-    accentIcons: ["f", "b", 0, 1, 3, 4, 5, 6, 8, 9, 10, 11, 13, 14],
-    accentColor: "white",
+    accentIcons: [0, 1, 3, 4, 5, 6, 8, 9, 10, 11, 13, 14],
+    accentColor: "whitesmoke",
     iconColor: "black",
   },
   {
@@ -26,7 +26,7 @@ const Decks: Deck[] = [
     backSide: false,
     empty: false,
     accentIcons: [],
-    accentColor: "white",
+    accentColor: "whitesmoke",
     iconColor: "black",
   },
   {
@@ -36,7 +36,7 @@ const Decks: Deck[] = [
     backSide: false,
     empty: false,
     accentIcons: [],
-    accentColor: "white",
+    accentColor: "whitesmoke",
     iconColor: "black",
   },
   {
@@ -46,7 +46,7 @@ const Decks: Deck[] = [
     backSide: false,
     empty: false,
     accentIcons: [],
-    accentColor: "white",
+    accentColor: "whitesmoke",
     iconColor: "black",
   },
 ];
@@ -220,6 +220,7 @@ export class CardComponent implements OnInit {
 
   dragMove(event: any, card: Card) {
     const elStyle = event.source.element.nativeElement.style;
+    console.log(event.source.getRootElement().getBoundingClientRect());
 
     this.lastZindex += 10;
     elStyle.zIndex = this.lastZindex;
@@ -228,13 +229,47 @@ export class CardComponent implements OnInit {
   dragEnd($event: any, card: Card) {
     const elStyle = $event.source.element.nativeElement.style;
     this.dragged[card.id] = $event.dropPoint;
-
+    console.log($event.source.element);
+    const smallCard = $event.source.element.nativeElement.clientHeight < 200;
+    const el = $event.source.getRootElement().getBoundingClientRect();
     card.position = $event.source.getFreeDragPosition();
+    // console.log(this.getPosition($event.source.getRootElement()));
+    // console.log(window.innerWidth);
 
     console.log(card.position);
-
-    elStyle.position = "absolute";
+    if (!elStyle.position) {
+      const firstDrag = this.getPosition($event.source.getRootElement());
+      card.position = {
+        x:
+          el.left -
+          (smallCard ? 80 : 50) -
+          //   firstDrag.left -
+          window.innerWidth / 2.5,
+        //   150 +
+        //   (card?.position?.x || 0),
+        y:
+          el.top -
+          //   firstDrag.top -
+          //   (smallCard ? -80 : 55) -
+          window.innerHeight / 3 +
+          (smallCard ? 80 : 0),
+        //   el.height / 2,
+        //   (card?.position?.y || 0),
+      };
+      elStyle.position = "absolute";
+    }
     this.saveState();
+  }
+
+  getPosition(el: any) {
+    let x = 0;
+    let y = 0;
+    while (el && !isNaN(el.offsetLeft) && !isNaN(el.offsetTop)) {
+      x += el.offsetLeft - el.scrollLeft;
+      y += el.offsetTop - el.scrollTop;
+      el = el.offsetParent;
+    }
+    return { top: y, left: x };
   }
 
   saveState() {
