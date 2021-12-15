@@ -15,9 +15,10 @@ export class AppComponent implements AfterViewInit {
   scaleIndex = 0;
 
   title = "yoko";
-  resetSubject: Subject<void> = new Subject<void>();
+  resetBoardSubject: Subject<void> = new Subject<void>();
   showAllSubject: Subject<void> = new Subject<void>();
-  flipSubject: Subject<number> = new Subject<number>();
+  positionResetSubject: Subject<void> = new Subject<void>();
+  //   flipSubject: Subject<number> = new Subject<number>();
 
   constructor() {}
 
@@ -32,7 +33,7 @@ export class AppComponent implements AfterViewInit {
   }
 
   resetGame() {
-    this.resetSubject.next();
+    this.resetBoardSubject.next();
   }
 
   showAllCards() {
@@ -40,12 +41,12 @@ export class AppComponent implements AfterViewInit {
   }
 
   reload() {
-    window.location.reload();
+    this.positionResetSubject.next();
   }
 
-  flipDeck(id: number) {
-    this.flipSubject.next(id);
-  }
+  //   flipDeck(id: number) {
+  //     this.flipSubject.next(id);
+  //   }
 
   zoomOut() {
     if (this.scaleIndex === this.scalings.length - 1) return;

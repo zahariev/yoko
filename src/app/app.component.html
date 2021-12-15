@@ -34,8 +34,9 @@
   <!-- [flipDeckEvent]="flipSubject.asObservable()" -->
 
   <app-card
-    [clearEvent]="resetSubject.asObservable()"
+    [clearEvent]="resetBoardSubject.asObservable()"
     [showAllEvent]="showAllSubject.asObservable()"
+    [positionResetEvent]="positionResetSubject.asObservable()"
   ></app-card>
 
   <!-- Footer -->

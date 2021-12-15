@@ -58,6 +58,7 @@ const Decks: Deck[] = [
 })
 export class CardComponent implements OnInit {
   @Input() clearEvent!: Observable<void>;
+  @Input() positionResetEvent!: Observable<void>;
   @Input() showAllEvent!: Observable<void>;
   //   @Input() flipDeckEvent!: Observable<number>;
   lastZindex = 0;
@@ -93,9 +94,9 @@ export class CardComponent implements OnInit {
       .pipe(takeUntil(this.componentDestroyed$))
       .subscribe(() => this.resetDeck());
 
-    // this.showAllEvent
-    //   .pipe(takeUntil(this.componentDestroyed$))
-    //   .subscribe(() => this.showAllCards());
+    this.positionResetEvent
+      .pipe(takeUntil(this.componentDestroyed$))
+      .subscribe(() => this.positionReset());
   }
 
   getDeckBG(deck: Deck) {
@@ -125,6 +126,12 @@ export class CardComponent implements OnInit {
   //   this.decks[deckId]. = state;
   // }
 
+  positionReset() {
+    this.cards.map((card) => {
+      card.position = undefined;
+      card.magnified = false;
+    });
+  }
   takeCard(deck: Deck) {
     this.getCard(deck);
     this.saveState();
