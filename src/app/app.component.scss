@@ -76,3 +76,51 @@ footer {
   width: 100%;
   bottom: 0;
 }
+
+:host ::ng-deep .allBoard {
+  .deck {
+    left: 8%;
+    height: 115px;
+    width: 72px;
+  }
+
+  .tp-box {
+    height: 148px;
+    width: 103px;
+  }
+
+  .card {
+    height: 140px;
+    width: 100px;
+    border-radius: 8px;
+  }
+
+  .magnify {
+    zoom: 2;
+    mat-icon {
+      zoom: 0.7;
+    }
+  }
+
+  .card-container {
+    top: -10px;
+  }
+
+  .emptyDeckSign {
+    position: absolute;
+    font-size: 90px;
+    margin-top: 10%;
+    margin-left: 5%;
+  }
+
+  .flip {
+    position: relative;
+    z-index: 999999;
+    top: -15px;
+    left: -15px;
+  }
+
+  .card-container {
+    min-width: 400px;
+  }
+}

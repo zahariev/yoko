@@ -1,6 +1,12 @@
 <!-- Toolbar -->
 
-<div id="content" #board role="main" [style.margin-top]="marginTop">
+<div
+  id="content"
+  #board
+  role="main"
+  [style.margin-top]="marginTop"
+  [ngClass]="minify ? 'allBoard' : ''"
+>
   <button
     id="menu"
     mat-icon-button
@@ -10,15 +16,14 @@
     <mat-icon>menu</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item (click)="reload()">
-      <mat-icon class="resetIcon">restart_alt</mat-icon>
-      <span>Position reset</span>
-    </button>
-
     <button mat-menu-item (click)="showAllCards()">
       <mat-icon class="resetIcon">apps</mat-icon>
 
       <span>Show all</span>
+    </button>
+    <button mat-menu-item (click)="reload()">
+      <mat-icon class="resetIcon">restart_alt</mat-icon>
+      <span>Position reset</span>
     </button>
 
     <button mat-menu-item (click)="resetGame()">

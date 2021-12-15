@@ -13,7 +13,7 @@ export class AppComponent implements AfterViewInit {
   marginTop = 0;
   scalings = [1, 0.9, 0.8];
   scaleIndex = 0;
-
+  minify: boolean = false;
   title = "yoko";
   resetBoardSubject: Subject<void> = new Subject<void>();
   showAllSubject: Subject<void> = new Subject<void>();
@@ -37,6 +37,8 @@ export class AppComponent implements AfterViewInit {
   }
 
   showAllCards() {
+    // this.minify = true;
+    this.minify = !this.minify;
     this.showAllSubject.next();
   }
 

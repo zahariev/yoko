@@ -38,12 +38,17 @@
   z-index: 1;
 }
 
-.card-container {
+.container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   min-height: 250px;
-  min-width: 1000px;
+  min-width: 80%;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .card-container .card:not(:last-child) {
@@ -168,6 +173,55 @@
   //     display: block;
   //   }
 
+  .deck {
+    left: 8%;
+    height: 115px;
+    width: 72px;
+  }
+
+  .tp-box {
+    height: 148px;
+    width: 103px;
+  }
+
+  .card {
+    height: 140px;
+    width: 100px;
+    border-radius: 8px;
+  }
+
+  .magnify {
+    zoom: 2;
+    mat-icon {
+      zoom: 0.7;
+    }
+  }
+
+  .card-container {
+    top: -10px;
+  }
+
+  .emptyDeckSign {
+    position: absolute;
+    font-size: 90px;
+    margin-top: 10%;
+    margin-left: 5%;
+  }
+
+  .flip {
+    position: relative;
+    z-index: 999999;
+    top: -15px;
+    left: -15px;
+  }
+
+  .card-container,
+  .container {
+    min-width: 300px;
+  }
+}
+
+.allBoard {
   .deck {
     left: 8%;
     height: 115px;
