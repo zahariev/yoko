@@ -5,7 +5,7 @@ import {
 } from "@angular/cdk/drag-drop";
 import { Component, HostListener, Input, OnInit } from "@angular/core";
 
-import { empty, Observable, Subject, takeUntil } from "rxjs";
+import { Observable, Subject, takeUntil } from "rxjs";
 import { Card, Deck } from "../shared/models";
 
 const Decks: Deck[] = [
@@ -84,7 +84,8 @@ export class CardComponent implements OnInit {
     if (draggedCard) this.dragged = JSON.parse(draggedCard);
 
     const decks = localStorage.getItem("deckCards");
-    if (decks) this.decks = JSON.parse(decks);
+
+    if (decks && decks.length > 2) this.decks = JSON.parse(decks);
   }
 
   ngOnInit() {
@@ -95,10 +96,6 @@ export class CardComponent implements OnInit {
     // this.showAllEvent
     //   .pipe(takeUntil(this.componentDestroyed$))
     //   .subscribe(() => this.showAllCards());
-
-    // this.flipDeckEvent
-    //   .pipe(takeUntil(this.componentDestroyed$))
-    //   .subscribe((ev) => this.flipDeck(ev));
   }
 
   getDeckBG(deck: Deck) {
@@ -205,14 +202,15 @@ export class CardComponent implements OnInit {
   }
 
   removeCard(card: Card) {
-    const cardIndex = this.cards.findIndex((c) => c.id === card.id);
-    const deckId = card.id;
-    if (cardIndex != -1) {
-      //   card.magnified = false;
-      this.cards.splice(cardIndex, 1);
+    const cardIdx = this.cards.findIndex((c) => c.id === card.id);
+    const deckIdx = this.decks.findIndex((c) => c.id === card.deckId);
 
-      if (!this.isEmptyDeck(deckId)) this.decks[card.deckId - 1].empty = false;
-      else this.decks[card.deckId - 1].empty = true;
+    if (cardIdx != -1) {
+      //   card.magnified = false;
+      this.cards.splice(cardIdx, 1);
+
+      if (!this.isEmptyDeck(card.deckId)) this.decks[deckIdx].empty = false;
+      else this.decks[deckIdx].empty = true;
       this.saveState();
     }
   }
@@ -260,10 +258,11 @@ export class CardComponent implements OnInit {
 
   resetDeck() {
     this.cards = [];
-    this.decks = Decks;
+    this.decks = [];
     this.dragged = [];
 
     this.saveState();
+    this.decks = Decks;
   }
 
   mouseDown($event: any) {
