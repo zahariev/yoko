@@ -1,6 +1,8 @@
 <!-- Toolbar -->
 
 <div
+  fxFlex
+  fxLayout="row"
   id="content"
   #board
   role="main"
@@ -32,6 +34,19 @@
       <span>Clear board</span>
     </button>
   </mat-menu>
+  <div class="spacer"></div>
+
+  <div class="magnifying" fxLayoutAlign="end center">
+    <span>zoom </span>
+    <button mat-icon-button [disabled]="scaleIndex > 3">
+      <mat-icon [style.color]="'white'" *ngIf="minify" (click)="zoomIn()"
+        >zoom_in</mat-icon
+      >
+      <mat-icon [style.color]="'white'" *ngIf="!minify" (click)="zoomOut()"
+        >zoom_out</mat-icon
+      >
+    </button>
+  </div>
 
   <!-- Resources -->
   <h2></h2>

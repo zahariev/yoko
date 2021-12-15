@@ -37,8 +37,8 @@ export class AppComponent implements AfterViewInit {
   }
 
   showAllCards() {
-    // this.minify = true;
-    this.minify = !this.minify;
+    this.minify = true;
+    // this.minify = !this.minify;
     this.showAllSubject.next();
   }
 
@@ -51,17 +51,11 @@ export class AppComponent implements AfterViewInit {
   //   }
 
   zoomOut() {
-    if (this.scaleIndex === this.scalings.length - 1) return;
-    this.scaleIndex++;
-    // this.marginTop -= 80;
-    this.setScale(this.scaleIndex, this.marginTop, this.marginTop);
+    this.minify = !this.minify;
   }
 
   zoomIn() {
-    if (this.scaleIndex === 0) return;
-    this.scaleIndex--;
-    // this.marginTop += 80;
-    this.setScale(this.scaleIndex, this.marginTop, this.marginTop);
+    this.minify = !this.minify;
   }
 
   zoomReset() {

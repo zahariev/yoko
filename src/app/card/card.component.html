@@ -27,7 +27,7 @@
       (cdkDragStarted)="dragMove($event, card)"
       (cdkDragEnded)="dragEnd($event, card)"
       cdkDragBoundary="body"
-      [style.position]="card.position ? 'fixed' : ''"
+      [style.position]="card.position ? 'absolute' : ''"
     >
       <div
         [ngClass]="card.magnified ? 'magnify' : ''"

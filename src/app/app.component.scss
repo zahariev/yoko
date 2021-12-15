@@ -44,7 +44,7 @@ p {
 #content {
   position: absolute;
   width: 100%;
-  //   display: flex;
+  display: flex;
   //   margin: 62px auto 32px;
   padding: 0 0px;
   //   max-width: 960px;
@@ -80,7 +80,7 @@ footer {
 
 :host ::ng-deep .allBoard {
   .deck {
-    left: 8%;
+    // left: 8%;
     height: 115px;
     width: 72px;
   }
@@ -101,6 +101,10 @@ footer {
     mat-icon {
       zoom: 0.7;
     }
+  }
+
+  .magnifying {
+    float: right;
   }
 
   .card-container {
