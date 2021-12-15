@@ -220,7 +220,7 @@ export class CardComponent implements OnInit {
 
   dragMove(event: any, card: Card) {
     const elStyle = event.source.element.nativeElement.style;
-    console.log(event.source.getRootElement().getBoundingClientRect());
+    // console.log(event.source.getRootElement().getBoundingClientRect());
 
     this.lastZindex += 10;
     elStyle.zIndex = this.lastZindex;
@@ -229,14 +229,14 @@ export class CardComponent implements OnInit {
   dragEnd($event: any, card: Card) {
     const elStyle = $event.source.element.nativeElement.style;
     this.dragged[card.id] = $event.dropPoint;
-    console.log($event.source.element);
+    // console.log($event.source.element);
     const smallCard = $event.source.element.nativeElement.clientHeight < 200;
     const el = $event.source.getRootElement().getBoundingClientRect();
     card.position = $event.source.getFreeDragPosition();
     // console.log(this.getPosition($event.source.getRootElement()));
     // console.log(window.innerWidth);
 
-    console.log(card.position);
+    // console.log(card.position);
     if (!elStyle.position) {
       const firstDrag = this.getPosition($event.source.getRootElement());
       card.position = {
