@@ -196,7 +196,9 @@ export class CardComponent implements OnInit {
   }
 
   removeCard(card: Card) {
-    const cardIdx = this.cards.findIndex((c) => c.id === card.id);
+    const cardIdx = this.cards.findIndex(
+      (c) => c.id === card.id && c.deckId === card.deckId
+    );
     const deckIdx = this.decks.findIndex((c) => c.id === card.deckId);
 
     if (cardIdx != -1) {
