@@ -243,12 +243,14 @@ export class CardComponent implements OnInit {
         x:
           el.left -
           (smallCard ? 80 : 50) -
+          (window.innerWidth < 415 ? -80 : -20) -
           //   firstDrag.left -
           window.innerWidth / 2.5,
         //   150 +
         //   (card?.position?.x || 0),
         y:
           el.top -
+          (window.innerWidth < 415 ? 180 : 0) -
           //   firstDrag.top -
           //   (smallCard ? -80 : 55) -
           window.innerHeight / 3 +
