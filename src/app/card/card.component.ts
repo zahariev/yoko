@@ -11,7 +11,7 @@ import { Card, Deck } from "../shared/models";
 const Decks: Deck[] = [
   {
     id: 1,
-    title: "",
+    title: "Свързване чрез емоции",
     color: "red",
     backSide: false,
     empty: false,
@@ -21,7 +21,7 @@ const Decks: Deck[] = [
   },
   {
     id: 2,
-    title: "",
+    title: "Намиране на посока",
     color: "blue",
     backSide: false,
     empty: false,
@@ -31,8 +31,8 @@ const Decks: Deck[] = [
   },
   {
     id: 3,
-    title: "",
-    color: "yellow",
+    title: "Определяне на силните страни",
+    color: "rgb(169 169 87)",
     backSide: false,
     empty: false,
     accentIcons: [],
@@ -41,7 +41,7 @@ const Decks: Deck[] = [
   },
   {
     id: 4,
-    title: "",
+    title: "Системно мислене",
     color: "green",
     backSide: false,
     empty: false,
