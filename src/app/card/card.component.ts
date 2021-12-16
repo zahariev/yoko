@@ -12,7 +12,7 @@ const Decks: Deck[] = [
   {
     id: 1,
     title: "Свързване чрез емоции",
-    color: "red",
+    color: "#d4412d",
     backSide: false,
     empty: false,
     accentIcons: [0, 1, 3, 4, 5, 6, 8, 9, 10, 11, 13, 14],
@@ -22,7 +22,7 @@ const Decks: Deck[] = [
   {
     id: 2,
     title: "Намиране на посока",
-    color: "blue",
+    color: "#0b4790",
     backSide: false,
     empty: false,
     accentIcons: [],
@@ -32,7 +32,7 @@ const Decks: Deck[] = [
   {
     id: 3,
     title: "Определяне на силните страни",
-    color: "rgb(169 169 87)",
+    color: "#f9cb16",
     backSide: false,
     empty: false,
     accentIcons: [],
@@ -42,7 +42,7 @@ const Decks: Deck[] = [
   {
     id: 4,
     title: "Системно мислене",
-    color: "green",
+    color: "#1d7543",
     backSide: false,
     empty: false,
     accentIcons: [],

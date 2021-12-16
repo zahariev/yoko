@@ -161,11 +161,13 @@
 
 .deckTitle {
   text-align: center;
-  top: 69%;
+  top: 39%;
   left: 0px;
+  padding: 8px;
   position: absolute;
   font-size: 20px;
-  width: 98%;
+  font-weight: bold;
+  width: 89%;
 }
 
 .mat-checkbox-checked.mat-accent .mat-checkbox-background {
@@ -235,8 +237,9 @@
     text-align: center;
     top: 50%;
     left: 0px;
+    padding: 5px;
     position: absolute;
     font-size: 14px;
-    width: 98%;
+    width: 89%;
   }
 }
