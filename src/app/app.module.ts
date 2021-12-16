@@ -8,6 +8,7 @@ import { MatMenuModule } from "@angular/material/menu";
 import { MatListModule } from "@angular/material/list";
 import { AppComponent } from "./app.component";
 import { CardComponent } from "./card/card.component";
+import { MatCheckboxModule } from "@angular/material/checkbox";
 
 @NgModule({
   declarations: [AppComponent, CardComponent],
@@ -17,6 +18,7 @@ import { CardComponent } from "./card/card.component";
     DragDropModule,
     MatIconModule,
     MatButtonModule,
+    MatCheckboxModule,
     MatListModule,
     MatMenuModule,
   ],

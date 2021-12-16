@@ -12,6 +12,6 @@ export interface Deck {
 export class Card {
   position?: { x: number; y: number };
   magnified!: boolean;
-
+  checked: boolean = false;
   constructor(public id: number, public side: string, public deckId: number) {}
 }

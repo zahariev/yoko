@@ -274,6 +274,10 @@ export class CardComponent implements OnInit {
     return { top: y, left: x };
   }
 
+  checkToggleCard(card: Card, checked: boolean): void {
+    card.checked = checked;
+  }
+
   saveState() {
     localStorage.setItem("openCards", JSON.stringify(this.cards));
     localStorage.setItem("deckCards", JSON.stringify(this.decks));

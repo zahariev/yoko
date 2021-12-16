@@ -147,10 +147,6 @@
 }
 
 .magnify {
-  //   zoom: 1.2;
-  //   width: 180px;
-  //   height: 258px;
-
   height: 327px;
   width: 238px;
 }
@@ -171,6 +167,17 @@
   font-size: 20px;
   width: 98%;
 }
+
+.mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: black !important;
+}
+
+.checkDelete {
+  position: absolute;
+  bottom: 20px;
+  //   background-color: black !important;
+}
+
 @media screen and (max-width: 831px), screen and (max-height: 500px) {
   //   .card:hover .middle {
   //     display: block;
