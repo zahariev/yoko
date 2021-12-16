@@ -13,9 +13,12 @@
         >360</mat-icon
       >
     </button>
-    <span class="deckTitle" [style.color]="deck.color" *ngIf="deck.backSide">{{
-      deck.title
-    }}</span>
+    <span
+      class="deckTitle"
+      [style.color]="deck.color"
+      *ngIf="deck.backSide && !deck.empty"
+      >{{ deck.title }}</span
+    >
 
     <span class="emptyDeckSign" *ngIf="deck.empty">X</span>
   </div>
