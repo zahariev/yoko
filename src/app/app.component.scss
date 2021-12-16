@@ -130,4 +130,13 @@ footer {
   .card-container {
     min-width: 300px;
   }
+
+  .deckTitle {
+    text-align: center;
+    top: 50%;
+    left: 0px;
+    position: absolute;
+    font-size: 14px;
+    width: 98%;
+  }
 }

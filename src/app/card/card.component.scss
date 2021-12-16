@@ -143,6 +143,7 @@
 .card:hover .flip,
 .card:hover .flipCard {
   display: block;
+  opacity: 0.8;
 }
 
 .magnify {
@@ -159,6 +160,7 @@
   font-size: 120px;
   margin-top: 20%;
   margin-left: 20%;
+  opacity: 0.7;
 }
 
 .deckTitle {
@@ -167,7 +169,7 @@
   left: 0px;
   position: absolute;
   font-size: 20px;
-  width: 100%;
+  width: 98%;
 }
 @media screen and (max-width: 831px), screen and (max-height: 500px) {
   //   .card:hover .middle {
@@ -207,6 +209,7 @@
     font-size: 90px;
     margin-top: 10%;
     margin-left: 5%;
+    opacity: 0.7;
   }
 
   .flip {
@@ -220,52 +223,13 @@
   .container {
     min-width: 300px;
   }
-}
 
-.allBoard {
-  .deck {
-    left: 8%;
-    height: 115px;
-    width: 72px;
-  }
-
-  .tp-box {
-    height: 148px;
-    width: 103px;
-  }
-
-  .card {
-    height: 140px;
-    width: 100px;
-    border-radius: 8px;
-  }
-
-  .magnify {
-    zoom: 2;
-    mat-icon {
-      zoom: 0.7;
-    }
-  }
-
-  .card-container {
-    top: -10px;
-  }
-
-  .emptyDeckSign {
+  .deckTitle {
+    text-align: center;
+    top: 50%;
+    left: 0px;
     position: absolute;
-    font-size: 90px;
-    margin-top: 10%;
-    margin-left: 5%;
-  }
-
-  .flip {
-    position: relative;
-    z-index: 999999;
-    top: -15px;
-    left: -15px;
-  }
-
-  .card-container {
-    min-width: 400px;
+    font-size: 14px;
+    width: 98%;
   }
 }
