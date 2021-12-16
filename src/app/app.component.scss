@@ -36,6 +36,7 @@ p {
   align-items: center;
   background-color: #7b9093;
   color: white;
+  opacity: 0.8;
   font-weight: 600;
   padding-left: 40px;
   z-index: 999999;
@@ -103,12 +104,6 @@ footer {
     }
   }
 
-  .magnifying {
-    color: white;
-
-    float: right;
-  }
-
   .card-container {
     top: -10px;
   }
@@ -139,4 +134,10 @@ footer {
     font-size: 14px;
     width: 98%;
   }
+}
+
+.magnifying {
+  color: white !important;
+  opacity: 0.8;
+  float: right;
 }
