@@ -182,6 +182,10 @@ export class CardComponent implements OnInit, OnChanges {
     return this.cards.filter((card) => card.deckId === deckId).length > 14;
   }
 
+  allCardsDragged() {
+    return (this.dragged.length = this.cards.length);
+  }
+
   showAllCards() {
     this.showAllState = true;
     this.decks.forEach((deck: Deck) => {

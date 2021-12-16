@@ -37,26 +37,9 @@
   <div class="clear"></div>
 
   <div class="card-container tp-wrapper">
-    <!-- <div
-      class="tp-box"
-      *ngFor="let card of cards"
-      cdkDrag
-      cdkDragBoundary="body"
-    >
-      <div
-        class="card"
-        (mousedown)="mouseDown($event)"
-        [style.background-image]="'url(./assets/' + card + '.jpg)'"
-      >
-        <mat-icon
-          class="delete"
-          (click)="removeCard(card)"
-          [style.color]="getIconColor(card)"
-          >delete</mat-icon
-        >
-      </div>
-    </div> -->
-
+    <div class="tp-box" *ngIf="allCardsDragged()">
+      <div class="firstCard"></div>
+    </div>
     <div
       class="tp-box"
       *ngFor="let card of cards"
