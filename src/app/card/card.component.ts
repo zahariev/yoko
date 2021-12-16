@@ -66,10 +66,8 @@ export class CardComponent implements OnInit, OnChanges {
   @Input() clearEvent!: Observable<void>;
   @Input() positionResetEvent!: Observable<void>;
   @Input() showAllEvent!: Observable<void>;
-  //   @Input() minifyEvent!: boolean;
   @Input() minify!: boolean;
 
-  //   @Input() flipDeckEvent!: Observable<number>;
   lastZindex = 0;
   width!: number;
   height!: number;
@@ -85,19 +83,14 @@ export class CardComponent implements OnInit, OnChanges {
 
   private componentDestroyed$: Subject<any> = new Subject<void>();
   @HostListener("window:resize", ["$event"])
-  onResize(event: Event): void {
-    // this.magnifiedCard = -1;
-  }
+  onResize(event: Event): void {}
   constructor() {
     const openCards = localStorage.getItem("openCards");
     if (openCards) this.cards = JSON.parse(openCards);
 
-    const draggedCard = localStorage.getItem("draggedCard");
-    if (draggedCard) this.dragged = JSON.parse(draggedCard);
-
     const decks = localStorage.getItem("deckCards");
-
     if (decks && decks.length > 2) this.decks = JSON.parse(decks);
+    this.saveState();
   }
 
   ngOnInit() {
@@ -112,18 +105,12 @@ export class CardComponent implements OnInit, OnChanges {
     this.showAllEvent
       .pipe(takeUntil(this.componentDestroyed$))
       .subscribe(() => this.showAllCards());
-
-    // this.minifyEvent
-    //   .pipe(takeUntil(this.componentDestroyed$))
-    //   .subscribe(() => (this.showAllState = true));
   }
 
   ngOnChanges(changes: any) {
     if (changes.minify != undefined) {
       if (changes.minify.currentValue) this.showAllState = true;
       else this.showAllState = false;
-
-      // deal with asynchronous Observable result
     }
   }
 
@@ -183,7 +170,8 @@ export class CardComponent implements OnInit, OnChanges {
   }
 
   allCardsDragged() {
-    return (this.dragged.length = this.cards.length);
+    const dragged = this.cards.filter((card) => card.position !== undefined);
+    return dragged.length === this.cards.length;
   }
 
   showAllCards() {
@@ -260,7 +248,6 @@ export class CardComponent implements OnInit, OnChanges {
 
   dragMove(event: any, card: Card) {
     const elStyle = event.source.element.nativeElement.style;
-    // console.log(event.source.getRootElement().getBoundingClientRect());
 
     this.lastZindex += 10;
     elStyle.zIndex = this.lastZindex;
@@ -268,15 +255,11 @@ export class CardComponent implements OnInit, OnChanges {
 
   dragEnd($event: any, card: Card) {
     const elStyle = $event.source.element.nativeElement.style;
-    this.dragged[card.id] = $event.dropPoint;
-    // console.log($event.source.element);
+
     const smallCard = $event.source.element.nativeElement.clientHeight < 200;
     const el = $event.source.getRootElement().getBoundingClientRect();
     card.position = $event.source.getFreeDragPosition();
-    // console.log(this.getPosition($event.source.getRootElement()));
-    // console.log(window.innerWidth);
 
-    // console.log(card.position);
     if (!elStyle.position) {
       const firstDrag = this.getPosition($event.source.getRootElement());
       card.position = {
@@ -320,8 +303,6 @@ export class CardComponent implements OnInit, OnChanges {
   }
 
   hasCheckedIcons() {
-    // console.log(this.cards.filter((card) => card.checked));
-
     if (this.cards.filter((card) => card.checked).length)
       this.checkedIcons = true;
     else this.checkedIcons = false;
@@ -330,13 +311,11 @@ export class CardComponent implements OnInit, OnChanges {
   saveState() {
     localStorage.setItem("openCards", JSON.stringify(this.cards));
     localStorage.setItem("deckCards", JSON.stringify(this.decks));
-    localStorage.setItem("draggedCard", JSON.stringify(this.dragged));
   }
 
   resetDeck() {
     this.cards = [];
     this.decks = [];
-    this.dragged = [];
 
     this.saveState();
     this.decks = Decks;
