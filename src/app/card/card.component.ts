@@ -219,6 +219,17 @@ export class CardComponent implements OnInit, OnChanges {
     return this.openCards[card] === "active";
   }
 
+  leaveSelected() {
+    this.cards = this.cards.filter((card) => {
+      if (card.checked) {
+        card.checked = false;
+        return true;
+      } else return false;
+    });
+    this.hasCheckedIcons();
+    this.saveState();
+  }
+
   removeCard(card: Card) {
     const cardIdx = this.cards.findIndex(
       (c) => c.id === card.id && c.deckId === card.deckId
@@ -282,7 +293,7 @@ export class CardComponent implements OnInit, OnChanges {
         //   el.height / 2,
         //   (card?.position?.y || 0),
       };
-      elStyle.position = "absolute";
+      //   elStyle.position = "absolute";
     }
     this.saveState();
   }

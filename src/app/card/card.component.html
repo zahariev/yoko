@@ -4,7 +4,7 @@
       mat-icon-button
       *ngIf="checkedIcons"
       class="leaveSelected"
-      (click)="showAllCards()"
+      (click)="leaveSelected()"
     >
       <mat-icon class="resetIcon">apps</mat-icon>
       <span>Leave selected</span>
@@ -34,9 +34,29 @@
     </div>
   </div>
 
-  <!-- <div class="clear"></div> -->
+  <div class="clear"></div>
 
   <div class="card-container tp-wrapper">
+    <!-- <div
+      class="tp-box"
+      *ngFor="let card of cards"
+      cdkDrag
+      cdkDragBoundary="body"
+    >
+      <div
+        class="card"
+        (mousedown)="mouseDown($event)"
+        [style.background-image]="'url(./assets/' + card + '.jpg)'"
+      >
+        <mat-icon
+          class="delete"
+          (click)="removeCard(card)"
+          [style.color]="getIconColor(card)"
+          >delete</mat-icon
+        >
+      </div>
+    </div> -->
+
     <div
       class="tp-box"
       *ngFor="let card of cards"
