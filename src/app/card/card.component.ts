@@ -187,6 +187,7 @@ export class CardComponent implements OnInit, OnChanges {
     this.decks.forEach((deck: Deck) => {
       do {} while (this.takeCard(deck));
     });
+    this.hasCheckedIcons();
   }
 
   getDeckState(deckId: number) {
