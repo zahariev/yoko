@@ -23,6 +23,7 @@
 
       <span>Show all</span>
     </button>
+
     <button mat-menu-item (click)="reload()">
       <mat-icon class="resetIcon">restart_alt</mat-icon>
       <span>Position reset</span>
@@ -56,6 +57,7 @@
   <app-card
     [clearEvent]="resetBoardSubject.asObservable()"
     [showAllEvent]="showAllSubject.asObservable()"
+    [minify]="minify"
     [positionResetEvent]="positionResetSubject.asObservable()"
   ></app-card>
 

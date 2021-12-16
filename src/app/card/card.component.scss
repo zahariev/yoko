@@ -12,8 +12,8 @@
 
 .card {
   background-size: contain !important;
-  height: 255px;
-  width: 185px;
+  height: 250px;
+  width: 180px;
   background-color: #465658;
   border: 1px solid rgba(255, 255, 255, 0.6);
   position: absolute;
@@ -114,6 +114,10 @@
   cursor: pointer;
 }
 
+.leaveSelected {
+  display: none;
+}
+
 .flipCard {
   position: relative;
   z-index: 999999;
@@ -126,6 +130,15 @@
   z-index: 999999;
   top: -10px;
   left: -10px;
+}
+
+.check {
+  color: white;
+  cursor: pointer;
+  position: relative;
+  z-index: 999999;
+  top: -24px;
+  //   left: -10px;
 }
 
 .middle {
@@ -189,6 +202,7 @@
     left: 8%;
     height: 115px;
     width: 72px;
+    border-radius: 8px;
   }
 
   .tp-box {
@@ -200,6 +214,10 @@
     height: 140px;
     width: 100px;
     border-radius: 8px;
+  }
+
+  .leaveSelected {
+    left: 60% !important;
   }
 
   .magnify {
@@ -230,7 +248,8 @@
 
   .card-container,
   .container {
-    min-width: 300px;
+    // min-width: 300px;
+    width: 95%;
   }
 
   .deckTitle {

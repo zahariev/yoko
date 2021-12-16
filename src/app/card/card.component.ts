@@ -3,7 +3,13 @@ import {
   CdkDragEnter,
   moveItemInArray,
 } from "@angular/cdk/drag-drop";
-import { Component, HostListener, Input, OnInit } from "@angular/core";
+import {
+  Component,
+  HostListener,
+  Input,
+  OnChanges,
+  OnInit,
+} from "@angular/core";
 
 import { Observable, Subject, takeUntil } from "rxjs";
 import { Card, Deck } from "../shared/models";
@@ -56,10 +62,13 @@ const Decks: Deck[] = [
   templateUrl: "./card.component.html",
   styleUrls: ["./card.component.scss"],
 })
-export class CardComponent implements OnInit {
+export class CardComponent implements OnInit, OnChanges {
   @Input() clearEvent!: Observable<void>;
   @Input() positionResetEvent!: Observable<void>;
   @Input() showAllEvent!: Observable<void>;
+  //   @Input() minifyEvent!: boolean;
+  @Input() minify!: boolean;
+
   //   @Input() flipDeckEvent!: Observable<number>;
   lastZindex = 0;
   width!: number;
@@ -72,6 +81,7 @@ export class CardComponent implements OnInit {
   magnifiedCard = Array(60).fill(false);
   dragged = Array(60).fill({});
   showAllState: boolean = false;
+  checkedIcons: boolean = false;
 
   private componentDestroyed$: Subject<any> = new Subject<void>();
   @HostListener("window:resize", ["$event"])
@@ -102,6 +112,19 @@ export class CardComponent implements OnInit {
     this.showAllEvent
       .pipe(takeUntil(this.componentDestroyed$))
       .subscribe(() => this.showAllCards());
+
+    // this.minifyEvent
+    //   .pipe(takeUntil(this.componentDestroyed$))
+    //   .subscribe(() => (this.showAllState = true));
+  }
+
+  ngOnChanges(changes: any) {
+    if (changes.minify != undefined) {
+      if (changes.minify.currentValue) this.showAllState = true;
+      else this.showAllState = false;
+
+      // deal with asynchronous Observable result
+    }
   }
 
   getDeckBG(deck: Deck) {
@@ -129,6 +152,7 @@ export class CardComponent implements OnInit {
       card.position = undefined;
       card.magnified = false;
     });
+    this.saveState();
   }
   takeCard(deck: Deck): boolean {
     this.getCard(deck);
@@ -276,6 +300,15 @@ export class CardComponent implements OnInit {
 
   checkToggleCard(card: Card, checked: boolean): void {
     card.checked = checked;
+    this.hasCheckedIcons();
+  }
+
+  hasCheckedIcons() {
+    // console.log(this.cards.filter((card) => card.checked));
+
+    if (this.cards.filter((card) => card.checked).length)
+      this.checkedIcons = true;
+    else this.checkedIcons = false;
   }
 
   saveState() {
@@ -302,4 +335,7 @@ export class CardComponent implements OnInit {
     this.componentDestroyed$.next(0);
     this.componentDestroyed$.complete();
   }
+}
+function ObservableInput() {
+  throw new Error("Function not implemented.");
 }

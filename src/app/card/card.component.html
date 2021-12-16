@@ -1,29 +1,40 @@
-<div class="container tp-wrapper">
-  <div
-    [style.color]="getDeckColor(deck)"
-    class="deck"
-    (click)="takeCard(deck)"
-    [style.background]="getDeckBG(deck)"
-    *ngFor="let deck of decks"
-  >
-    <button mat-icon-button class="flip">
-      <mat-icon
-        [style.color]="getDeckColor(deck)"
-        (click)="flipDeck(deck); $event.stopPropagation()"
-        >360</mat-icon
-      >
-    </button>
-    <span
-      class="deckTitle"
-      [style.color]="deck.color"
-      *ngIf="deck.backSide && !deck.empty"
-      >{{ deck.title }}</span
+<div class="container tp-wrapper" fxFlex>
+  <div class="card-container tp-wrapper" fxLayout="row">
+    <button
+      mat-icon-button
+      *ngIf="checkedIcons"
+      class="leaveSelected"
+      (click)="showAllCards()"
     >
+      <mat-icon class="resetIcon">apps</mat-icon>
+      <span>Leave selected</span>
+    </button>
+    <div
+      [style.color]="getDeckColor(deck)"
+      class="deck"
+      (click)="takeCard(deck)"
+      [style.background]="getDeckBG(deck)"
+      *ngFor="let deck of decks"
+    >
+      <button mat-icon-button class="flip">
+        <mat-icon
+          [style.color]="getDeckColor(deck)"
+          (click)="flipDeck(deck); $event.stopPropagation()"
+          >360</mat-icon
+        >
+      </button>
+      <span
+        class="deckTitle"
+        [style.color]="deck.color"
+        *ngIf="deck.backSide && !deck.empty"
+        >{{ deck.title }}</span
+      >
 
-    <span class="emptyDeckSign" *ngIf="deck.empty">X</span>
+      <span class="emptyDeckSign" *ngIf="deck.empty">X</span>
+    </div>
   </div>
 
-  <div class="clear"></div>
+  <!-- <div class="clear"></div> -->
 
   <div class="card-container tp-wrapper">
     <div
@@ -48,28 +59,31 @@
           '.jpg)'
         "
       >
-        <mat-icon
-          [style.color]="getIconColor(card)"
-          class="flipCard left"
-          (click)="flipCard(card); $event.stopPropagation()"
-          >360</mat-icon
-        >
-        <mat-icon
-          class="middle"
-          [style.color]="getIconColor(card)"
-          (click)="magnify($event, card); $event.stopPropagation()"
-        >
-          image_search
-        </mat-icon>
-        <mat-icon
-          class="delete"
-          (click)="removeCard(card)"
-          [style.color]="getIconColor(card)"
-          >delete</mat-icon
-        >
+        <div *ngIf="!showAllState">
+          <mat-icon
+            [style.color]="getIconColor(card)"
+            class="flipCard left"
+            (click)="flipCard(card); $event.stopPropagation()"
+            >360</mat-icon
+          >
+          <mat-icon
+            class="middle"
+            [style.color]="getIconColor(card)"
+            (click)="magnify($event, card); $event.stopPropagation()"
+          >
+            image_search
+          </mat-icon>
+          <mat-icon
+            class="delete"
+            (click)="removeCard(card)"
+            [style.color]="getIconColor(card)"
+            >delete
+          </mat-icon>
+        </div>
 
         <mat-checkbox
-          class="checkDelete"
+          *ngIf="showAllState"
+          class="check"
           [checked]="card.checked"
           [color]="getIconColor(card)"
           (change)="checkToggleCard(card, $event.checked)"

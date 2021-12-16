@@ -84,6 +84,15 @@ footer {
     // left: 8%;
     height: 115px;
     width: 72px;
+    border-radius: 7px;
+  }
+
+  .leaveSelected {
+    color: white;
+    display: block;
+    position: fixed;
+    top: 0px;
+    left: 55%;
   }
 
   .tp-box {
@@ -94,7 +103,7 @@ footer {
   .card {
     height: 140px;
     width: 100px;
-    border-radius: 8px;
+    border-radius: 4px;
   }
 
   .magnify {

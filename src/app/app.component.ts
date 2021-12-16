@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from "@angular/core";
 
-import { Subject } from "rxjs";
+import { BehaviorSubject, Subject } from "rxjs";
 
 @Component({
   selector: "app-root",
@@ -18,6 +18,7 @@ export class AppComponent implements AfterViewInit {
   resetBoardSubject: Subject<void> = new Subject<void>();
   showAllSubject: Subject<void> = new Subject<void>();
   positionResetSubject: Subject<void> = new Subject<void>();
+  minifySubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   //   flipSubject: Subject<number> = new Subject<number>();
 
   constructor() {}
@@ -51,11 +52,13 @@ export class AppComponent implements AfterViewInit {
   //   }
 
   zoomOut() {
-    this.minify = !this.minify;
+    this.minify = true;
+    this.minifySubject.next(true);
   }
 
   zoomIn() {
-    this.minify = !this.minify;
+    this.minify = false;
+    this.minifySubject.next(false);
   }
 
   zoomReset() {
