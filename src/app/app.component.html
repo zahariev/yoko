@@ -59,6 +59,7 @@
     [showAllEvent]="showAllSubject.asObservable()"
     [minify]="minify"
     [positionResetEvent]="positionResetSubject.asObservable()"
+    (ZoomResetEvent)="zoomIn()"
   ></app-card>
 
   <!-- Footer -->

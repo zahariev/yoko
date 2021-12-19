@@ -36,6 +36,7 @@ export class AppComponent implements AfterViewInit {
   }
 
   resetGame() {
+    this.zoomIn();
     this.resetBoardSubject.next();
   }
 
@@ -59,23 +60,25 @@ export class AppComponent implements AfterViewInit {
   }
 
   zoomIn() {
+    console.log("zoomIn");
+
     this.minify = false;
     this.minifySubject.next(false);
   }
 
-  zoomReset() {
-    if (this.scaleIndex === 1) return;
-    this.scaleIndex = 1;
-    this.marginTop = 0;
-    this.setScale(this.scaleIndex, this.marginTop, this.marginTop);
-  }
+  //   zoomReset() {
+  //     if (this.scaleIndex === 1) return;
+  //     this.scaleIndex = 1;
+  //     this.marginTop = 0;
+  //     this.setScale(this.scaleIndex, this.marginTop, this.marginTop);
+  //   }
 
-  setScale(scale: any, marginTop: number = 0, marginRight: number = 0) {
-    this.board.nativeElement.style.marginTop = marginTop + "px";
-    this.board.nativeElement.style.marginRight = -marginRight + "px";
-    this.board.nativeElement.style.zoom = this.scalings[scale];
-    this.board.nativeElement.style.transform =
-      "scale(" + this.scalings[scale] + ")";
-    localStorage.setItem("zoom", scale);
-  }
+  //   setScale(scale: any, marginTop: number = 0, marginRight: number = 0) {
+  //     this.board.nativeElement.style.marginTop = marginTop + "px";
+  //     this.board.nativeElement.style.marginRight = -marginRight + "px";
+  //     this.board.nativeElement.style.zoom = this.scalings[scale];
+  //     this.board.nativeElement.style.transform =
+  //       "scale(" + this.scalings[scale] + ")";
+  //     localStorage.setItem("zoom", scale);
+  //   }
 }

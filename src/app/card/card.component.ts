@@ -9,6 +9,7 @@ import {
   Input,
   OnChanges,
   OnInit,
+  Output,
 } from "@angular/core";
 
 import { Observable, Subject, takeUntil } from "rxjs";
@@ -67,6 +68,7 @@ export class CardComponent implements OnInit, OnChanges {
   @Input() positionResetEvent!: Observable<void>;
   @Input() showAllEvent!: Observable<void>;
   @Input() minify!: boolean;
+  @Output() zoomResetEvent: Subject<void> = new Subject<void>();
 
   TEXT = texts;
   lastZindex = 0;
@@ -215,13 +217,15 @@ export class CardComponent implements OnInit, OnChanges {
   }
 
   leaveSelected() {
+    this.showAllState = false;
     this.cards = this.cards.filter((card) => {
       if (card.checked) {
         card.checked = false;
         return true;
       } else return false;
     });
-
+    this.zoomResetEvent.next();
+    // this.checkAllEmptyDecks();
     this.hasCheckedIcons();
     this.saveState();
   }
@@ -239,6 +243,14 @@ export class CardComponent implements OnInit, OnChanges {
       else this.decks[deckIdx].empty = true;
       this.saveState();
     }
+  }
+
+  checkAllEmptyDecks() {
+    this.decks.forEach((d) => {
+      if (!this.isEmptyDeck(d.id)) d.empty = false;
+      else d.empty = true;
+    });
+    this.saveState();
   }
 
   magnify(event: any, card: Card) {
