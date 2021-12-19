@@ -7,12 +7,13 @@
       (click)="leaveSelected()"
     >
       <mat-icon class="resetIcon">apps</mat-icon>
-      <span>Leave selected</span>
+      <span>{{ TEXT.SELECT_CARDS }}</span>
     </button>
     <div
       [style.color]="getDeckColor(deck)"
       class="deck"
       (click)="takeCard(deck)"
+      [ngClass]="deck.empty ? 'emptyDeck' : ''"
       [style.background]="getDeckBG(deck)"
       *ngFor="let deck of decks"
     >
@@ -26,11 +27,11 @@
       <span
         class="deckTitle"
         [style.color]="deck.color"
-        *ngIf="deck.backSide && !deck.empty"
+        *ngIf="deck.backSide"
         >{{ deck.title }}</span
       >
 
-      <span class="emptyDeckSign" *ngIf="deck.empty">X</span>
+      <!-- <span class="emptyDeckSign" *ngIf="deck.empty">X</span> -->
     </div>
   </div>
 

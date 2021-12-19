@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from "@angular/core";
 
 import { BehaviorSubject, Subject } from "rxjs";
+import texts from "../assets/trantslation.json";
 
 @Component({
   selector: "app-root",
@@ -10,6 +11,7 @@ import { BehaviorSubject, Subject } from "rxjs";
 export class AppComponent implements AfterViewInit {
   @ViewChild("board") board!: ElementRef;
 
+  TEXT = texts;
   marginTop = 0;
   scalings = [1, 0.9, 0.8];
   scaleIndex = 0;

@@ -13,11 +13,11 @@ import {
 
 import { Observable, Subject, takeUntil } from "rxjs";
 import { Card, Deck } from "../shared/models";
-
+import texts from "../../assets/trantslation.json";
 const Decks: Deck[] = [
   {
     id: 1,
-    title: "Свързване чрез емоции",
+    title: texts.deck1,
     color: "#d4412d",
     backSide: false,
     empty: false,
@@ -27,7 +27,7 @@ const Decks: Deck[] = [
   },
   {
     id: 2,
-    title: "Намиране на посока",
+    title: texts.deck2,
     color: "#0b4790",
     backSide: false,
     empty: false,
@@ -37,7 +37,7 @@ const Decks: Deck[] = [
   },
   {
     id: 3,
-    title: "Определяне на силните страни",
+    title: texts.deck3,
     color: "#f9cb16",
     backSide: false,
     empty: false,
@@ -47,7 +47,7 @@ const Decks: Deck[] = [
   },
   {
     id: 4,
-    title: "Системно мислене",
+    title: texts.deck4,
     color: "#1d7543",
     backSide: false,
     empty: false,
@@ -68,6 +68,7 @@ export class CardComponent implements OnInit, OnChanges {
   @Input() showAllEvent!: Observable<void>;
   @Input() minify!: boolean;
 
+  TEXT = texts;
   lastZindex = 0;
   width!: number;
   height!: number;

@@ -117,11 +117,9 @@ footer {
     top: -10px;
   }
 
-  .emptyDeckSign {
-    position: absolute;
-    font-size: 90px;
-    margin-top: 10%;
-    margin-left: 5%;
+  .emptyDeck {
+    cursor: default;
+    opacity: 0.6;
   }
 
   .flip {

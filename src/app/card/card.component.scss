@@ -165,12 +165,9 @@
   width: 238px;
 }
 
-.emptyDeckSign {
-  position: absolute;
-  font-size: 120px;
-  margin-top: 20%;
-  margin-left: 20%;
-  opacity: 0.7;
+.emptyDeck {
+  cursor: default;
+  opacity: 0.6;
 }
 
 .deckTitle {
@@ -232,12 +229,9 @@
     top: -10px;
   }
 
-  .emptyDeckSign {
-    position: absolute;
-    font-size: 90px;
-    margin-top: 10%;
-    margin-left: 5%;
-    opacity: 0.7;
+  .emptyDeck {
+    cursor: default;
+    opacity: 0.6;
   }
 
   .flip {
