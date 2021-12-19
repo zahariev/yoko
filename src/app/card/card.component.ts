@@ -5,6 +5,7 @@ import {
 } from "@angular/cdk/drag-drop";
 import {
   Component,
+  EventEmitter,
   HostListener,
   Input,
   OnChanges,
@@ -68,7 +69,7 @@ export class CardComponent implements OnInit, OnChanges {
   @Input() positionResetEvent!: Observable<void>;
   @Input() showAllEvent!: Observable<void>;
   @Input() minify!: boolean;
-  @Output() zoomResetEvent: Subject<void> = new Subject<void>();
+  @Output() zoomResetEvent = new EventEmitter();
 
   TEXT = texts;
   lastZindex = 0;
@@ -108,6 +109,8 @@ export class CardComponent implements OnInit, OnChanges {
     this.showAllEvent
       .pipe(takeUntil(this.componentDestroyed$))
       .subscribe(() => this.showAllCards());
+
+    this.checkAllEmptyDecks();
   }
 
   ngOnChanges(changes: any) {
@@ -224,8 +227,8 @@ export class CardComponent implements OnInit, OnChanges {
         return true;
       } else return false;
     });
-    this.zoomResetEvent.next();
-    // this.checkAllEmptyDecks();
+    this.zoomResetEvent.emit();
+    this.checkAllEmptyDecks();
     this.hasCheckedIcons();
     this.saveState();
   }
