@@ -176,6 +176,7 @@ export class CardComponent implements OnInit, OnChanges {
   }
 
   showAllCards() {
+    this.positionReset();
     this.showAllState = true;
     this.decks.forEach((deck: Deck) => {
       do {} while (this.takeCard(deck));
@@ -220,6 +221,7 @@ export class CardComponent implements OnInit, OnChanges {
         return true;
       } else return false;
     });
+
     this.hasCheckedIcons();
     this.saveState();
   }
