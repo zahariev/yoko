@@ -115,8 +115,9 @@ export class CardComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: any) {
     if (changes.minify != undefined) {
-      if (changes.minify.currentValue) this.showAllState = true;
-      else this.showAllState = false;
+      //   if (changes.minify.currentValue) this.showAllState = true;
+      //   else
+      this.showAllState = false;
     }
   }
 
@@ -182,6 +183,8 @@ export class CardComponent implements OnInit, OnChanges {
 
   showAllCards() {
     this.positionReset();
+    this.minify = true;
+
     this.showAllState = true;
     this.decks.forEach((deck: Deck) => {
       do {} while (this.takeCard(deck));
