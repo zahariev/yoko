@@ -116,8 +116,12 @@ export class GameService {
   }
 
   showAllCards(deck?: Deck) {
+    console.log(deck);
+
+    if (deck && !this.deckCardsLeft(deck)) return;
+
     this.positionReset();
-    this.cards.map((card) => (card.checked = true));
+    this.cards.forEach((card) => (card.checked = true));
     if (deck) {
       do {} while (this.takeCard(deck));
     } else
@@ -129,6 +133,13 @@ export class GameService {
     this.showAllState = true;
   }
 
+  deckCardsLeft(deck: Deck): boolean {
+    const openedCards = this.cards.filter((c: Card) => c.deckId === deck.id);
+    console.log(openedCards);
+    const left = 15 - openedCards.length;
+    if (left > 0) return true;
+    else return false;
+  }
   positionReset() {
     this.cards.map((card) => {
       card.position = undefined;
@@ -149,6 +160,7 @@ export class GameService {
   }
 
   takeCard(deck: Deck): boolean {
+    if (this.checkedIcons) return false;
     this.getCard(deck);
     this.saveState();
     if (this.isEmptyDeck(deck.id)) {

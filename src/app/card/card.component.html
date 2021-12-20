@@ -4,7 +4,7 @@
       [style.color]="gs.getDeckColor(deck)"
       class="deck"
       (click)="gs.takeCard(deck)"
-      [ngClass]="deck.empty ? 'emptyDeck' : ''"
+      [ngClass]="deck.empty || gs.checkedIcons ? 'emptyDeck' : ''"
       [style.background]="gs.getDeckBG(deck)"
       *ngFor="let deck of gs.decks"
     >
@@ -15,7 +15,7 @@
           >360
         </mat-icon>
       </button>
-      <button mat-icon-button class="showDeckIcon">
+      <button mat-icon-button class="showDeckIcon" *ngIf="!gs.checkedIcons">
         <mat-icon
           (click)="showAllCards(deck); $event.stopPropagation()"
           [style.color]="gs.getDeckColor(deck)"
