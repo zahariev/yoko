@@ -15,7 +15,11 @@
           >360
         </mat-icon>
       </button>
-      <button mat-icon-button class="showDeckIcon" *ngIf="!gs.checkedIcons">
+      <button
+        mat-icon-button
+        class="showDeckIcon"
+        *ngIf="!gs.checkedIcons && !deck.empty"
+      >
         <mat-icon
           (click)="showAllCards(deck); $event.stopPropagation()"
           [style.color]="gs.getDeckColor(deck)"

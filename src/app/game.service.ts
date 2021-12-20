@@ -116,17 +116,16 @@ export class GameService {
   }
 
   showAllCards(deck?: Deck) {
-    console.log(deck);
-
     if (deck && !this.deckCardsLeft(deck)) return;
+    console.log(deck);
 
     this.positionReset();
     this.cards.forEach((card) => (card.checked = true));
     if (deck) {
       do {} while (this.takeCard(deck));
     } else
-      this.decks.forEach((deck: Deck) => {
-        do {} while (this.takeCard(deck));
+      this.decks.forEach((deck1: Deck) => {
+        do {} while (this.takeCard(deck1));
       });
 
     this.hasCheckedIcons();
@@ -272,7 +271,7 @@ export class GameService {
   resetGame() {
     this.cards = [];
     this.decks = [];
-
+    this.checkedIcons = false;
     this.saveState();
     this.decks = Decks;
     this.checkAllEmptyDecks();

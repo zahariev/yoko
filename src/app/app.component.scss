@@ -58,6 +58,11 @@ footer a {
   align-items: center;
 }
 
+.filterIcon {
+  position: absolute;
+  right: 5%;
+}
+
 :host ::ng-deep .allBoard {
   .deck {
     // left: 8%;
@@ -82,6 +87,10 @@ footer a {
     mat-icon {
       zoom: 0.7;
     }
+  }
+
+  .filterIcon {
+    right: 0px;
   }
 
   .card-container {
@@ -130,4 +139,10 @@ footer a {
   color: white !important;
   opacity: 0.8;
   //   width: 100%;
+}
+
+@media screen and (max-width: 831px), screen and (max-height: 500px) {
+  .filterIcon {
+    right: 0px;
+  }
 }

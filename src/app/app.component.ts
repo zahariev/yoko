@@ -23,6 +23,7 @@ export class AppComponent {
   }
 
   showAllCards() {
+    if (this.gs.checkedIcons) return;
     this.gs.checkboxHide = false;
     this.gs.minify = true;
     this.gs.showAllCards();
