@@ -97,31 +97,11 @@
   z-index: 999;
 }
 
-.delete {
-  color: black;
-  display: none;
-  position: absolute;
-  top: 10px;
-  right: 5px;
-  cursor: pointer;
-}
-
-.left {
-  color: black;
-  display: none;
-  position: absolute;
-  top: 10px;
-  left: 5px;
-  cursor: pointer;
-}
-
 .leaveSelected {
-  //   left: 60% !important;
   position: fixed;
   color: white;
   top: 0px;
   left: 55%;
-  //   display: none;
 }
 
 .flipCard {
@@ -153,7 +133,25 @@
   position: absolute;
   z-index: 999999;
   top: 10px;
-  left: 40%;
+  left: 44%;
+  cursor: pointer;
+}
+
+.delete {
+  color: black;
+  display: none;
+  position: absolute;
+  top: 10px;
+  right: 5px;
+  cursor: pointer;
+}
+
+.left {
+  color: black;
+  display: none;
+  position: absolute;
+  top: 10px;
+  left: 5px;
   cursor: pointer;
 }
 
@@ -163,6 +161,11 @@
 .card:hover .flipCard {
   display: block;
   opacity: 0.8;
+}
+
+.cardButtons {
+  width: 97%;
+  position: relative;
 }
 
 .magnify {

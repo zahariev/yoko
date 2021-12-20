@@ -1,26 +1,17 @@
 <div class="container tp-wrapper" fxFlex>
   <div class="card-container tp-wrapper" fxLayout="row">
-    <button
-      mat-icon-button
-      *ngIf="checkedIcons"
-      class="leaveSelected"
-      (click)="leaveSelected()"
-    >
-      <mat-icon class="resetIcon">apps</mat-icon>
-      <span>{{ TEXT.SELECT_CARDS }}</span>
-    </button>
     <div
-      [style.color]="getDeckColor(deck)"
+      [style.color]="gs.getDeckColor(deck)"
       class="deck"
-      (click)="takeCard(deck)"
+      (click)="gs.takeCard(deck)"
       [ngClass]="deck.empty ? 'emptyDeck' : ''"
-      [style.background]="getDeckBG(deck)"
-      *ngFor="let deck of decks"
+      [style.background]="gs.getDeckBG(deck)"
+      *ngFor="let deck of gs.decks"
     >
       <button mat-icon-button class="flip">
         <mat-icon
-          [style.color]="getDeckColor(deck)"
-          (click)="flipDeck(deck); $event.stopPropagation()"
+          [style.color]="gs.getDeckColor(deck)"
+          (click)="gs.flipDeck(deck); $event.stopPropagation()"
           >360</mat-icon
         >
       </button>
@@ -38,12 +29,12 @@
   <div class="clear"></div>
 
   <div class="card-container tp-wrapper">
-    <div class="tp-box" *ngIf="allCardsDragged()">
+    <div class="tp-box" *ngIf="gs.allCardsDragged()">
       <div class="firstCard"></div>
     </div>
     <div
       class="tp-box"
-      *ngFor="let card of cards"
+      *ngFor="let card of gs.cards"
       cdkDrag
       [cdkDragFreeDragPosition]="card.position ? card.position : { x: 0, y: 0 }"
       (cdkDragStarted)="dragMove($event, card)"
@@ -63,34 +54,34 @@
           '.jpg)'
         "
       >
-        <div *ngIf="!showAllState">
+        <div class="cardButtons" *ngIf="!gs.showAllState">
           <mat-icon
-            [style.color]="getIconColor(card)"
+            [style.color]="gs.getIconColor(card)"
             class="flipCard left"
-            (click)="flipCard(card); $event.stopPropagation()"
+            (click)="gs.flipCard(card); $event.stopPropagation()"
             >360</mat-icon
           >
           <mat-icon
             class="middle"
-            [style.color]="getIconColor(card)"
-            (click)="magnify($event, card); $event.stopPropagation()"
+            [style.color]="gs.getIconColor(card)"
+            (click)="gs.magnify($event, card); $event.stopPropagation()"
           >
             image_search
           </mat-icon>
           <mat-icon
             class="delete"
-            (click)="removeCard(card)"
-            [style.color]="getIconColor(card)"
+            (click)="gs.removeCard(card)"
+            [style.color]="gs.getIconColor(card)"
             >delete
           </mat-icon>
         </div>
 
         <mat-checkbox
-          *ngIf="showAllState"
+          *ngIf="gs.showAllState"
           class="check"
           [checked]="card.checked"
-          [color]="getIconColor(card)"
-          (change)="checkToggleCard(card, $event.checked)"
+          [color]="gs.getIconColor(card)"
+          (change)="gs.checkToggleCard(card, $event.checked)"
         >
         </mat-checkbox>
       </div>

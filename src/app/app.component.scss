@@ -21,10 +21,6 @@ p {
   margin: 0;
 }
 
-.spacer {
-  flex: 1;
-}
-
 .toolbar {
   //   position: fixed;
   position: relative;
@@ -144,8 +140,11 @@ footer {
   }
 }
 
-.magnifying {
+.buttons {
   color: white !important;
   opacity: 0.8;
-  float: right;
+}
+
+.emptyBtn {
+  width: 10%;
 }
