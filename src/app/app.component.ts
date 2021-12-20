@@ -32,9 +32,14 @@ export class AppComponent {
     this.gs.positionReset();
   }
 
+  filterSelected() {
+    this.toggleZoom(false);
+    this.gs.filterSelected();
+  }
+
   toggleZoom(minified?: boolean) {
     this.gs.checkboxHide = true;
-    this.gs.minify = minified || !this.gs.minify;
+    this.gs.minify = minified !== undefined ? minified : !this.gs.minify;
     // this.minifySubject.next(this.minify);
   }
 }

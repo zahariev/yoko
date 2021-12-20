@@ -23,6 +23,7 @@ export class CardComponent implements OnInit {
 
   ngOnInit() {
     this.gs.checkAllEmptyDecks();
+    this.gs.checkOnlyOneDeckOpen();
   }
 
   dragMove(event: any, card: Card) {

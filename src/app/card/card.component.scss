@@ -164,6 +164,7 @@
 }
 
 .cardButtons {
+  left: 5px;
   width: 97%;
   position: relative;
 }
@@ -197,6 +198,10 @@
   position: absolute;
   bottom: 20px;
   //   background-color: black !important;
+}
+
+.top10 {
+  margin-top: 10px;
 }
 
 @media screen and (max-width: 831px), screen and (max-height: 500px) {
@@ -235,6 +240,11 @@
 
   .card-container {
     top: -10px;
+    min-height: 190px;
+  }
+
+  .cardButtons {
+    zoom: 0.75;
   }
 
   .emptyDeck {

@@ -109,7 +109,7 @@ export class GameService {
         return true;
       } else return false;
     });
-    // this.zoomResetEvent.emit();
+
     this.checkAllEmptyDecks();
     this.hasCheckedIcons();
     this.saveState();
@@ -117,13 +117,20 @@ export class GameService {
 
   showAllCards() {
     this.positionReset();
-
     this.decks.forEach((deck: Deck) => {
       do {} while (this.takeCard(deck));
     });
 
     this.hasCheckedIcons();
     this.showAllState = true;
+  }
+
+  positionReset() {
+    this.cards.map((card) => {
+      card.position = undefined;
+      card.magnified = false;
+    });
+    this.saveState();
   }
 
   flipDeck(deck: Deck) {
@@ -134,14 +141,6 @@ export class GameService {
   flipCard(card: Card) {
     if (card.side) card.side = "";
     else card.side = "b";
-    this.saveState();
-  }
-
-  positionReset() {
-    this.cards.map((card) => {
-      card.position = undefined;
-      card.magnified = false;
-    });
     this.saveState();
   }
 
@@ -167,7 +166,10 @@ export class GameService {
     );
 
     this.cards.push(new Card(newCardId, deck.backSide ? "b" : "", deck.id));
+    this.checkOnlyOneDeckOpen();
+  }
 
+  checkOnlyOneDeckOpen() {
     if (this.onlyOneDeckOpen()) {
       this.showAllState = true;
     } else this.showAllState = false;
@@ -225,10 +227,7 @@ export class GameService {
       else this.decks[deckIdx].empty = true;
       this.saveState();
     }
-
-    if (this.onlyOneDeckOpen()) {
-      this.showAllState = true;
-    } else this.showAllState = false;
+    this.checkOnlyOneDeckOpen();
   }
 
   onlyOneDeckOpen(): boolean {
@@ -236,7 +235,6 @@ export class GameService {
     const deck = this.cards
       .map((c) => c.deckId)
       .filter((v, i, a) => a.indexOf(v) === i);
-    console.log(deck);
 
     if (deck.length != 1) return false;
     else return true;
