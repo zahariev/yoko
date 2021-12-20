@@ -22,18 +22,6 @@ export class CardComponent implements OnInit {
   constructor(public gs: GameService) {}
 
   ngOnInit() {
-    // this.clearEvent
-    //   .pipe(takeUntil(this.componentDestroyed$))
-    //   .subscribe(() => this.resetDeck());
-
-    // this.positionResetEvent
-    //   .pipe(takeUntil(this.componentDestroyed$))
-    //   .subscribe(() => this.positionReset());
-
-    // this.showAllEvent
-    //   .pipe(takeUntil(this.componentDestroyed$))
-    //   .subscribe(() => this.showAllCards());
-
     this.gs.checkAllEmptyDecks();
   }
 

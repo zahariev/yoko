@@ -2,14 +2,13 @@
 
 <div
   fxLayout="row"
-  fxLayoutAlign="space-around center"
   id="content"
   #board
   role="main"
   [style.margin-top]="marginTop"
   [ngClass]="gs.minify || !gs.checkboxHide ? 'allBoard' : ''"
 >
-  <div class="buttons" fxLayoutAlign="left center">
+  <div class="buttons" fxLayoutAlign="space-around center">
     <button mat-button (click)="showAllCards()">
       <mat-icon>apps</mat-icon>
 
@@ -27,21 +26,12 @@
       <span class="btnText">{{ TEXT.CLEAR_BOARD }}</span>
     </button>
 
-    <button
-      mat-icon-button
-      *ngIf="gs.checkedIcons"
-      (click)="gs.filterSelected()"
-    >
+    <button mat-button *ngIf="gs.checkedIcons" (click)="gs.filterSelected()">
       <mat-icon class="resetIcon">apps</mat-icon>
       <span>{{ TEXT.SELECT_CARDS }}</span>
     </button>
 
-    <!-- </div> -->
-    <!-- <div class="spacer"></div> -->
-
-    <!-- <div fxLayoutGap="50"> -->
-
-    <button mat-icon-button (click)="toggleZoom()">
+    <button mat-button (click)="toggleZoom()">
       <mat-icon [style.color]="'white'" *ngIf="gs.minify">zoom_in</mat-icon>
 
       <mat-icon [style.color]="'white'" *ngIf="!gs.minify">zoom_out</mat-icon>
