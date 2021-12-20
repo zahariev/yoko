@@ -14,8 +14,11 @@ export class CardComponent implements OnInit {
   private componentDestroyed$: Subject<any> = new Subject<void>();
 
   @HostListener("window:resize", ["$event"])
-  onResize(event: Event): void {}
+  onResize(event: Event): void {
+    this.windowWidth = window.innerWidth;
+  }
 
+  windowWidth: number = window.innerWidth;
   TEXT = texts;
   mousePosition = { x: 0, y: 0 };
   lastZindex = 0;
