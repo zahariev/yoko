@@ -115,8 +115,6 @@ export class CardComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: any) {
     if (changes.checkboxHide != undefined) {
-      console.log(changes.checkboxHide);
-
       if (changes.checkboxHide.currentValue) this.showAllState = false;
       else this.showAllState = true;
     }
@@ -191,7 +189,6 @@ export class CardComponent implements OnInit, OnChanges {
 
     this.hasCheckedIcons();
     this.showAllState = true;
-    console.log(this.showAllState);
   }
 
   getDeckState(deckId: number) {
