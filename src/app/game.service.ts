@@ -125,7 +125,6 @@ export class GameService {
 
   showAllCards(deck?: Deck) {
     if (deck && !this.deckCardsLeft(deck)) return;
-    console.log(deck);
 
     this.positionReset();
     this.cards.forEach((card) => (card.checked = true));
@@ -142,7 +141,6 @@ export class GameService {
 
   deckCardsLeft(deck: Deck): boolean {
     const openedCards = this.cards.filter((c: Card) => c.deckId === deck.id);
-    console.log(openedCards);
     const left = 15 - openedCards.length;
     if (left > 0) return true;
     else return false;
