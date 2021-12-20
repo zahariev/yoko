@@ -334,12 +334,12 @@ export class CardComponent implements OnInit, OnChanges {
   }
 
   resetDeck() {
-    this.checkAllEmptyDecks();
-
     this.cards = [];
     this.decks = [];
+
     this.saveState();
     this.decks = Decks;
+    this.checkAllEmptyDecks();
   }
 
   mouseDown($event: any) {
