@@ -1,66 +1,57 @@
 <!-- Toolbar -->
 
 <div
-  fxFlex
   fxLayout="row"
   id="content"
   #board
   role="main"
   [style.margin-top]="marginTop"
-  [ngClass]="minify || !checkboxHide ? 'allBoard' : ''"
+  [ngClass]="gs.minify || !gs.checkboxHide ? 'allBoard' : ''"
 >
-  <button
-    id="menu"
-    mat-icon-button
-    [matMenuTriggerFor]="menu"
-    aria-label="Example icon-button with a menu"
-  >
-    <mat-icon>menu</mat-icon>
-  </button>
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item (click)="showAllCards()">
+  <div class="buttons" fxLayoutAlign="space-around center">
+    <button mat-button (click)="showAllCards()">
+      <mat-icon>apps</mat-icon>
+
+      <span class="btnText">{{ TEXT.SHOW_ALL }}</span>
+    </button>
+
+    <button mat-button (click)="positionReset()">
+      <mat-icon>restart_alt</mat-icon>
+      <span class="btnText">{{ TEXT.POSITION_RESET }}</span>
+    </button>
+
+    <button mat-button (click)="resetGame()">
+      <mat-icon>clear</mat-icon>
+
+      <span class="btnText">{{ TEXT.CLEAR_BOARD }}</span>
+    </button>
+
+    <button mat-button (click)="toggleZoom()">
+      <mat-icon [style.color]="'white'" *ngIf="gs.minify">zoom_in</mat-icon>
+
+      <mat-icon [style.color]="'white'" *ngIf="!gs.minify">zoom_out</mat-icon>
+      <span class="btnText">{{ TEXT.ZOOM }} </span>
+    </button>
+
+    <button mat-button *ngIf="gs.checkedIcons" (click)="filterSelected()">
       <mat-icon class="resetIcon">apps</mat-icon>
-
-      <span>{{ TEXT.SHOW_ALL }}</span>
+      <span>{{ TEXT.SELECT_CARDS }}</span>
     </button>
-
-    <button mat-menu-item (click)="reload()">
-      <mat-icon class="resetIcon">restart_alt</mat-icon>
-      <span>{{ TEXT.POSITION_RESET }}</span>
-    </button>
-
-    <button mat-menu-item (click)="resetGame()">
-      <mat-icon class="resetIcon">clear</mat-icon>
-
-      <span>{{ TEXT.CLEAR_BOARD }}</span>
-    </button>
-  </mat-menu>
-  <div class="spacer"></div>
-
-  <div class="magnifying" fxLayoutAlign="end center">
-    <span>{{ TEXT.ZOOM }} </span>
-    <button mat-icon-button [disabled]="scaleIndex > 3">
-      <mat-icon [style.color]="'white'" *ngIf="minify" (click)="zoomIn()"
-        >zoom_in</mat-icon
-      >
-      <mat-icon [style.color]="'white'" *ngIf="!minify" (click)="zoomOut()"
-        >zoom_out</mat-icon
-      >
-    </button>
+    <!-- </div> -->
   </div>
 
   <!-- Resources -->
   <h2></h2>
   <p></p>
   <!-- [flipDeckEvent]="flipSubject.asObservable()" -->
-
-  <app-card
-    [clearEvent]="resetBoardSubject.asObservable()"
-    [showAllEvent]="showAllSubject.asObservable()"
-    [checkboxHide]="checkboxHide"
-    [positionResetEvent]="positionResetSubject.asObservable()"
-    (zoomResetEvent)="zoomIn()"
-  ></app-card>
+  <!-- [clearEvent]="resetBoardSubject.asObservable()"
+  [showAllEvent]="showAllSubject.asObservable()"
+  [filterSelectedEvent]="filterSelectedSubject.asObservable()"
+  [checkboxHide]="checkboxHide"
+  [checkedIcons]="checkedIcons"
+  [positionResetEvent]="positionResetSubject.asObservable()"
+  (zoomResetEvent)="toggleZoom(false)" -->
+  <app-card></app-card>
 
   <!-- Footer -->
   <!-- <footer>

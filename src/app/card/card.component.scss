@@ -97,6 +97,54 @@
   z-index: 999;
 }
 
+.leaveSelected {
+  position: fixed;
+  color: white;
+  top: 0px;
+  left: 55%;
+}
+
+.flipCard {
+  position: relative;
+  z-index: 999999;
+  top: 10px;
+  left: 10px;
+}
+
+.flipIcon {
+  position: relative;
+  z-index: 999999;
+  top: -10px;
+  left: -10px;
+}
+
+.showDeckIcon {
+  display: none;
+  position: relative;
+  z-index: 999999;
+  top: -10px;
+  right: -73px;
+}
+
+.check {
+  color: white;
+  cursor: pointer;
+  position: relative;
+  z-index: 999999;
+  top: -24px;
+  //   left: -10px;
+}
+
+.middle {
+  color: black;
+  display: none;
+  position: absolute;
+  z-index: 999999;
+  top: 10px;
+  left: 44%;
+  cursor: pointer;
+}
+
 .delete {
   color: black;
   display: none;
@@ -115,49 +163,19 @@
   cursor: pointer;
 }
 
-.leaveSelected {
-  display: none;
-}
-
-.flipCard {
-  position: relative;
-  z-index: 999999;
-  top: 10px;
-  left: 10px;
-}
-
-.flip {
-  position: relative;
-  z-index: 999999;
-  top: -10px;
-  left: -10px;
-}
-
-.check {
-  color: white;
-  cursor: pointer;
-  position: relative;
-  z-index: 999999;
-  top: -24px;
-  //   left: -10px;
-}
-
-.middle {
-  color: black;
-  display: none;
-  position: absolute;
-  z-index: 999999;
-  top: 10px;
-  left: 40%;
-  cursor: pointer;
-}
-
 .card:hover .delete,
 .card:hover .middle,
-.card:hover .flip,
-.card:hover .flipCard {
+.card:hover .flipIcon,
+.card:hover .flipCard,
+.deck:hover .showDeckIcon {
   display: block;
   opacity: 0.8;
+}
+
+.cardButtons {
+  left: 5px;
+  width: 97%;
+  position: relative;
 }
 
 .magnify {
@@ -189,6 +207,10 @@
   position: absolute;
   bottom: 20px;
   //   background-color: black !important;
+}
+
+.top10 {
+  margin-top: 10px;
 }
 
 @media screen and (max-width: 831px), screen and (max-height: 500px) {
@@ -227,6 +249,11 @@
 
   .card-container {
     top: -10px;
+    min-height: 190px;
+  }
+
+  .cardButtons {
+    zoom: 0.75;
   }
 
   .emptyDeck {
@@ -234,11 +261,18 @@
     opacity: 0.6;
   }
 
-  .flip {
+  .flipIcon {
     position: relative;
     z-index: 999999;
     top: -15px;
     left: -15px;
+  }
+
+  .showDeckIcon {
+    position: relative;
+    z-index: 999999;
+    top: -15px;
+    right: -5px;
   }
 
   .card-container,
