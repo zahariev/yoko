@@ -169,6 +169,10 @@ export class CardComponent implements OnInit, OnChanges {
     );
 
     this.cards.push(new Card(newCardId, deck.backSide ? "b" : "", deck.id));
+
+    if (this.onlyOneDeckOpen()) {
+      this.showAllState = true;
+    } else this.showAllState = false;
   }
 
   isEmptyDeck(deckId: number): boolean {
@@ -248,6 +252,21 @@ export class CardComponent implements OnInit, OnChanges {
       else this.decks[deckIdx].empty = true;
       this.saveState();
     }
+
+    if (this.onlyOneDeckOpen()) {
+      this.showAllState = true;
+    } else this.showAllState = false;
+  }
+
+  onlyOneDeckOpen(): boolean {
+    // if (this.cards.length !== 15) return false;
+    const deck = this.cards
+      .map((c) => c.deckId)
+      .filter((v, i, a) => a.indexOf(v) === i);
+    console.log(deck);
+
+    if (deck.length != 1) return false;
+    else return true;
   }
 
   checkAllEmptyDecks() {

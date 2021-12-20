@@ -87,13 +87,13 @@ footer {
     border-radius: 7px;
   }
 
-  .leaveSelected {
-    color: white;
-    display: block;
-    position: fixed;
-    top: 0px;
-    left: 55%;
-  }
+  //   .leaveSelected {
+  //     color: white;
+  //     display: block;
+  //     position: fixed;
+  //     top: 0px;
+  //     left: 55%;
+  //   }
 
   .tp-box {
     height: 148px;
@@ -115,6 +115,7 @@ footer {
 
   .card-container {
     top: -10px;
+    min-height: 190px;
   }
 
   .emptyDeck {

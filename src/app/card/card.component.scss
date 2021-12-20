@@ -116,7 +116,12 @@
 }
 
 .leaveSelected {
-  display: none;
+  //   left: 60% !important;
+  position: fixed;
+  color: white;
+  top: 0px;
+  left: 55%;
+  //   display: none;
 }
 
 .flipCard {
