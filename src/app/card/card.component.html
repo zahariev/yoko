@@ -63,7 +63,7 @@
           '.jpg)'
         "
       >
-        <div class="cardButtons" *ngIf="!gs.showAllState">
+        <div class="cardButtons" *ngIf="!gs.showAllState && !dragEvent">
           <mat-icon
             [style.color]="gs.getIconColor(card)"
             class="flipCard left"

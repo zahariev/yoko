@@ -19,6 +19,8 @@ export class CardComponent implements OnInit {
   TEXT = texts;
   mousePosition = { x: 0, y: 0 };
   lastZindex = 0;
+  dragEvent = false;
+
   constructor(public gs: GameService) {}
 
   ngOnInit() {
@@ -28,7 +30,7 @@ export class CardComponent implements OnInit {
 
   dragMove(event: any, card: Card) {
     const elStyle = event.source.element.nativeElement.style;
-
+    this.dragEvent = true;
     this.lastZindex += 10;
     elStyle.zIndex = this.lastZindex;
   }
@@ -38,7 +40,7 @@ export class CardComponent implements OnInit {
   }
 
   dragEnd($event: any, card: Card) {
-    console.log("dragEnd");
+    this.dragEvent = false;
 
     const elStyle = $event.source.element.nativeElement.style;
 
