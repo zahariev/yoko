@@ -16,9 +16,11 @@ export class CardComponent implements OnInit {
   @HostListener("window:resize", ["$event"])
   onResize(event: Event): void {
     this.windowWidth = window.innerWidth;
+    this.windowHeight = window.innerHeight;
   }
 
   windowWidth: number = window.innerWidth;
+  windowHeight: number = window.innerHeight;
   TEXT = texts;
   mousePosition = { x: 0, y: 0 };
   lastZindex = 0;
@@ -40,6 +42,18 @@ export class CardComponent implements OnInit {
 
   showAllCards(deck: Deck) {
     this.gs.showAllCards(deck);
+  }
+
+  isMobileDevice(): boolean {
+    if (this.windowWidth < 550 || this.windowHeight < 550) return true;
+    const ua = navigator.userAgent;
+    if (
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS/i.test(
+        ua
+      )
+    )
+      return true;
+    return false;
   }
 
   dragEnd($event: any, card: Card) {
