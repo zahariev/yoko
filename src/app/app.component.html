@@ -7,7 +7,7 @@
   #board
   role="main"
   [style.margin-top]="marginTop"
-  [ngClass]="minify ? 'allBoard' : ''"
+  [ngClass]="minify || !checkboxHide ? 'allBoard' : ''"
 >
   <button
     id="menu"
@@ -57,7 +57,7 @@
   <app-card
     [clearEvent]="resetBoardSubject.asObservable()"
     [showAllEvent]="showAllSubject.asObservable()"
-    [minify]="minify"
+    [checkboxHide]="checkboxHide"
     [positionResetEvent]="positionResetSubject.asObservable()"
     (zoomResetEvent)="zoomIn()"
   ></app-card>

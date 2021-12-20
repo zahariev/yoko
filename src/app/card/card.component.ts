@@ -68,7 +68,7 @@ export class CardComponent implements OnInit, OnChanges {
   @Input() clearEvent!: Observable<void>;
   @Input() positionResetEvent!: Observable<void>;
   @Input() showAllEvent!: Observable<void>;
-  @Input() minify!: boolean;
+  @Input() checkboxHide!: boolean;
   @Output() zoomResetEvent = new EventEmitter();
 
   TEXT = texts;
@@ -114,10 +114,11 @@ export class CardComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: any) {
-    if (changes.minify != undefined) {
-      //   if (changes.minify.currentValue) this.showAllState = true;
-      //   else
-      this.showAllState = false;
+    if (changes.checkboxHide != undefined) {
+      console.log(changes.checkboxHide);
+
+      if (changes.checkboxHide.currentValue) this.showAllState = false;
+      else this.showAllState = true;
     }
   }
 
@@ -183,13 +184,14 @@ export class CardComponent implements OnInit, OnChanges {
 
   showAllCards() {
     this.positionReset();
-    this.minify = true;
 
-    this.showAllState = true;
     this.decks.forEach((deck: Deck) => {
       do {} while (this.takeCard(deck));
     });
+
     this.hasCheckedIcons();
+    this.showAllState = true;
+    console.log(this.showAllState);
   }
 
   getDeckState(deckId: number) {

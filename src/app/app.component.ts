@@ -16,6 +16,7 @@ export class AppComponent implements AfterViewInit {
   scalings = [1, 0.9, 0.8];
   scaleIndex = 0;
   minify: boolean = false;
+  checkboxHide: boolean = true;
   title = "yoko";
   resetBoardSubject: Subject<void> = new Subject<void>();
   showAllSubject: Subject<void> = new Subject<void>();
@@ -41,7 +42,9 @@ export class AppComponent implements AfterViewInit {
   }
 
   showAllCards() {
+    this.checkboxHide = false;
     this.minify = true;
+
     // this.minify = !this.minify;
     this.showAllSubject.next();
   }
@@ -55,13 +58,13 @@ export class AppComponent implements AfterViewInit {
   //   }
 
   zoomOut() {
+    this.checkboxHide = true;
     this.minify = true;
     this.minifySubject.next(true);
   }
 
   zoomIn() {
-    console.log("zoomIn");
-
+    this.checkboxHide = true;
     this.minify = false;
     this.minifySubject.next(false);
   }
