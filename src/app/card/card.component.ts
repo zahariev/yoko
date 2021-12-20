@@ -34,12 +34,12 @@ export class CardComponent implements OnInit {
   }
 
   showAllCards(deck: Deck) {
-    // this.gs.checkboxHide = false;
-
     this.gs.showAllCards(deck);
   }
 
   dragEnd($event: any, card: Card) {
+    console.log("dragEnd");
+
     const elStyle = $event.source.element.nativeElement.style;
 
     const smallCard = $event.source.element.nativeElement.clientHeight < 200;
@@ -69,6 +69,7 @@ export class CardComponent implements OnInit {
       };
       //   elStyle.position = "absolute";
     }
+    this.gs.dropCard.emit();
     this.gs.saveState();
   }
 

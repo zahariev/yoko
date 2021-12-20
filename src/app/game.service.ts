@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { EventEmitter, Injectable } from "@angular/core";
 import { Card, Deck } from "./shared/models";
 import texts from "../assets/trantslation.json";
 const Decks: Deck[] = [
@@ -63,6 +63,8 @@ export class GameService {
   showAllState: boolean = false;
   checkboxHide: boolean = true;
   checkedIcons: boolean = false;
+  dropCard: EventEmitter<boolean> = new EventEmitter();
+  dragEvent: boolean = false;
 
   constructor() {
     const openCards = localStorage.getItem("openCards");
@@ -71,6 +73,12 @@ export class GameService {
     const decks = localStorage.getItem("deckCards");
     if (decks && decks.length > 2) this.decks = JSON.parse(decks);
     this.saveState();
+    this.dropCard.subscribe(() => {
+      this.dragEvent = true;
+      setTimeout(() => {
+        this.dragEvent = false;
+      }, 400);
+    });
   }
 
   checkToggleCard(card: Card, checked: boolean): void {
@@ -153,6 +161,7 @@ export class GameService {
   }
 
   flipCard(card: Card) {
+    if (this.dragEvent) return;
     if (card.side) card.side = "";
     else card.side = "b";
     this.saveState();
@@ -230,6 +239,8 @@ export class GameService {
   }
 
   removeCard(card: Card) {
+    if (this.dragEvent) return;
+
     const cardIdx = this.cards.findIndex(
       (c) => c.id === card.id && c.deckId === card.deckId
     );
@@ -256,6 +267,8 @@ export class GameService {
   }
 
   magnify(event: any, card: Card) {
+    if (this.dragEvent) return;
+
     card.magnified = !card.magnified;
     const elStyle = event.path[2].style;
     this.lastZindex += 10;
