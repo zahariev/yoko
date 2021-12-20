@@ -45,6 +45,7 @@
       class="tp-box"
       *ngFor="let card of gs.cards"
       cdkDrag
+      [cdkDragStartDelay]="500"
       [cdkDragFreeDragPosition]="card.position ? card.position : { x: 0, y: 0 }"
       (cdkDragStarted)="dragMove($event, card)"
       (cdkDragEnded)="dragEnd($event, card)"
