@@ -8,19 +8,24 @@
       [style.background]="gs.getDeckBG(deck)"
       *ngFor="let deck of gs.decks"
     >
-      <button mat-icon-button class="flip">
+      <button mat-icon-button class="flipIcon">
         <mat-icon
           [style.color]="gs.getDeckColor(deck)"
           (click)="gs.flipDeck(deck); $event.stopPropagation()"
-          >360</mat-icon
-        >
+          >360
+        </mat-icon>
       </button>
-      <span
-        class="deckTitle"
-        [style.color]="deck.color"
-        *ngIf="deck.backSide"
-        >{{ deck.title }}</span
-      >
+      <button mat-icon-button class="showDeckIcon">
+        <mat-icon
+          (click)="showAllCards(deck); $event.stopPropagation()"
+          [style.color]="gs.getDeckColor(deck)"
+          >apps
+        </mat-icon>
+      </button>
+
+      <span class="deckTitle" [style.color]="deck.color" *ngIf="deck.backSide"
+        >{{ deck.title }}
+      </span>
 
       <!-- <span class="emptyDeckSign" *ngIf="deck.empty">X</span> -->
     </div>

@@ -33,6 +33,12 @@ export class CardComponent implements OnInit {
     elStyle.zIndex = this.lastZindex;
   }
 
+  showAllCards(deck: Deck) {
+    // this.gs.checkboxHide = false;
+
+    this.gs.showAllCards(deck);
+  }
+
   dragEnd($event: any, card: Card) {
     const elStyle = $event.source.element.nativeElement.style;
 

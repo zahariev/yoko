@@ -111,11 +111,19 @@
   left: 10px;
 }
 
-.flip {
+.flipIcon {
   position: relative;
   z-index: 999999;
   top: -10px;
   left: -10px;
+}
+
+.showDeckIcon {
+  display: none;
+  position: relative;
+  z-index: 999999;
+  top: -10px;
+  right: -73px;
 }
 
 .check {
@@ -157,8 +165,9 @@
 
 .card:hover .delete,
 .card:hover .middle,
-.card:hover .flip,
-.card:hover .flipCard {
+.card:hover .flipIcon,
+.card:hover .flipCard,
+.deck:hover .showDeckIcon {
   display: block;
   opacity: 0.8;
 }
@@ -252,11 +261,18 @@
     opacity: 0.6;
   }
 
-  .flip {
+  .flipIcon {
     position: relative;
     z-index: 999999;
     top: -15px;
     left: -15px;
+  }
+
+  .showDeckIcon {
+    position: relative;
+    z-index: 999999;
+    top: -15px;
+    right: -5px;
   }
 
   .card-container,

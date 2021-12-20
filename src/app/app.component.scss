@@ -98,11 +98,18 @@ footer a {
     opacity: 0.6;
   }
 
-  .flip {
+  .flipIcon {
     position: relative;
     z-index: 999999;
     top: -15px;
     left: -15px;
+  }
+
+  .showDeckIcon {
+    position: relative;
+    z-index: 999999;
+    top: -15px;
+    right: -5px;
   }
 
   .card-container {

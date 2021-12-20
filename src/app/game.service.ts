@@ -115,11 +115,15 @@ export class GameService {
     this.saveState();
   }
 
-  showAllCards() {
+  showAllCards(deck?: Deck) {
     this.positionReset();
-    this.decks.forEach((deck: Deck) => {
+    this.cards.map((card) => (card.checked = true));
+    if (deck) {
       do {} while (this.takeCard(deck));
-    });
+    } else
+      this.decks.forEach((deck: Deck) => {
+        do {} while (this.takeCard(deck));
+      });
 
     this.hasCheckedIcons();
     this.showAllState = true;
