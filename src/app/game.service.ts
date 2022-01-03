@@ -165,6 +165,11 @@ export class GameService {
     this.saveState();
   }
 
+  flipSelectCard(card: Card) {
+    this.flipCard(card);
+    this.checkToggleCard(card, true);
+  }
+
   takeCard(deck: Deck): boolean {
     if (this.checkedIcons) return false;
     this.getCard(deck);

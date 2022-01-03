@@ -30,8 +30,6 @@
       <span class="deckTitle" [style.color]="deck.color" *ngIf="deck.backSide"
         >{{ deck.title }}
       </span>
-
-      <!-- <span class="emptyDeckSign" *ngIf="deck.empty">X</span> -->
     </div>
   </div>
 
@@ -85,6 +83,14 @@
           </mat-icon>
         </div>
 
+        <div class="cardButtons" *ngIf="gs.showAllState">
+          <mat-icon
+            [style.color]="gs.getIconColor(card)"
+            class="flipCard left"
+            (click)="gs.flipCard(card); $event.stopPropagation()"
+            >360</mat-icon
+          >
+        </div>
         <div *ngIf="isMobileDevice()" class="example-handle" cdkDragHandle>
           <svg width="24px" fill="currentColor" viewBox="0 0 24 24">
             <path
