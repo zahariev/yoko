@@ -134,11 +134,38 @@ footer a {
 .buttons {
   color: white !important;
   opacity: 0.8;
+  position: fixed;
+  z-index: 999999999;
+  background-color: #465658;
+  border-radius: 0px 0px 8px 8px;
   //   width: 100%;
+}
+.footer1 {
+  width: 100%;
+  z-index: 999999999;
+  position: fixed;
+  bottom: 0;
+  background-color: #465658;
+}
+.footer {
+  background-color: #465658;
+  z-index: 999999999;
+  position: fixed;
+  bottom: 0;
+  color: white;
+  opacity: 0.95;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 30px;
+  //   line-height: 30px;
 }
 
 @media screen and (max-width: 831px), screen and (max-height: 500px) {
   .filterIcon {
     right: 0px;
   }
+}
+
+.spacer {
+  flex: 1 1 auto;
 }
