@@ -45,6 +45,6 @@ export class AppComponent {
   }
 
   enableSelect() {
-    this.gs.selectionMode = true;
+    this.gs.toggleSelectionMode();
   }
 }

@@ -36,8 +36,10 @@
     <button mat-button (click)="enableSelect()">
       <mat-icon [style.color]="'white'">library_add_check</mat-icon>
 
-      <span class="btnText" *ngIf="gs.checkedIcons">{{ TEXT.SELECT }} </span>
-      <span class="btnText" *ngIf="!gs.checkedIcons">{{ TEXT.SELECT }} </span>
+      <span class="btnText" *ngIf="gs.selectionMode"
+        >{{ TEXT.CANCEL_SELECT }}
+      </span>
+      <span class="btnText" *ngIf="!gs.selectionMode">{{ TEXT.SELECT }} </span>
     </button>
 
     <button

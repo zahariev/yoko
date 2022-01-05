@@ -123,6 +123,15 @@ export class GameService {
     this.saveState();
   }
 
+  toggleSelectionMode() {
+    this.selectionMode = !this.selectionMode;
+    if (!this.selectionMode) this.clearCheckedCards();
+  }
+
+  clearCheckedCards() {
+    this.cards.forEach((card) => (card.checked = false));
+  }
+
   showAllCards(deck?: Deck) {
     if (deck && !this.deckCardsLeft(deck)) return;
 
@@ -145,6 +154,7 @@ export class GameService {
     if (left > 0) return true;
     else return false;
   }
+
   positionReset() {
     this.cards.map((card) => {
       card.position = undefined;
@@ -172,7 +182,7 @@ export class GameService {
 
   takeCard(deck: Deck): boolean {
     if (this.checkedIcons) return false;
-    this.getCard(deck);
+    this.getRandomCard(deck);
     this.saveState();
     if (this.isEmptyDeck(deck.id)) {
       deck.empty = true;
@@ -180,7 +190,7 @@ export class GameService {
     } else return true;
   }
 
-  getCard(deck: Deck): void {
+  getRandomCard(deck: Deck): void {
     if (this.isEmptyDeck(deck.id)) return;
     let newCardId;
     do {
