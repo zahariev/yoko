@@ -4,11 +4,15 @@
       [style.color]="gs.getDeckColor(deck)"
       class="deck"
       (click)="gs.takeCard(deck)"
-      [ngClass]="deck.empty || gs.checkedIcons ? 'emptyDeck' : ''"
+      [ngClass]="deck.empty || gs.selectionMode ? 'emptyDeck' : ''"
       [style.background]="gs.getDeckBG(deck)"
       *ngFor="let deck of gs.decks"
     >
-      <button mat-icon-button class="flipIcon">
+      <button
+        mat-icon-button
+        class="flipIcon"
+        *ngIf="!gs.selectionMode || !deck.empty"
+      >
         <mat-icon
           [style.color]="gs.getDeckColor(deck)"
           (click)="gs.flipDeck(deck); $event.stopPropagation()"
@@ -18,7 +22,7 @@
       <button
         mat-icon-button
         class="showDeckIcon"
-        *ngIf="!gs.checkedIcons && !deck.empty"
+        *ngIf="!gs.selectionMode || !deck.empty"
       >
         <mat-icon
           (click)="showAllCards(deck); $event.stopPropagation()"
