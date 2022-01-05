@@ -43,4 +43,8 @@ export class AppComponent {
     this.gs.minify = minified !== undefined ? minified : !this.gs.minify;
     // this.minifySubject.next(this.minify);
   }
+
+  enableSelect() {
+    this.gs.selectionMode = true;
+  }
 }

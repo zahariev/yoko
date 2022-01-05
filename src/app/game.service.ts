@@ -60,7 +60,7 @@ export class GameService {
   magnifiedCard = Array(60).fill(false);
   minify: boolean = false;
   dragged = Array(60).fill({});
-  showAllState: boolean = false;
+  selectionMode: boolean = false;
   checkboxHide: boolean = true;
   checkedIcons: boolean = false;
   dropCard: EventEmitter<boolean> = new EventEmitter();
@@ -110,7 +110,7 @@ export class GameService {
   }
 
   filterSelected() {
-    this.showAllState = false;
+    this.selectionMode = false;
     this.cards = this.cards.filter((card) => {
       if (card.checked) {
         card.checked = false;
@@ -136,7 +136,7 @@ export class GameService {
       });
 
     this.hasCheckedIcons();
-    this.showAllState = true;
+    this.selectionMode = true;
   }
 
   deckCardsLeft(deck: Deck): boolean {
@@ -198,8 +198,8 @@ export class GameService {
 
   checkOnlyOneDeckOpen() {
     if (this.onlyOneDeckOpen()) {
-      this.showAllState = true;
-    } else this.showAllState = false;
+      this.selectionMode = true;
+    } else this.selectionMode = false;
   }
 
   isEmptyDeck(deckId: number): boolean {

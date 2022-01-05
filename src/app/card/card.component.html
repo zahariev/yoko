@@ -43,7 +43,7 @@
       class="tp-box"
       *ngFor="let card of gs.cards"
       cdkDrag
-      [cdkDragDisabled]="gs.showAllState"
+      [cdkDragDisabled]="gs.selectionMode"
       [cdkDragFreeDragPosition]="card.position ? card.position : { x: 0, y: 0 }"
       (cdkDragStarted)="dragMove($event, card)"
       (cdkDragEnded)="dragEnd($event, card)"
@@ -62,7 +62,7 @@
           '.jpg)'
         "
       >
-        <div class="cardButtons" *ngIf="!gs.showAllState && !dragEvent">
+        <div class="cardButtons" *ngIf="!gs.selectionMode && !dragEvent">
           <mat-icon
             [style.color]="gs.getIconColor(card)"
             class="flipCard left"
@@ -84,7 +84,7 @@
           </mat-icon>
         </div>
 
-        <div class="cardButtons" *ngIf="gs.showAllState">
+        <div class="cardButtons" *ngIf="gs.selectionMode">
           <mat-icon
             [style.color]="gs.getIconColor(card)"
             class="flipCard left"
@@ -102,7 +102,7 @@
         </div>
 
         <mat-checkbox
-          *ngIf="gs.showAllState"
+          *ngIf="gs.selectionMode"
           class="check"
           [checked]="card.checked"
           [color]="gs.getIconColor(card)"

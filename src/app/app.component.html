@@ -8,7 +8,7 @@
   [style.margin-top]="marginTop"
   [ngClass]="gs.minify || !gs.checkboxHide ? 'allBoard' : ''"
 >
-  <div class="buttons" fxLayoutAlign="space-around center">
+  <div class="toolbar" fxLayoutAlign="space-around center">
     <button [disabled]="gs.checkedIcons" mat-button (click)="showAllCards()">
       <mat-icon>apps</mat-icon>
 
@@ -31,6 +31,13 @@
 
       <mat-icon [style.color]="'white'" *ngIf="!gs.minify">zoom_out</mat-icon>
       <span class="btnText">{{ TEXT.ZOOM }} </span>
+    </button>
+
+    <button mat-button (click)="enableSelect()">
+      <mat-icon [style.color]="'white'">library_add_check</mat-icon>
+
+      <span class="btnText" *ngIf="gs.checkedIcons">{{ TEXT.SELECT }} </span>
+      <span class="btnText" *ngIf="!gs.checkedIcons">{{ TEXT.SELECT }} </span>
     </button>
 
     <button
