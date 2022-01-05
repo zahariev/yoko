@@ -124,6 +124,7 @@ export class GameService {
   }
 
   toggleSelectionMode() {
+    if (!this.cards.length) return;
     this.selectionMode = !this.selectionMode;
     this.checkedIcons = false;
     if (!this.selectionMode) this.clearCheckedCards();
@@ -131,6 +132,11 @@ export class GameService {
 
   clearCheckedCards() {
     this.cards.forEach((card) => (card.checked = false));
+  }
+
+  checkAllCards() {
+    this.cards.forEach((card) => (card.checked = true));
+    this.checkedIcons = true;
   }
 
   showAllCards(deck?: Deck) {

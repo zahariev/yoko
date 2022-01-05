@@ -5,8 +5,9 @@
   "deck4": "Системно мислене",
   "SELECT_CARDS": "Select cards",
   "SELECT": "Select",
+  "SELECT_ALL": "Check All",
   "CANCEL_SELECT": "Cancel",
-  "ZOOM": "zoom",
+  "ZOOM": "Zoom",
   "SHOW_ALL": "Show all",
   "POSITION_RESET": "Position reset",
   "CLEAR_BOARD": "Clear board"

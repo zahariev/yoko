@@ -33,7 +33,7 @@
       <span class="btnText">{{ TEXT.ZOOM }} </span>
     </button>
 
-    <button mat-button (click)="enableSelect()">
+    <button mat-button (click)="enableSelect()" *ngIf="gs.cards.length">
       <mat-icon [style.color]="'white'">library_add_check</mat-icon>
 
       <span class="btnText" *ngIf="gs.selectionMode"
@@ -42,12 +42,12 @@
       <span class="btnText" *ngIf="!gs.selectionMode">{{ TEXT.SELECT }} </span>
     </button>
 
-    <button
-      class="filterIcon"
-      mat-button
-      *ngIf="gs.checkedIcons"
-      (click)="filterSelected()"
-    >
+    <button mat-button *ngIf="gs.selectionMode" (click)="gs.checkAllCards()">
+      <mat-icon>apps</mat-icon>
+      <span>{{ TEXT.SELECT_ALL }}</span>
+    </button>
+
+    <button mat-button *ngIf="gs.checkedIcons" (click)="filterSelected()">
       <mat-icon>apps</mat-icon>
       <span>{{ TEXT.SELECT_CARDS }}</span>
     </button>
