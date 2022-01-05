@@ -125,6 +125,7 @@ export class GameService {
 
   toggleSelectionMode() {
     this.selectionMode = !this.selectionMode;
+    this.checkedIcons = false;
     if (!this.selectionMode) this.clearCheckedCards();
   }
 
