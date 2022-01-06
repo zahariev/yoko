@@ -9,9 +9,11 @@ import { MatListModule } from "@angular/material/list";
 import { AppComponent } from "./app.component";
 import { CardComponent } from "./card/card.component";
 import { MatCheckboxModule } from "@angular/material/checkbox";
+import { FooterComponent } from './footer/footer.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
-  declarations: [AppComponent, CardComponent],
+  declarations: [AppComponent, CardComponent, FooterComponent, MenuComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

@@ -1,0 +1,66 @@
+footer a {
+  display: flex;
+  align-items: center;
+}
+
+.footer {
+  color: white !important;
+  bottom: 0px;
+  width: 100%;
+  position: absolute;
+  z-index: 999999999;
+  align-items: center;
+  background-color: #899394;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  //   min-height: 120px;
+  padding-top: 10px;
+
+  .logo {
+    background-size: contain;
+    background-repeat: no-repeat;
+    min-width: 60px;
+    min-height: 70px;
+  }
+
+  #logo_erasmus {
+    min-width: 300px;
+    min-height: 80px;
+    background-image: url("../../assets/erasmus_logo.png");
+  }
+
+  #logo_movit {
+    // min-width: 10px;
+    min-height: 30px;
+    margin-left: 30px;
+    background-image: url("../../assets/Logos/movit.png");
+  }
+
+  #logo_mcc {
+    min-width: 300px;
+    background-image: url("../../assets/Logos/mcc.png");
+  }
+
+  #logo_best {
+    margin-right: -50px;
+    background-image: url("../../assets/Logos/best.png");
+  }
+
+  #logo_int_school {
+    min-height: 65px;
+
+    min-width: 200px;
+    background-image: url("../../assets/Logos/international.png");
+  }
+
+  #logo_national {
+    margin-left: 10px;
+    min-width: 250px;
+    min-height: 75px;
+    background-image: url("../../assets/Logos/national.png");
+  }
+
+  #logo_bo_yana {
+  }
+}

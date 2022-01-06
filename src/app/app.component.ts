@@ -1,7 +1,6 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from "@angular/core";
 
 import { BehaviorSubject, Subject } from "rxjs";
-import texts from "../assets/trantslation.json";
 import { GameService } from "./game.service";
 
 @Component({
@@ -12,44 +11,7 @@ import { GameService } from "./game.service";
 export class AppComponent {
   @ViewChild("board") board!: ElementRef;
 
-  TEXT = texts;
   marginTop = 0;
 
   constructor(public gs: GameService) {}
-
-  resetGame() {
-    this.toggleZoom(false);
-    this.gs.resetGame();
-  }
-
-  showAllCards() {
-    if (this.gs.checkedIcons) return;
-    this.gs.checkboxHide = false;
-    this.gs.minify = true;
-    this.gs.showAllCards();
-  }
-
-  positionReset() {
-    this.gs.positionReset();
-  }
-
-  filterSelected() {
-    this.toggleZoom(false);
-    this.gs.filterSelected();
-  }
-
-  toggleZoom(minified?: boolean) {
-    this.gs.checkboxHide = true;
-    this.gs.minify = minified !== undefined ? minified : !this.gs.minify;
-    // this.minifySubject.next(this.minify);
-  }
-
-  enableSelect() {
-    this.gs.toggleSelectionMode();
-  }
-
-  toggleSelectionCards() {
-    if (this.gs.allSelected) this.gs.clearCheckedCards();
-    else this.gs.checkAllCards();
-  }
 }
