@@ -41,9 +41,13 @@
       <span class="btnText" *ngIf="!gs.selectionMode">{{ TEXT.SELECT }} </span>
     </button>
 
-    <button mat-button *ngIf="gs.selectionMode" (click)="gs.checkAllCards()">
-      <mat-icon>check_box_outline_blank</mat-icon>
-      <mat-icon>check_box</mat-icon>
+    <button
+      mat-button
+      *ngIf="gs.selectionMode"
+      (click)="toggleSelectionCards()"
+    >
+      <mat-icon *ngIf="!gs.allSelected">check_box_outline_blank</mat-icon>
+      <mat-icon *ngIf="gs.allSelected">check_box</mat-icon>
       <span>{{ TEXT.SELECT_ALL }}</span>
     </button>
 

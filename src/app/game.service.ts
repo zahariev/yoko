@@ -61,6 +61,7 @@ export class GameService {
   minify: boolean = false;
   dragged = Array(60).fill({});
   selectionMode: boolean = false;
+  allSelected: boolean = false;
   checkboxHide: boolean = true;
   checkedIcons: boolean = false;
   dropCard: EventEmitter<boolean> = new EventEmitter();
@@ -132,11 +133,14 @@ export class GameService {
 
   clearCheckedCards() {
     this.cards.forEach((card) => (card.checked = false));
+    this.checkedIcons = false;
+    this.allSelected = false;
   }
 
   checkAllCards() {
     this.cards.forEach((card) => (card.checked = true));
     this.checkedIcons = true;
+    this.allSelected = true;
   }
 
   showAllCards(deck?: Deck) {

@@ -47,4 +47,9 @@ export class AppComponent {
   enableSelect() {
     this.gs.toggleSelectionMode();
   }
+
+  toggleSelectionCards() {
+    if (this.gs.allSelected) this.gs.clearCheckedCards();
+    else this.gs.checkAllCards();
+  }
 }
