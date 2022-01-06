@@ -1,14 +1,13 @@
 <!-- Toolbar -->
 
 <div
-  fxLayout="row"
   id="content"
   #board
   role="main"
   [style.margin-top]="marginTop"
   [ngClass]="gs.minify || !gs.checkboxHide ? 'allBoard' : ''"
 >
-  <div class="toolbar" fxLayoutAlign="space-around center">
+  <div class="toolbar" fxFlex fxLayout="row">
     <button [disabled]="gs.selectionMode" mat-button (click)="showAllCards()">
       <mat-icon>apps</mat-icon>
 
@@ -43,12 +42,13 @@
     </button>
 
     <button mat-button *ngIf="gs.selectionMode" (click)="gs.checkAllCards()">
-      <mat-icon>apps</mat-icon>
+      <mat-icon>check_box_outline_blank</mat-icon>
+      <mat-icon>check_box</mat-icon>
       <span>{{ TEXT.SELECT_ALL }}</span>
     </button>
 
     <button mat-button *ngIf="gs.checkedIcons" (click)="filterSelected()">
-      <mat-icon>apps</mat-icon>
+      <mat-icon [style.color]="'blue'">done</mat-icon>
       <span>{{ TEXT.SELECT_CARDS }}</span>
     </button>
     <!-- </div> -->

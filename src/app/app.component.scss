@@ -24,10 +24,14 @@ p {
 .toolbar {
   color: white !important;
   width: 100%;
-  position: fixed;
+  position: relative;
   z-index: 999999999;
   align-items: center;
   background-color: #899394;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  min-height: 40px;
 }
 
 #menu {
@@ -158,12 +162,6 @@ footer a {
   /* Set the fixed height of the footer here */
   height: 30px;
   //   line-height: 30px;
-}
-
-@media screen and (max-width: 831px), screen and (max-height: 500px) {
-  .filterIcon {
-    right: 0px;
-  }
 }
 
 .spacer {
