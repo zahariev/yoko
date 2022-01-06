@@ -144,14 +144,26 @@ footer a {
   }
 }
 
-.footer1 {
-  width: 100%;
-  z-index: 999999999;
-  position: fixed;
-  bottom: 0;
-  background-color: #465658;
-}
 .footer {
+  //   width: 100%;
+  //   z-index: 999999999;
+  //   position: fixed;
+  //   bottom: 0;
+  //   min-height: 40px;
+  //   background-color: #899394;
+  color: white !important;
+  bottom: 0;
+  width: 100%;
+  position: relative;
+  z-index: 999999999;
+  align-items: center;
+  background-color: #899394;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  min-height: 80px;
+}
+.footer1 {
   background-color: #465658;
   z-index: 999999999;
   position: fixed;
