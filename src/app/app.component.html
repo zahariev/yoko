@@ -9,7 +9,7 @@
   [ngClass]="gs.minify || !gs.checkboxHide ? 'allBoard' : ''"
 >
   <div class="toolbar" fxLayoutAlign="space-around center">
-    <button [disabled]="gs.checkedIcons" mat-button (click)="showAllCards()">
+    <button [disabled]="gs.selectionMode" mat-button (click)="showAllCards()">
       <mat-icon>apps</mat-icon>
 
       <span class="btnText">{{ TEXT.SHOW_ALL }}</span>
@@ -20,7 +20,7 @@
       <span class="btnText">{{ TEXT.POSITION_RESET }}</span>
     </button>
 
-    <button [disabled]="gs.checkedIcons" mat-button (click)="resetGame()">
+    <button [disabled]="gs.selectionMode" mat-button (click)="resetGame()">
       <mat-icon>clear</mat-icon>
 
       <span class="btnText">{{ TEXT.CLEAR_BOARD }}</span>
