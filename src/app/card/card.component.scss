@@ -40,12 +40,12 @@
   //   margin-top: 20px;
 }
 
+.deck-container,
 .card-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   min-height: 250px;
-  margin-bottom: 150px;
 }
 
 .card-container .card:not(:last-child) {
@@ -217,10 +217,17 @@
   margin-top: 10px;
 }
 
+.card-container {
+  margin-bottom: 150px !important;
+}
 @media screen and (max-width: 831px), screen and (max-height: 500px) {
   //   .card:hover .middle {
   //     display: block;
   //   }
+
+  .card-container {
+    margin-bottom: 300px !important;
+  }
 
   .example-handle {
     display: block;
@@ -262,7 +269,7 @@
     }
   }
 
-  .card-container {
+  .deck-container {
     top: -10px;
     min-height: 190px;
   }
