@@ -7,6 +7,7 @@ footer a {
   color: white !important;
   bottom: 0px;
   width: 100%;
+  min-height: 120px;
   position: absolute;
   z-index: 999;
   align-items: center;
@@ -21,7 +22,7 @@ footer a {
     background-size: contain;
     background-repeat: no-repeat;
     min-width: 60px;
-    min-height: 70px;
+    min-height: 60px;
     cursor: pointer;
     z-index: 99999;
   }
@@ -34,13 +35,14 @@ footer a {
 
   #logo_movit {
     // min-width: 10px;
+    margin-top: -20px;
     min-height: 30px;
     margin-left: 30px;
     background-image: url("../../assets/Logos/movit.png");
   }
 
   #logo_mcc {
-    min-width: 300px;
+    min-width: 250px;
     background-image: url("../../assets/Logos/mcc.png");
   }
 
@@ -50,7 +52,7 @@ footer a {
   }
 
   #logo_int_school {
-    min-height: 65px;
+    min-height: 55px;
 
     min-width: 200px;
     background-image: url("../../assets/Logos/international.png");
@@ -58,8 +60,8 @@ footer a {
 
   #logo_national {
     margin-left: 10px;
-    min-width: 250px;
-    min-height: 75px;
+    min-width: 220px;
+    min-height: 60px;
     background-image: url("../../assets/Logos/national.png");
   }
 
