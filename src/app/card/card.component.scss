@@ -45,6 +45,7 @@
   flex-wrap: wrap;
   justify-content: center;
   min-height: 250px;
+  margin-bottom: 150px;
 }
 
 .card-container .card:not(:last-child) {
@@ -296,7 +297,7 @@
   .card-container,
   .container {
     // min-width: 300px;
-    width: 96%;
+    width: 100%;
   }
 
   .deckTitle {
