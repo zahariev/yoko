@@ -9,18 +9,12 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-#content {
-  position: absolute;
-  width: 100%;
-
-  padding: 0 0px;
-  min-width: 300px;
-  flex-direction: column;
-  align-items: center;
-}
-
 mat-icon {
   cursor: pointer;
+}
+
+.spacer {
+  flex: 1 1 auto;
 }
 
 :host ::ng-deep .allBoard {
@@ -89,8 +83,4 @@ mat-icon {
     font-size: 14px;
     width: 85%;
   }
-}
-
-.spacer {
-  flex: 1 1 auto;
 }

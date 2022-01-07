@@ -1,17 +1,6 @@
-<!-- Toolbar -->
 <!-- [style.margin-top]="marginTop" -->
+<app-menu></app-menu>
 
-<div
-  id="content"
-  #board
-  role="main"
-  [ngClass]="gs.minify || !gs.checkboxHide ? 'allBoard' : ''"
->
-  <h2></h2>
-  <p></p>
-  <app-menu></app-menu>
-  <app-card></app-card>
+<app-card></app-card>
 
-  <!-- Footer -->
-</div>
 <app-footer></app-footer>
