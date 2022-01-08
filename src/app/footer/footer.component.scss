@@ -14,7 +14,7 @@ footer a {
   background-color: #899394;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
   //   min-height: 120px;
   padding-top: 10px;
 
@@ -28,7 +28,8 @@ footer a {
   }
 
   #logo_erasmus {
-    min-width: 300px;
+    min-width: 250px;
+    margin-right: 40px;
     min-height: 80px;
     background-image: url("../../assets/erasmus_logo.png");
   }
@@ -37,7 +38,7 @@ footer a {
     // min-width: 10px;
     margin-top: -20px;
     min-height: 30px;
-    margin-left: 30px;
+    margin-left: 8px;
     background-image: url("../../assets/Logos/movit.png");
   }
 
@@ -66,5 +67,46 @@ footer a {
   }
 
   #logo_bo_yana {
+    min-width: 120px;
+    min-height: 60px;
+    margin-left: 60px;
+
+    background-image: url("http://bilkata.bg/bo_yana_logo.png");
+
+    // background-image: url("../../assets/Logos/boyana1.png");
+  }
+
+  @media screen and (max-width: 831px), screen and (max-height: 500px) {
+    #logo_erasmus {
+      min-width: 100px;
+      min-height: 50px;
+      background-image: url("../../assets/logos/mobile/erasmus.png");
+    }
+
+    #logo_movit {
+      // min-width: 10px;
+      margin-top: 0px;
+      min-height: 30px;
+      margin-left: 0px;
+    }
+
+    #logo_mcc {
+      min-width: 120px;
+      background-image: url("../../assets/logos/mobile/mcc.png");
+    }
+
+    #logo_int_school {
+      min-height: 55px;
+
+      min-width: 80px;
+      background-image: url("../../assets/logos/mobile/international.png");
+    }
+
+    #logo_national {
+      margin-left: 10px;
+      min-width: 80px;
+      min-height: 60px;
+      background-image: url("../../assets/logos/mobile/national.png");
+    }
   }
 }
