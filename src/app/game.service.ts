@@ -147,9 +147,15 @@ export class GameService {
     if (deck && !this.deckCardsLeft(deck)) return;
 
     this.positionReset();
-    this.cards.forEach((card) => (card.checked = true));
+
+    if (deck && this.cards.length < 15) {
+      this.cards.forEach((card) => (card.checked = true));
+    }
+
     if (deck) {
       do {} while (this.takeCard(deck));
+
+      //   this.clearCheckedCards();
     } else
       this.decks.forEach((deck1: Deck) => {
         do {} while (this.takeCard(deck1));
