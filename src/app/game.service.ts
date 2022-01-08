@@ -154,8 +154,6 @@ export class GameService {
 
     if (deck) {
       do {} while (this.takeCard(deck));
-
-      //   this.clearCheckedCards();
     } else
       this.decks.forEach((deck1: Deck) => {
         do {} while (this.takeCard(deck1));

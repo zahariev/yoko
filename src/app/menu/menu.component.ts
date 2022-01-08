@@ -38,7 +38,6 @@ export class MenuComponent implements OnInit {
   toggleZoom(minified?: boolean) {
     this.gs.checkboxHide = true;
     this.gs.minify = minified !== undefined ? minified : !this.gs.minify;
-    // this.minifySubject.next(this.minify);
   }
 
   enableSelect() {
