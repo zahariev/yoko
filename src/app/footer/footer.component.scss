@@ -27,18 +27,27 @@ footer a {
   }
 
   #logo_erasmus {
-    min-width: 250px;
+    width: 250px;
     margin-right: 40px;
-    min-height: 80px;
+    height: 50px;
     background-image: url("../../assets/erasmus_logo.png");
   }
 
   #logo_movit {
-    // min-width: 10px;
-    margin-top: -20px;
-    min-height: 30px;
+    display: inline-block;
+    width: 90px;
+    // margin-top: -20px;
+    height: 54px;
     margin-left: 8px;
     background-image: url("../../assets/Logos/movit.png");
+  }
+
+  #logo_apel {
+    display: inline-block;
+    width: 70px;
+    margin-left: 28px;
+    min-height: 65px;
+    background-image: url("../../assets/apel_logo.jpg");
   }
 
   #logo_mcc {
@@ -67,7 +76,7 @@ footer a {
 
   #logo_bo_yana {
     min-width: 120px;
-    min-height: 60px;
+    min-height: 45px;
     margin-left: 60px;
 
     background-image: url("http://bilkata.bg/bo_yana_logo.png");
