@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from "@angular/core";
+import { Component, ElementRef, ViewChild } from "@angular/core";
 
 import { BehaviorSubject, Subject } from "rxjs";
 import { GameService } from "./game.service";

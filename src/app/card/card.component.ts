@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit } from "@angular/core";
+import { Title } from "@angular/platform-browser";
 
 import { Subject } from "rxjs";
 import { Card, Deck } from "../shared/models";
@@ -26,7 +27,9 @@ export class CardComponent implements OnInit {
   lastZindex = 0;
   dragEvent = false;
 
-  constructor(public gs: GameService) {}
+  constructor(public gs: GameService, private titleService: Title) {
+    this.titleService.setTitle(this.TEXT.page_title);
+  }
 
   ngOnInit() {
     this.gs.checkAllEmptyDecks();

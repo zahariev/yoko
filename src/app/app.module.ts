@@ -1,6 +1,6 @@
 import { DragDropModule } from "@angular/cdk/drag-drop";
 import { NgModule } from "@angular/core";
-import { BrowserModule } from "@angular/platform-browser";
+import { BrowserModule, Title } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatIconModule } from "@angular/material/icon";
 import { MatButtonModule } from "@angular/material/button";
@@ -9,8 +9,8 @@ import { MatListModule } from "@angular/material/list";
 import { AppComponent } from "./app.component";
 import { CardComponent } from "./card/card.component";
 import { MatCheckboxModule } from "@angular/material/checkbox";
-import { FooterComponent } from './footer/footer.component';
-import { MenuComponent } from './menu/menu.component';
+import { FooterComponent } from "./footer/footer.component";
+import { MenuComponent } from "./menu/menu.component";
 
 @NgModule({
   declarations: [AppComponent, CardComponent, FooterComponent, MenuComponent],
@@ -24,7 +24,7 @@ import { MenuComponent } from './menu/menu.component';
     MatListModule,
     MatMenuModule,
   ],
-  providers: [],
+  providers: [Title],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
