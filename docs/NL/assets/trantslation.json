@@ -1,14 +1,15 @@
 {
-  "deck1": "Povezovanje s ču”stvi",
-  "deck2": "Iskane smeri",
-  "deck3": "Identificiranje prednosti",
-  "deck4": "Sistemsko razmišljanje",
-  "SELECT_CARDS": "Izberi karto",
-  "ZOOM": "Povečava",
-  "SHOW_ALL": "Pokaži vse",
-  "POSITION_RESET": "Resetiraj",
-  "CLEAR_BOARD": "Izbriši postavitev",
-  "SELECT_ALL": "Izberi vse",
-  "SELECT": "Done",
-  "CANCEL_SELECT": "Cancel"
+  "page_title": "YOCO kaarten zijn ontwikkeld als een product van de \"Actieve jeugdparticipatie door empowerment van leiderschap\" (APEL) project",
+  "deck1": "Verbinden met emoties",
+  "deck2": "Vinden van richting",
+  "deck3": "In kaart brengen van krachten",
+  "deck4": "In systemen denken",
+  "SELECT_CARDS": "Klaar",
+  "SELECT": "Selecteer",
+  "SELECT_ALL": "Selecteer alles",
+  "CANCEL_SELECT": "Annuleren",
+  "ZOOM": "Zoom",
+  "SHOW_ALL": "Тoon alle",
+  "POSITION_RESET": "Reset positie",
+  "CLEAR_BOARD": "Opnieuw"
 }
