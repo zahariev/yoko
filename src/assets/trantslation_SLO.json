@@ -10,6 +10,6 @@
   "POSITION_RESET": "Resetiraj",
   "CLEAR_BOARD": "Izbriši postavitev",
   "SELECT_ALL": "Izberi vse",
-  "SELECT": "Izbriši",
-  "CANCEL_SELECT": "Cancel"
+  "SELECT": "Done",
+  "CANCEL_SELECT": "Prekliči"
 }
