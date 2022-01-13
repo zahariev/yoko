@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import texts from "../../assets/trantslation.json";
+import texts from "../../assets/translation.json";
 import { GameService } from "../game.service";
 
 @Component({
