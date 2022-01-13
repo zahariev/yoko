@@ -33,10 +33,8 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  //   min-height: 250px;
   width: 100%;
   height: 100%;
-  //   margin-bottom: 20px;
   margin-top: 40px;
 }
 
@@ -218,7 +216,7 @@
 }
 
 .card-container {
-  margin-bottom: 150px !important;
+  margin-bottom: 185px !important;
 }
 @media screen and (max-width: 831px), screen and (max-height: 500px) {
   //   .card:hover .middle {
@@ -226,7 +224,7 @@
   //   }
 
   .card-container {
-    margin-bottom: 150px !important;
+    margin-bottom: 185px !important;
   }
 
   .example-handle {
