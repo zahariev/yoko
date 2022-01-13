@@ -39,7 +39,7 @@ footer a {
     // margin-top: -20px;
     height: 54px;
     margin-left: 8px;
-    background-image: url("../../assets/Logos/movit.png");
+    background-image: url("../../logos/movit.png");
   }
 
   #logo_apel {
@@ -47,31 +47,31 @@ footer a {
     width: 70px;
     margin-left: 44px;
     min-height: 65px;
-    background-image: url("../../assets/apel_logo.jpg");
+    background-image: url("../../logos/apel_logo.jpg");
   }
 
   #logo_mcc {
     min-width: 250px;
-    background-image: url("../../assets/Logos/mcc.png");
+    background-image: url("../../logos/mcc.png");
   }
 
   #logo_best {
     margin-right: 20px;
-    background-image: url("../../assets/Logos/best.png");
+    background-image: url("../../logos/best.png");
   }
 
   #logo_int_school {
     min-height: 55px;
 
     min-width: 200px;
-    background-image: url("../../assets/Logos/international.png");
+    background-image: url("../../logos/international.png");
   }
 
   #logo_national {
     margin-left: 10px;
     min-width: 220px;
     min-height: 60px;
-    background-image: url("../../assets/Logos/national.png");
+    background-image: url("../../logos/national.png");
   }
 
   #logo_bo_yana {
@@ -85,21 +85,21 @@ footer a {
   @media screen and (max-width: 831px), screen and (max-height: 500px) {
     #logo_mcc {
       min-width: 120px;
-      background-image: url("../../assets/logos/mobile/mcc.png");
+      background-image: url("../../logos/mobile/mcc.png");
     }
 
     #logo_int_school {
       min-height: 55px;
 
       min-width: 80px;
-      background-image: url("../../assets/logos/mobile/international.png");
+      background-image: url("../../logos/mobile/international.png");
     }
 
     #logo_national {
       margin-left: 10px;
       min-width: 80px;
       min-height: 60px;
-      background-image: url("../../assets/logos/mobile/national.png");
+      background-image: url("../../logos/mobile/national.png");
     }
   }
 }
