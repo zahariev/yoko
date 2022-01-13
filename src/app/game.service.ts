@@ -71,8 +71,16 @@ export class GameService {
     const openCards = localStorage.getItem("openCards");
     if (openCards) this.cards = JSON.parse(openCards);
 
-    const decks = localStorage.getItem("deckCards");
-    if (decks && decks.length > 2) this.decks = JSON.parse(decks);
+    let decks = localStorage.getItem("deckCards");
+    if (decks && decks.length > 2) {
+      const decksArr = JSON.parse(decks) || [];
+
+      if (decksArr)
+        for (let i = 0; i < decksArr.length; i++) {
+          this.decks[i].backSide = decksArr[i]?.backSide;
+        }
+    }
+
     this.saveState();
     this.dropCard.subscribe(() => {
       this.dragEvent = true;
