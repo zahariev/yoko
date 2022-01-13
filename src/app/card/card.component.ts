@@ -33,7 +33,7 @@ export class CardComponent implements OnInit {
 
   ngOnInit() {
     this.gs.checkAllEmptyDecks();
-    this.gs.checkOnlyOneDeckOpen();
+    // this.gs.checkOnlyOneDeckOpen();
   }
 
   dragMove(event: any, card: Card) {
@@ -69,27 +69,19 @@ export class CardComponent implements OnInit {
     card.position = $event.source.getFreeDragPosition();
 
     if (!elStyle.position) {
-      //   const firstDrag = this.getPosition($event.source.getRootElement());
       card.position = {
         x:
           el.left -
           (smallCard ? 80 : 50) -
           (window.innerWidth < 415 ? -80 : -20) -
-          //   firstDrag.left -
           window.innerWidth / 2.5,
-        //   150 +
-        //   (card?.position?.x || 0),
+
         y:
           el.top -
           (window.innerWidth < 415 ? 180 : 0) -
-          //   firstDrag.top -
-          //   (smallCard ? -80 : 55) -
           window.innerHeight / 3 +
           (smallCard ? 80 : 0),
-        //   el.height / 2,
-        //   (card?.position?.y || 0),
       };
-      //   elStyle.position = "absolute";
     }
     this.gs.dropCard.emit();
     this.gs.saveState();
