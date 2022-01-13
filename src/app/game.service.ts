@@ -118,7 +118,7 @@ export class GameService {
         return true;
       } else return false;
     });
-
+    this.allSelected = false;
     this.checkAllEmptyDecks();
     this.hasCheckedIcons();
     this.saveState();
