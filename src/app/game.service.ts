@@ -1,6 +1,6 @@
 import { EventEmitter, Injectable } from "@angular/core";
 import { Card, Deck } from "./shared/models";
-import texts from "../assets/trantslation.json";
+import texts from "../assets/translation.json";
 const Decks: Deck[] = [
   {
     id: 1,

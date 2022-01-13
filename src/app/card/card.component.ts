@@ -4,7 +4,7 @@ import { Title } from "@angular/platform-browser";
 import { Subject } from "rxjs";
 import { Card, Deck } from "../shared/models";
 import { GameService } from "../game.service";
-import texts from "../../assets/trantslation.json";
+import texts from "../../assets/translation.json";
 
 @Component({
   selector: "app-card",
