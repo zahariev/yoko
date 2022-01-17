@@ -196,9 +196,10 @@
   left: 0px;
   padding: 8px;
   position: absolute;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
   width: 89%;
+  overflow-wrap: break-word;
 }
 
 .mat-checkbox-checked.mat-accent .mat-checkbox-background {
@@ -313,5 +314,6 @@
     position: absolute;
     font-size: 14px;
     width: 85%;
+    overflow-wrap: break-word;
   }
 }
