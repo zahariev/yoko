@@ -1,15 +1,15 @@
 {
-  "page_title": "YOCO kartice, razvite v okviru projekta \"Aktivna mladinska participacija s pomočjo opolnomočenega vodstva\" (APEL)",
-  "deck1": "Povezovanje s ču”stvi",
-  "deck2": "Iskane smeri",
-  "deck3": "Identificiranje prednosti",
-  "deck4": "Sistemsko razmišljanje",
-  "SELECT_CARDS": "Izberi karto",
-  "SELECT": "Izbriši",
-  "SELECT_ALL": "Izberi vse",
-  "CANCEL_SELECT": "Prekliči",
-  "ZOOM": "Povečava",
-  "SHOW_ALL": "Pokaži vse",
-  "POSITION_RESET": "Resetiraj",
-  "CLEAR_BOARD": "Izbriši postavitev"
+  "page_title": "ЙОКО карти, разработени по проект \"Активно младежко участие чрез овластено лидерство\" (APEL)",
+  "deck1": "Свързване чрез емоции",
+  "deck2": "Намиране на посока",
+  "deck3": "Определяне на силните страни",
+  "deck4": "Системно мислене",
+  "SELECT_CARDS": "Готово",
+  "SELECT": "Избери",
+  "SELECT_ALL": "Избери всички",
+  "CANCEL_SELECT": "Отмени",
+  "ZOOM": "Увеличи",
+  "SHOW_ALL": "Покажи всички",
+  "POSITION_RESET": "Възстанови подредбата",
+  "CLEAR_BOARD": "Наново"
 }
