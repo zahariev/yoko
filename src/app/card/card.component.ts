@@ -67,20 +67,23 @@ export class CardComponent implements OnInit {
     const smallCard = $event.source.element.nativeElement.clientHeight < 200;
     const el = $event.source.getRootElement().getBoundingClientRect();
     card.position = $event.source.getFreeDragPosition();
+    console.log(window.scrollX);
+    console.log(window.scrollY);
 
     if (!elStyle.position) {
       card.position = {
         x:
-          el.left -
-          (smallCard ? 80 : 50) -
-          (window.innerWidth < 415 ? -80 : -20) -
-          window.innerWidth / 2.5,
-
+          el.left +
+          window.scrollX -
+          (smallCard ? 40 : 40) -
+          (window.innerWidth < 475 ? -40 : -10) -
+          window.innerWidth / 2.6,
         y:
-          el.top -
-          (window.innerWidth < 415 ? 180 : 0) -
+          el.top +
+          window.scrollY -
+          (window.innerWidth < 475 ? 160 : -10) -
           window.innerHeight / 3 +
-          (smallCard ? 80 : 0),
+          (smallCard ? 40 : 0),
       };
     }
     this.gs.dropCard.emit();
