@@ -5,6 +5,7 @@ const Decks: Deck[] = [
   {
     id: 1,
     title: texts.deck1,
+    size: 15,
     color: "#d4412d",
     backSide: false,
     empty: false,
@@ -15,6 +16,8 @@ const Decks: Deck[] = [
   {
     id: 2,
     title: texts.deck2,
+    size: 15,
+
     color: "#0b4790",
     backSide: false,
     empty: false,
@@ -25,6 +28,7 @@ const Decks: Deck[] = [
   {
     id: 3,
     title: texts.deck3,
+    size: 15,
     color: "#f9cb16",
     backSide: false,
     empty: false,
@@ -35,6 +39,7 @@ const Decks: Deck[] = [
   {
     id: 4,
     title: texts.deck4,
+    size: 15,
     color: "#1d7543",
     backSide: false,
     empty: false,

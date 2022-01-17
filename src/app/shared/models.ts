@@ -2,6 +2,7 @@ export interface Deck {
   id: number;
   title: string;
   color: string;
+  size: number;
   backSide: boolean;
   empty: boolean;
   accentIcons: any[];
